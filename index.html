@@ -607,11 +607,11 @@ function renderHome(){
   const reels=main.filter(p=>p.reel);
   document.getElementById('fReels').innerHTML=folderCard('reels','Demoreels',plural(reels.length,'reel')+' · 2020–2024',reels[0]?coverOf(reels[0]):null,'Reels');
   const full=CATS.filter(c=>main.some(p=>catKeys(p).includes(c.k))), soon=CATS.filter(c=>!full.includes(c));
-  document.getElementById('fCats').innerHTML=full.map(c=>{
+  document.getElementById('fCats').innerHTML=[...full,...soon].map(c=>{
     const ps=main.filter(p=>catKeys(p).includes(c.k));
-    return folderCard('cat/'+c.k,c.n,plural(ps.length,'piece'),coverOf(ps[0]),c.intents?'Screen':'Physical');
+    return ps.length?folderCard('cat/'+c.k,c.n,plural(ps.length,'piece'),coverOf(ps[0]),c.intents?'Screen':'Physical'):folderCard('cat/'+c.k,c.n,'Coming soon',null,c.intents?'Screen':'Physical',{empty:true});
   }).join('');
-  document.getElementById('fSoon').textContent=soon.length?'Coming soon: '+soon.map(c=>c.n).join(' · '):'';
+  document.getElementById('fSoon').textContent='';
 }
 
 /* ---- views ---- */
@@ -644,6 +644,7 @@ function viewCat(k){
   const all=main.filter(p=>catKeys(p).includes(k));
   const ps=all.filter(p=>hasCat(p,k,pfState.intent)&&(!pfState.tech||p.tech===pfState.tech));
   let html=back()+'<div class="pf-intro" style="margin:18px 0 28px"><span class="badge">Category</span><h1 class="h2">'+esc(c.n)+'</h1></div>';
+  if(!all.length) return html+'<p class="pf-count">Nothing published in '+esc(c.n)+' yet. Have a project here? <a href="#inquiry">Start a brief →</a></p>';
   if(all.length){
     html+='<div class="filters" style="margin-bottom:28px">'+(c.intents?chipRow('Purpose',INTENTS,'intent',pfState.intent):'')+chipRow('Technique',TECH,'tech',pfState.tech)+'</div>';
     html+='<p class="pf-count" style="margin-bottom:16px">'+plural(ps.length,'piece')+'</p>';
