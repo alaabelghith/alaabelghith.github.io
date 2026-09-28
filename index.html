@@ -164,6 +164,60 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 @media(max-width:900px){.gallery--4{grid-template-columns:repeat(2,1fr)}.grid-4{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(3,1fr)}.pair{grid-template-columns:1fr 1fr}.pair a:first-child{grid-column:1/-1}}
 @media(max-width:560px){.gallery{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){.intro{display:none}}
+
+/* ---- portfolio folders ---- */
+.pf-group{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(40px,6vw,64px)}
+.pf-group__head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.folders{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.folder{display:flex;flex-direction:column;gap:10px;cursor:pointer;text-align:left;background:none;border:0;padding:0;font:inherit;color:inherit}
+.folder__cover{position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:var(--card-2);border:1px solid var(--line)}
+.folder__cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+.folder:hover .folder__cover img{transform:scale(1.04)}
+.folder__tab{position:absolute;left:12px;top:12px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(10,10,10,.72);color:#fff;padding:4px 8px;border-radius:4px}
+.folder__empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted-2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;background:repeating-linear-gradient(135deg,var(--card),var(--card) 10px,var(--card-2) 10px,var(--card-2) 20px)}
+.folder__lock{position:absolute;inset:0;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;background:#141414;color:#d8d8d8;font-size:13px;letter-spacing:.04em}
+.folder__lock svg{width:26px;height:26px}
+.folder__name{font-size:16px;font-weight:600;letter-spacing:-.01em}
+.folder__meta{font-size:13px;color:var(--muted)}
+.folder:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:10px}
+.folder.is-empty{opacity:.7}
+.pf-back{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);cursor:pointer;background:none;border:0;padding:0;font-family:inherit}
+.pf-back:hover{color:var(--accent)}
+.pf-hero{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--card-2)}
+.pf-hero img,.pf-hero video{width:100%;height:auto;display:block}
+.pf-hero .vid{border:0;border-radius:0}
+.pf-hero--v{max-width:420px}
+.pf-intro{display:flex;flex-direction:column;gap:12px;max-width:72ch}
+.pf-intro p{color:var(--muted);font-size:16.5px;line-height:1.65}
+.pf-facts{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.pf-facts b{color:var(--ink);font-weight:600}
+.pf-block{display:flex;flex-direction:column;gap:16px}
+.pf-block h3{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--card-2);color:var(--muted);cursor:pointer;border:0;font-family:inherit}
+.tag:hover{color:var(--accent);background:rgba(124,58,237,.08)}
+.tag--co{color:#7C3AED;background:rgba(124,58,237,.08)}
+.tag--tech{color:#0f6b3a;background:rgba(18,122,62,.09)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chips__label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:92px}
+.chip{font:500 13.5px var(--font);padding:7px 13px;border-radius:999px;border:1px solid var(--line-strong);background:#fff;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.filters{display:flex;flex-direction:column;gap:12px;padding:18px 20px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.pf-count{font-size:14px;color:var(--muted)}
+.pf-empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line-strong);border-radius:10px}
+.piece-gallery{display:flex;flex-direction:column;gap:10px}
+.nda-list{display:flex;flex-direction:column;gap:14px}
+.nda-item{border:1px dashed var(--line-strong);border-radius:10px;padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+.nda-item b{font-size:16px}
+.nda-item p{color:var(--muted);font-size:15px}
+.linkcard{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;aspect-ratio:16/9;border-radius:8px;border:1px solid var(--line);background:var(--card-2);color:var(--muted);font-size:14px}
+.linkcard:hover{color:var(--accent)}
+.brief{display:flex;flex-direction:column;gap:14px}
+.brief__line{font-size:clamp(20px,2.4vw,26px);font-weight:600;letter-spacing:-.01em}
+.brief__btns{display:flex;flex-wrap:wrap;gap:10px}
+@media(max-width:900px){.folders{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.folders{grid-template-columns:1fr 1fr;gap:12px}.chips__label{min-width:100%}}
 </style>
 </head>
 <body>
@@ -227,88 +281,40 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 
 <!-- ===== PORTFOLIO ===== -->
 <div data-page="portfolio">
-  <section class="section--tight center"><div class="container">
-    <h1 class="h-page">Portfolio</h1>
-    <p class="lead mx-auto" style="margin-top:20px">Client campaigns, spec films, FX reels and the Houdini tools behind them.</p>
-  </div></section>
-    <section class="section--tight" id="client-work"><div class="container" style="display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
-    <div><span class="eyebrow">Client work</span></div>
-    <div class="case">
-      <div class="case__head"><span class="badge">Client · DOOH campaign</span><h2 class="h2">16 Neuvième</h2>
-        <p>A campaign for 16 Neuvième, a Tunisian dynamic-display company: landscape films for LED billboards, vertical cuts for totem screens, a product visualisation of their display totem and a motion layout of their ad-space network. AI-assisted production: generation, compositing and edit.</p></div>
-      <div class="grid grid-3"><div class="work"><div class="vid" data-yt="YaSeEcUUVQM" data-title="Film 01 — Votre publicité ici" role="button" tabindex="0" aria-label="Play Film 01 — Votre publicité ici"><img src="thumbs/YaSeEcUUVQM.jpg" alt="Film 01 — Votre publicité ici" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Film 01 — Votre publicité ici</span><span class="work__sub">15 s · LED billboard</span></div></div><div class="work"><div class="vid" data-yt="2X97DB4_P8U" data-title="Film 02 — Signal to screen" role="button" tabindex="0" aria-label="Play Film 02 — Signal to screen"><img src="thumbs/2X97DB4_P8U.jpg" alt="Film 02 — Signal to screen" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Film 02 — Signal to screen</span><span class="work__sub">15 s · LED billboard</span></div></div><div class="work"><div class="vid" data-yt="Oi5BvZ40cSI" data-title="Totem reveal" role="button" tabindex="0" aria-label="Play Totem reveal"><img src="thumbs/Oi5BvZ40cSI.jpg" alt="Totem reveal" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Totem reveal</span><span class="work__sub">10 s · product film</span></div></div></div>
-      <div class="grid grid-4"><div class="work"><div class="vid vid--v" data-yt="G_LYx2Rv8vI" data-title="Film 03" role="button" tabindex="0" aria-label="Play Film 03"><img src="thumbs/G_LYx2Rv8vI.jpg" alt="Film 03" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Film 03</span><span class="work__sub">Vertical · totem screens</span></div></div><div class="work"><div class="vid vid--v" data-yt="lZaa0dvJ9Kc" data-title="Film 04" role="button" tabindex="0" aria-label="Play Film 04"><img src="thumbs/lZaa0dvJ9Kc.jpg" alt="Film 04" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Film 04</span><span class="work__sub">Vertical · totem screens</span></div></div><div class="work"><div class="vid vid--v" data-yt="49ZrCe-a0Sw" data-title="Totem exploded view" role="button" tabindex="0" aria-label="Play Totem exploded view"><img src="thumbs/49ZrCe-a0Sw.jpg" alt="Totem exploded view" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Totem exploded view</span><span class="work__sub">Product visualisation</span></div></div><div class="work"><div class="vid vid--v" data-yt="9Vv5Fx3zzJE" data-title="Ad-space layout" role="button" tabindex="0" aria-label="Play Ad-space layout"><img src="thumbs/9Vv5Fx3zzJE.jpg" alt="Ad-space layout" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Ad-space layout</span><span class="work__sub">Motion design</span></div></div></div>
-      <p class="cap">Delivered for 16 Neuvième — Affichage Dynamique.</p>
-    </div>
-    <div class="case">
-      <div class="case__head"><span class="badge">Client · brand package</span><h2 class="h2">Candles &amp; Chocolate</h2>
-        <p>A full brand package for Amatun's Candles &amp; Chocolate line: identity, more than eighty brand applications, product visuals, social ad templates, ad films and a website mockup. A human-directed AI pipeline from first mark to finished campaign.</p></div>
-      <div class="grid grid-3"><div class="work"><div class="vid vid--v" data-yt="As-3piEYNRE" data-title="Family gifting ad" role="button" tabindex="0" aria-label="Play Family gifting ad"><img src="thumbs/As-3piEYNRE.jpg" alt="Family gifting ad" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Family gifting ad</span><span class="work__sub">Animated · 28 s</span></div></div><div class="work"><div class="vid vid--v" data-yt="gxDXjUTZE-Y" data-title="Gift-box ad" role="button" tabindex="0" aria-label="Play Gift-box ad"><img src="thumbs/gxDXjUTZE-Y.jpg" alt="Gift-box ad" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Gift-box ad</span><span class="work__sub">Product film · 19 s</span></div></div><div class="work"><div class="vid vid--v" data-yt="dzpns4ZFEhU" data-title="Brand reel" role="button" tabindex="0" aria-label="Play Brand reel"><img src="thumbs/dzpns4ZFEhU.jpg" alt="Brand reel" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Brand reel</span><span class="work__sub">Product visuals · 10 s</span></div></div></div>
-      <span class="sub-h">Product visuals &amp; ad templates</span><div class="gallery"><a href="img/cc/still_bear_template_02.jpg" target="_blank" rel="noopener"><img src="img/cc/still_bear_template_02.jpg" alt="" loading="lazy"></a><a href="img/cc/still_heart_template_01.jpg" target="_blank" rel="noopener"><img src="img/cc/still_heart_template_01.jpg" alt="" loading="lazy"></a><a href="img/cc/still_candle_template_02.jpg" target="_blank" rel="noopener"><img src="img/cc/still_candle_template_02.jpg" alt="" loading="lazy"></a><a href="img/cc/still_heart_template_03.jpg" target="_blank" rel="noopener"><img src="img/cc/still_heart_template_03.jpg" alt="" loading="lazy"></a><a href="img/cc/still_shot1.jpg" target="_blank" rel="noopener"><img src="img/cc/still_shot1.jpg" alt="" loading="lazy"></a><a href="img/cc/still_shot3.jpg" target="_blank" rel="noopener"><img src="img/cc/still_shot3.jpg" alt="" loading="lazy"></a><a href="img/cc/still_shot5.jpg" target="_blank" rel="noopener"><img src="img/cc/still_shot5.jpg" alt="" loading="lazy"></a><a href="img/cc/still_ad1.jpg" target="_blank" rel="noopener"><img src="img/cc/still_ad1.jpg" alt="" loading="lazy"></a><a href="img/cc/still_ad3.jpg" target="_blank" rel="noopener"><img src="img/cc/still_ad3.jpg" alt="" loading="lazy"></a><a href="img/cc/still_templates_fr3.jpg" target="_blank" rel="noopener"><img src="img/cc/still_templates_fr3.jpg" alt="" loading="lazy"></a></div>
-      <span class="sub-h">Brand applications</span><div class="gallery gallery--4"><a href="img/cc/app_Storefront_Sign.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Storefront_Sign.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Shopping_Bag.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Shopping_Bag.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Business_Card.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Business_Card.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Chocolate_Box_Lid.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Chocolate_Box_Lid.jpg" alt="" loading="lazy"></a><a href="img/cc/app_candle_jar_box.jpg" target="_blank" rel="noopener"><img src="img/cc/app_candle_jar_box.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Instagram_Profile_Image.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Instagram_Profile_Image.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Website_Header_Logo.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Website_Header_Logo.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Gift_Voucher.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Gift_Voucher.jpg" alt="" loading="lazy"></a></div>
-      <a class="wide-img" href="img/cc/grid_all.jpg" target="_blank" rel="noopener"><img src="img/cc/grid_all.jpg" alt="Every brand application in the Candles &amp; Chocolate package" loading="lazy"></a>
-      <p class="cap">The full application set: signage, packaging, print, social and web.</p>
-    </div>
-  </div></section>
-
-  <section class="section--tight" id="spec-pitch"><div class="container" style="display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
-    <div><span class="eyebrow">Spec &amp; pitch</span></div>
-    <div class="case">
-      <div class="case__head"><span class="badge">Spec work</span><h2 class="h2">AI product films</h2>
-        <p>Five 15-second product films across five categories — beverage, fashion, telecom, beauty and confectionery. All brands are fictional. AI-assisted generation, look development and edit.</p></div>
-      <div class="work"><div class="vid" data-yt="gyW_0ZEds_E" data-title="Spec reel — five product films" role="button" tabindex="0" aria-label="Play Spec reel — five product films"><img src="thumbs/gyW_0ZEds_E.jpg" alt="Spec reel — five product films" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Spec reel — five product films</span><span class="work__sub">75 s · beverage, fashion, telecom, beauty, chocolate</span></div></div>
-    </div>
-    <div class="case">
-      <div class="case__head"><span class="badge badge--pitch">Pitch prototype</span><h2 class="h2">Maison Turki — Compose ta Box</h2>
-        <p>An unsolicited concept for Maison Turki, a Tunisian pastry house — not commissioned. An AI pipeline isolated 421 individual pastries from the shop's catalogue photos, and an interactive prototype lets customers fill any gift box piece by piece before ordering.</p></div>
-      <video class="wide-img" src="media/mt_box_builder.mp4" poster="media/mt_box_builder.jpg" muted loop playsinline controls preload="none" style="width:100%;height:auto;background:#fff" aria-label="Screen recording: filling a gift box piece by piece"></video>
-      <p class="cap">The prototype in use: pick a box, press + on a ring, choose a piece from the filtered catalogue, and the ring fills.</p>
-      <a class="wide-img" href="img/mt/cutouts_grid.jpg" target="_blank" rel="noopener"><img src="img/mt/cutouts_grid.jpg" alt="Grid of individually isolated pastry pieces" loading="lazy"></a>
-      <div class="pair"><div class="cap" style="align-self:center">Before and after: the shop's catalogue photos (left in each sheet) and the single pieces the pipeline isolated from them (right).</div><a href="img/mt/before_after_01.jpg" target="_blank" rel="noopener"><img src="img/mt/before_after_01.jpg" alt="Before and after sheet" loading="lazy"></a><a href="img/mt/before_after_53.jpg" target="_blank" rel="noopener"><img src="img/mt/before_after_53.jpg" alt="Before and after sheet" loading="lazy"></a></div>
-    </div>
-  </div></section>
-
   <section class="section--tight"><div class="container">
-    <span class="eyebrow">FX &amp; 3D</span><h2 class="h2" style="margin:12px 0 8px">Reels and simulation</h2>
-    <p class="lead" style="margin-bottom:36px">Click any frame to play.</p>
-    <div class="grid grid-3" id="workGrid"></div>
-  </div></section>
-
-  <section class="section--tight"><div class="container">
-    <h2 class="h2" style="margin-bottom:8px">Tools</h2>
-    <p class="lead" style="margin-bottom:32px">Houdini digital assets, published and in use &mdash; 47 downloads to date.</p>
-    <div class="grid grid-3" id="toolGrid"></div>
-  </div></section>
-
-  <section class="section--tight"><div class="container">
-    <div class="nda">
-      <h3 class="h3" style="margin-bottom:10px">Client work under NDA</h3>
-      <p class="lead" style="margin-bottom:0">Film, product visualization and skincare campaign work delivered for studio clients
-      &mdash; including a feature broadcast on Rai 3 &mdash; cannot be published here. A private reel is available on request.</p>
+    <div id="pfHome">
+      <div class="center" style="margin-bottom:clamp(40px,6vw,64px)">
+        <h1 class="h-page">Portfolio</h1>
+        <p class="lead mx-auto" style="margin-top:20px">Open a folder, or browse every piece and filter by category, client or technique.</p>
+        <div class="btn-row" style="justify-content:center;margin-top:24px"><button class="btn btn--primary" type="button" data-go="all">Browse all work</button></div>
+      </div>
+      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Clients</span></div><div class="folders" id="fClients"></div></div>
+      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Reels</span></div><div class="folders" id="fReels"></div></div>
+      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Categories</span></div><div class="folders" id="fCats"></div></div>
+      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Tools</span></div>
+        <p class="lead" style="margin-top:-6px">Houdini digital assets, published and in use &mdash; 47 downloads to date.</p>
+        <div class="grid grid-3" id="toolGrid"></div></div>
     </div>
+    <div id="pfView" hidden></div>
   </div></section>
-  <section class="section--tight" id="tests" hidden><div class="container">
-    <span class="eyebrow">Tests</span><h2 class="h2" style="margin:12px 0 8px">Tests &amp; R&amp;D</h2>
-    <p class="lead" style="margin-bottom:36px">Experiments, look tests and pieces that didn't make a final cut.</p>
-    <div class="grid grid-3" id="testGrid"></div>
-  </div></section>
-  </div>
+</div>
 
 <!-- ===== INQUIRY ===== -->
 <div data-page="inquiry">
   <section class="section--tight"><div class="container">
     <h1 class="h-page">Visual Inquiry</h1>
-    <p class="lead" style="margin-top:18px">Configure your project requirements step by step</p>
-    <div style="margin-top:56px"><h2 class="h3" style="margin-bottom:20px">1. Choose Reality</h2><div class="grid grid-2" id="s1"></div></div>
-    <div id="step2" style="margin-top:48px;display:none"><h2 class="h3" style="margin-bottom:20px">2. Choose Domain</h2><div class="grid grid-3" id="s2"></div></div>
-    <div id="step3" style="margin-top:48px;display:none"><h2 class="h3" style="margin-bottom:20px">3. Output Type</h2><div class="grid grid-2" id="s3"></div></div>
-    <div id="step4" style="margin-top:48px;display:none"><h2 class="h3" style="margin-bottom:20px">4. Quantity</h2><div class="card card--pad-lg"><div class="field" style="margin:0"><label id="qtyLabel" for="qty">Number of Videos</label><input id="qty" type="number" min="1" placeholder="e.g., 3"></div></div></div>
-    <div id="step5" style="margin-top:48px;display:none"><h2 class="h3" style="margin-bottom:20px">5. Video Duration</h2><div class="grid grid-3" id="s5"></div></div>
-    <div id="step6" style="margin-top:48px;display:none"><h2 class="h3" style="margin-bottom:20px"><span id="step6num">6</span>. Intent</h2><div class="grid grid-2" id="s6"></div></div>
-    <div id="step7" style="margin-top:48px;display:none">
-      <h2 class="h3" style="margin-bottom:20px"><span id="step7num">7</span>. Output Vocabulary</h2>
-      <div class="result"><div class="result__label">Based on your selections, your project could be described as:</div><div class="result__value" id="vocab">—</div></div>
-      <div class="band" style="margin-top:40px"><h2 class="h2">Ready to Move Forward?</h2><p>Schedule a free consultation to discuss your project in detail</p><a href="#contact" class="btn btn--light">Request Free Consultation</a></div>
+    <p class="lead" style="margin-top:18px">Six quick choices turn into a brief you can send, and show you related work.</p>
+    <div style="margin-top:56px"><h2 class="h3" style="margin-bottom:20px">1. Where will it live?</h2><div class="grid grid-3" id="q1"></div></div>
+    <div id="qs2" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px">2. What is it for?</h2><div class="grid grid-3" id="q2"></div></div>
+    <div id="qs3" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px"><span class="qn"></span>. Output</h2><div class="grid grid-3" id="q3"></div></div>
+    <div id="qs4" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px"><span class="qn"></span>. Quantity</h2><div class="card card--pad-lg"><div class="field" style="margin:0"><label for="qty">How many pieces?</label><input id="qty" type="number" min="1" placeholder="e.g., 3"></div></div></div>
+    <div id="qs5" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px"><span class="qn"></span>. Video length</h2><div class="grid grid-3" id="q5"></div></div>
+    <div id="qs6" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px"><span class="qn"></span>. Production approach</h2><div class="grid grid-2" id="q6"></div></div>
+    <div id="qs7" style="margin-top:48px" hidden>
+      <h2 class="h3" style="margin-bottom:20px">Your brief</h2>
+      <div class="result brief"><div class="result__label">Based on your choices:</div><div class="brief__line" id="briefLine">—</div>
+        <div class="brief__btns"><button class="btn btn--primary" type="button" id="briefSend">Send this brief</button><a class="btn btn--outline" id="briefWork" href="#portfolio">See related work</a></div>
+        <p class="muted" style="font-size:13.5px" id="briefNote">Opens your email app with the brief filled in. Or write to belguithalaa@gmail.com.</p></div>
     </div>
   </div></section>
 
@@ -409,36 +415,260 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 <script>
 /* ---------- page router ---------- */
 const PAGES=['home','portfolio','inquiry','about','contact'];
-function go(id){
+function go(hash){
+  const parts=(hash||'').split('/'); let id=parts[0];
   if(!PAGES.includes(id)) id='home';
   document.querySelectorAll('[data-page]').forEach(s=>s.style.display=(s.dataset.page===id)?'block':'none');
   document.querySelectorAll('.nav__links a').forEach(a=>a.classList.toggle('is-active',a.dataset.nav===id));
   document.getElementById('navlinks').classList.remove('open');
+  if(id==='portfolio' && window.pfRoute) pfRoute(parts.slice(1));
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',()=>go(location.hash.slice(1)));
 
-/* ---------- portfolio: real work, click-to-load embeds ---------- */
-const WORK=[
-  {id:"w63HVqN_Xr0",t:"Demoreel 2023/2024",s:"Latest reel \u2014 Houdini FX"},
-  {id:"DnVB1-L1ISs",t:"Timeless Quest",s:"Master\u2019s final project. Crowd, cloth and POP sims in Houdini, built and rendered in Unreal."},
-  {id:"JoIbdV1xk9c",t:"Water simulation",s:"Houdini FLIP"},
-  {id:"gskKE9qDO2g",t:"CFX hair grooming",s:"Houdini character FX"},
-  {id:"13sztIfjdGs",t:"3 Handy People",s:"Motion and simulation"},
-  {id:"E0DWLU96HbU",t:"Demoreel 2022/2023",s:"Barcelona year 2 \u2014 Houdini FX"},
-  {id:"4d2X1LdXaD0",t:"Demoreel 2021/2022",s:"Barcelona year 1 \u2014 Maya generalist"},
-  {id:"jReZ8SBVopE",t:"ESAD final showreel 2020",s:"Graduation showreel, mention Tr\u00e8s Bien"}
-];
-const LINKOUT=[{t:"Wled El Bhar / Sons of the Sea",s:"2D series animation, ACR \u2014 view on ArtStation",u:"https://alabelguith.artstation.com/projects/d8O6ZW"}];
+/* ---------- portfolio: folders, tags, filters ---------- */
 const PLAY='<span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>';
-const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-document.getElementById('workGrid').innerHTML=
-  WORK.map(w=>'<div class="work"><div class="vid" data-yt="'+w.id+'" data-title="'+esc(w.t)+'" role="button" tabindex="0" aria-label="Play '+esc(w.t)+'">'+
-    '<img src="thumbs/'+w.id+'.jpg" alt="'+esc(w.t)+'" loading="lazy" width="1280" height="720">'+PLAY+
-    '</div><div class="work__meta"><span class="work__title">'+esc(w.t)+'</span><span class="work__sub">'+esc(w.s)+'</span></div></div>').join('')
-  + LINKOUT.map(l=>'<a class="work" href="'+l.u+'" target="_blank" rel="noopener noreferrer">'+
-    '<div class="vid"><div class="vid__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v7H3V3h7"/></svg><span>ArtStation</span></div></div>'+
-    '<div class="work__meta"><span class="work__title">'+esc(l.t)+'</span><span class="work__sub">'+esc(l.s)+'</span></div></a>').join('');
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* The taxonomy. Channels 1-6 split by intent; 7-9 stand alone. */
+const CATS=[
+ {k:'social',n:'Social media',intents:true},
+ {k:'website',n:'Website',intents:true},
+ {k:'app',n:'App',intents:true},
+ {k:'tv',n:'TV',intents:true},
+ {k:'product',n:'Product',intents:true},
+ {k:'events',n:'Live events',intents:true},
+ {k:'architecture',n:'Architecture'},
+ {k:'urban',n:'Urban'},
+ {k:'industrial',n:'Industrial'}
+];
+const INTENTS=[{k:'branding',n:'Branding'},{k:'ad',n:'Ad'},{k:'entertainment',n:'Entertainment'}];
+const TECH=[{k:'cgi',n:'CGI / 3D'},{k:'hybrid',n:'Hybrid'},{k:'ai',n:'AI'}];
+const catName=k=>(CATS.find(c=>c.k===k)||{}).n||k;
+const intentName=k=>(INTENTS.find(c=>c.k===k)||{}).n||k;
+const techName=k=>(TECH.find(c=>c.k===k)||{}).n||k;
+
+/* Clients / owners. Order = order of folders. */
+const COMPANIES=[
+ {k:'16n',tag:'16neuvieme',n:'16 Neuvième',kind:'Client · DOOH campaign · 2026',
+  hero:{t:'yt',id:'YaSeEcUUVQM'},
+  text:['A campaign for 16 Neuvième, a Tunisian dynamic-display company. Landscape films for LED billboards, vertical cuts for totem screens, a product visualisation of their display totem and a motion layout of their ad-space network.',
+        'AI-assisted production: generation, compositing and edit, delivered in every screen format the network runs.'],
+  facts:[['Role','Direction, generation, compositing, edit'],['Formats','16:9, 9:16, 4K'],['Credit','Delivered for 16 Neuvième — Affichage Dynamique']]},
+ {k:'cc',tag:'candles-chocolate',n:'Candles & Chocolate',kind:'Client · brand package for Amatun · 2026',
+  hero:{t:'img',src:'img/cc/grid_all.jpg'},
+  text:['A full brand package for Amatun’s Candles & Chocolate line: identity, more than eighty brand applications across signage, packaging, print, social and web, product visuals, social ad templates and ad films.',
+        'A human-directed AI pipeline, from the first mark to the finished campaign.'],
+  facts:[['Role','Brand identity, visuals, ad films'],['Deliverables','Identity · 86 applications · 3 films · ad templates']]},
+ {k:'mt',tag:'maison-turki',n:'Maison Turki',kind:'Pitch prototype · not commissioned',
+  hero:{t:'video',src:'media/mt_box_builder.mp4',poster:'media/mt_box_builder.jpg'},
+  text:['An unsolicited concept for Maison Turki, a Tunisian pastry house. An AI pipeline isolated 421 individual pastries from the shop’s catalogue photos, and an interactive prototype lets customers fill any gift box piece by piece before ordering.',
+        'Code on GitHub: <a href="https://github.com/alaabelghith/compose-ta-box" target="_blank" rel="noopener" style="color:var(--accent)">compose-ta-box</a>.'],
+  facts:[['Role','Concept, AI cutout pipeline, prototype direction'],['Status','Pitch, not commissioned']]},
+ {k:'acr',tag:'acr',n:'ACR Advertising',kind:'Studio · 2D series · 2020',
+  hero:null,
+  text:['2D animation on the series Wled El Bhar (Sons of the Sea) at ACR Advertising, January to June 2020.'],
+  facts:[['Role','2D animator']]},
+ {k:'nda',tag:'nda',n:'Under NDA',kind:'Film, product & skincare work',nda:true,
+  hero:null,
+  text:['Studio and client work I can’t publish. A private reel is available on request.'],
+  facts:[]},
+ {k:'personal',tag:'personal',n:'Personal & spec',kind:'Spec films, FX studies, school work',
+  hero:{t:'yt',id:'gyW_0ZEds_E'},
+  text:['Work made on my own initiative: spec product films with fictional brands, Houdini FX studies, and the projects from my master’s in Barcelona and my licence at ESAD Tunis.'],
+  facts:[]}
+];
+const NDA_ITEMS=[
+ {b:'To Be Italian — feature film, broadcast on Rai 3',p:'3D generalist & rigger at CGS, September 2024 to March 2025. Also promos, product visualisation and FOOH work for the studio. My name is in the film’s credits.'},
+ {b:'Skincare campaign — stills and video',p:'Freelance product CGI for a studio client, July to December 2025.'}
+];
+const coOf=k=>COMPANIES.find(c=>c.k===k);
+
+/* Every piece. cats: "channel:intent" or a standalone category key. */
+const PIECES=[
+ // 16 Neuvième
+ {kind:'yt',id:'YaSeEcUUVQM',o:'h',t:'Film 01 — Votre publicité ici',s:'15 s · LED billboard',co:'16n',cats:['tv:ad'],tech:'ai'},
+ {kind:'yt',id:'2X97DB4_P8U',o:'h',t:'Film 02 — Signal to screen',s:'15 s · LED billboard',co:'16n',cats:['tv:ad'],tech:'ai'},
+ {kind:'yt',id:'Oi5BvZ40cSI',o:'h',t:'Totem reveal',s:'10 s · product film',co:'16n',cats:['product:ad'],tech:'ai'},
+ {kind:'yt',id:'G_LYx2Rv8vI',o:'v',t:'Film 03',s:'Vertical · totem screens',co:'16n',cats:['social:ad','tv:ad'],tech:'ai'},
+ {kind:'yt',id:'lZaa0dvJ9Kc',o:'v',t:'Film 04',s:'Vertical · totem screens',co:'16n',cats:['social:ad','tv:ad'],tech:'ai'},
+ {kind:'yt',id:'49ZrCe-a0Sw',o:'v',t:'Totem exploded view',s:'Product visualisation',co:'16n',cats:['product:ad','industrial'],tech:'ai'},
+ {kind:'yt',id:'9Vv5Fx3zzJE',o:'v',t:'Ad-space layout',s:'Motion design',co:'16n',cats:['social:ad'],tech:'ai'},
+ // Candles & Chocolate
+ {kind:'yt',id:'As-3piEYNRE',o:'v',t:'Family gifting ad',s:'Animated · 28 s',co:'cc',cats:['social:ad'],tech:'ai'},
+ {kind:'yt',id:'gxDXjUTZE-Y',o:'v',t:'Gift-box ad',s:'Product film · 19 s',co:'cc',cats:['social:ad','product:ad'],tech:'ai'},
+ {kind:'yt',id:'dzpns4ZFEhU',o:'v',t:'Brand reel',s:'Product visuals · 10 s',co:'cc',cats:['social:branding','product:branding'],tech:'ai'},
+ {kind:'gallery',t:'Product visuals & ad templates',s:'10 of 37 delivered visuals',co:'cc',cats:['social:ad','product:ad'],tech:'ai',
+  imgs:['still_bear_template_02','still_heart_template_01','still_candle_template_02','still_heart_template_03','still_shot1','still_shot3','still_shot5','still_ad1','still_ad3','still_templates_fr3'].map(f=>'img/cc/'+f+'.jpg')},
+ {kind:'gallery',t:'Brand applications',s:'8 of 86 — signage, packaging, print, social, web',co:'cc',cats:['product:branding','social:branding','website:branding'],tech:'ai',cols:4,
+  imgs:['app_Storefront_Sign','app_Shopping_Bag','app_Business_Card','app_Chocolate_Box_Lid','app_candle_jar_box','app_Instagram_Profile_Image','app_Website_Header_Logo','app_Gift_Voucher'].map(f=>'img/cc/'+f+'.jpg')},
+ // Maison Turki
+ {kind:'video',src:'media/mt_box_builder.mp4',poster:'media/mt_box_builder.jpg',o:'h',t:'Box builder prototype',s:'Screen recording · 39 s',co:'mt',cats:['website:ad','app:ad'],tech:'hybrid'},
+ {kind:'img',src:'img/mt/cutouts_grid.jpg',o:'h',t:'421 single-piece cutouts',s:'AI pipeline output',co:'mt',cats:['product:ad','website:ad'],tech:'ai'},
+ {kind:'gallery',t:'Before / after',s:'Catalogue photos → isolated pieces',co:'mt',cats:['product:ad'],tech:'ai',cols:2,contain:true,imgs:['img/mt/before_after_01.jpg','img/mt/before_after_53.jpg']},
+ // ACR
+ {kind:'link',href:'https://alabelguith.artstation.com/projects/d8O6ZW',o:'h',t:'Wled El Bhar / Sons of the Sea',s:'2D series animation — on ArtStation',co:'acr',cats:['tv:entertainment'],tech:'cgi'},
+ // Personal
+ {kind:'yt',id:'gyW_0ZEds_E',o:'h',t:'AI product films — spec reel',s:'75 s · beverage, fashion, telecom, beauty, chocolate · fictional brands',co:'personal',cats:['tv:ad','social:ad','product:ad'],tech:'ai'},
+ {kind:'yt',id:'w63HVqN_Xr0',o:'h',t:'Demoreel 2023/2024',s:'Houdini FX',co:'personal',cats:['tv:entertainment'],tech:'cgi',reel:true},
+ {kind:'yt',id:'E0DWLU96HbU',o:'h',t:'Demoreel 2022/2023',s:'Barcelona year 2 — Houdini FX',co:'personal',cats:['tv:entertainment'],tech:'cgi',reel:true},
+ {kind:'yt',id:'4d2X1LdXaD0',o:'h',t:'Demoreel 2021/2022',s:'Barcelona year 1 — Maya generalist',co:'personal',cats:['tv:entertainment'],tech:'cgi',reel:true},
+ {kind:'yt',id:'jReZ8SBVopE',o:'h',t:'ESAD final showreel 2020',s:'Graduation showreel, mention Très Bien',co:'personal',cats:['tv:entertainment'],tech:'cgi',reel:true},
+ {kind:'yt',id:'DnVB1-L1ISs',o:'h',t:'Timeless Quest',s:'Master’s final project — crowd, cloth and POP sims in Houdini, rendered in Unreal',co:'personal',cats:['tv:entertainment'],tech:'cgi'},
+ {kind:'yt',id:'JoIbdV1xk9c',o:'h',t:'Water simulation',s:'Houdini FLIP',co:'personal',cats:['tv:entertainment'],tech:'cgi'},
+ {kind:'yt',id:'gskKE9qDO2g',o:'h',t:'CFX hair grooming',s:'Houdini character FX',co:'personal',cats:['tv:entertainment'],tech:'cgi'},
+ {kind:'yt',id:'13sztIfjdGs',o:'h',t:'3 Handy People',s:'Motion and simulation',co:'personal',cats:['social:entertainment'],tech:'cgi'},
+ // Tests (shown in the Tests folder and at the bottom of their client folder only)
+ {kind:'yt',id:'aam8YANZ0n0',o:'h',t:'City sting — pixel 16',s:'Logo sting test · 4K',co:'16n',cats:['tv:branding'],tech:'ai',test:true},
+ {kind:'yt',id:'ONkPDdThnwc',o:'h',t:'City sting — light ring',s:'Logo sting test · 4K',co:'16n',cats:['tv:branding'],tech:'ai',test:true},
+ {kind:'yt',id:'tCAChiTZCL4',o:'h',t:'TV ident 01',s:'Broadcast ident test',co:'16n',cats:['tv:branding'],tech:'ai',test:true}
+ /* add: {kind:'yt',id:'',o:'h',t:'',s:'',co:'16n',cats:['social:ad'],tech:'ai',test:true} */
+];
+
+/* ---- helpers ---- */
+const catKeys=p=>[...new Set(p.cats.map(c=>c.split(':')[0]))];
+const hasCat=(p,cat,intent)=>p.cats.some(c=>{const [a,b]=c.split(':');return a===cat&&(!intent||b===intent)});
+const coverOf=p=>p.kind==='yt'?'thumbs/'+p.id+'.jpg':p.kind==='video'?p.poster:p.kind==='img'?p.src:p.kind==='gallery'?p.imgs[0]:null;
+const main=PIECES.filter(p=>!p.test);
+
+function tagsHtml(p){
+  const c=p.cats.map(x=>{const [a,b]=x.split(':');return '<button class="tag" type="button" data-f="cat" data-v="'+x+'">#'+a+(b?'-'+b:'')+'</button>'}).join('');
+  const co=coOf(p.co);
+  return '<div class="tags">'+c+'<button class="tag tag--co" type="button" data-f="co" data-v="'+p.co+'">#'+co.tag+'</button><button class="tag tag--tech" type="button" data-f="tech" data-v="'+p.tech+'">#'+(p.tech==='cgi'?'cgi-3d':p.tech)+'</button></div>';
+}
+function meta(p){return '<div class="work__meta"><span class="work__title">'+esc(p.t)+'</span><span class="work__sub">'+esc(p.s||'')+'</span></div>'+tagsHtml(p)}
+function pieceHtml(p){
+  if(p.kind==='yt') return '<div class="work"><div class="vid'+(p.o==='v'?' vid--v':'')+'" data-yt="'+p.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="thumbs/'+p.id+'.jpg" alt="'+esc(p.t)+'" loading="lazy">'+PLAY+'</div>'+meta(p)+'</div>';
+  if(p.kind==='video') return '<div class="work"><video class="wide-img" src="'+p.src+'" poster="'+p.poster+'" muted loop playsinline controls preload="none" style="width:100%;height:auto;background:#fff"></video>'+meta(p)+'</div>';
+  if(p.kind==='img') return '<div class="work"><a class="wide-img" href="'+p.src+'" target="_blank" rel="noopener"><img src="'+p.src+'" alt="'+esc(p.t)+'" loading="lazy"></a>'+meta(p)+'</div>';
+  if(p.kind==='link') return '<div class="work"><a class="linkcard" href="'+p.href+'" target="_blank" rel="noopener noreferrer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v7H3V3h7"/></svg><span>View on ArtStation</span></a>'+meta(p)+'</div>';
+  if(p.kind==='gallery'){
+    const cls='gallery'+(p.cols===4?' gallery--4':'');const st=p.cols===2?' style="grid-template-columns:repeat(2,1fr)"':'';
+    const ic=p.contain?' style="aspect-ratio:auto;object-fit:contain"':'';
+    return '<div class="work piece-gallery"><div class="'+cls+'"'+st+'>'+p.imgs.map(s=>'<a href="'+s+'" target="_blank" rel="noopener"><img src="'+s+'" alt="" loading="lazy"'+ic+'></a>').join('')+'</div>'+meta(p)+'</div>';
+  }
+  return '';
+}
+/* lay pieces out by shape so rows stay even */
+function layout(list){
+  const h=list.filter(p=>p.kind!=='gallery'&&p.o!=='v'), v=list.filter(p=>p.kind==='yt'&&p.o==='v'), g=list.filter(p=>p.kind==='gallery');
+  let out='';
+  if(h.length) out+='<div class="grid grid-3">'+h.map(pieceHtml).join('')+'</div>';
+  if(v.length) out+='<div class="grid grid-4">'+v.map(pieceHtml).join('')+'</div>';
+  g.forEach(p=>out+=pieceHtml(p));
+  return out||'<div class="pf-empty">Nothing here yet — this folder fills as new work is published.</div>';
+}
+function heroHtml(h){
+  if(!h) return '';
+  if(h.t==='yt'){const p=PIECES.find(x=>x.id===h.id)||{t:'',o:'h'};return '<div class="pf-hero'+(p.o==='v'?' pf-hero--v':'')+'"><div class="vid'+(p.o==='v'?' vid--v':'')+'" data-yt="'+h.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="thumbs/'+h.id+'.jpg" alt="" loading="eager">'+PLAY+'</div></div>';}
+  if(h.t==='video') return '<div class="pf-hero"><video src="'+h.src+'" poster="'+h.poster+'" muted loop playsinline controls preload="none"></video></div>';
+  if(h.t==='img') return '<a class="pf-hero" href="'+h.src+'" target="_blank" rel="noopener" style="display:block"><img src="'+h.src+'" alt=""></a>';
+  return '';
+}
+function folderCard(route,name,meta,cover,tab,opts){
+  opts=opts||{};
+  let inner=cover?'<img src="'+cover+'" alt="" loading="lazy">':opts.label?'<div class="folder__lock">'+opts.label+'</div>':(opts.lock?'<div class="folder__lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private reel on request</div>':'<div class="folder__empty">Coming soon</div>');
+  return '<button class="folder'+(opts.empty?' is-empty':'')+'" type="button" data-route="'+route+'"><div class="folder__cover">'+inner+(tab?'<span class="folder__tab">'+tab+'</span>':'')+'</div><div><div class="folder__name">'+esc(name)+'</div><div class="folder__meta">'+meta+'</div></div></button>';
+}
+const plural=(n,w)=>n+' '+w+(n===1?'':'s');
+
+/* ---- home: folders ---- */
+function renderHome(){
+  document.getElementById('fClients').innerHTML=COMPANIES.map(c=>{
+    const ps=main.filter(p=>p.co===c.k);
+    const cover=c.k==='cc'?'img/cc/grid_all.jpg':c.k==='mt'?'media/mt_box_builder.jpg':(ps[0]?coverOf(ps[0]):null);
+    const tab=c.k==='mt'?'Pitch':c.k==='personal'?'Personal':c.nda?'NDA':'Client';
+    return folderCard('co/'+c.k,c.n,c.nda?'2 projects · private':plural(ps.length,'piece'),cover,tab,{lock:c.nda,label:c.k==='acr'?'2D series · on ArtStation':null});
+  }).join('');
+  const reels=main.filter(p=>p.reel), tests=PIECES.filter(p=>p.test);
+  document.getElementById('fReels').innerHTML=
+    folderCard('reels','Demoreels',plural(reels.length,'reel')+' · 2020–2024',reels[0]?coverOf(reels[0]):null,'Reels')+
+    folderCard('tests','Tests & R&D',plural(tests.length,'piece'),tests[0]?coverOf(tests[0]):null,'Tests',{empty:!tests.length});
+  document.getElementById('fCats').innerHTML=CATS.map(c=>{
+    const ps=main.filter(p=>catKeys(p).includes(c.k));
+    return folderCard('cat/'+c.k,c.n,ps.length?plural(ps.length,'piece'):'Coming soon',ps[0]?coverOf(ps[0]):null,c.intents?'Screen':'Physical',{empty:!ps.length});
+  }).join('');
+}
+
+/* ---- views ---- */
+const pfState={cat:null,intent:null,co:null,tech:null};
+function back(){return '<button class="pf-back" type="button" data-route="">← All folders</button>'}
+function viewCompany(k){
+  const c=coOf(k); if(!c) return viewNotFound();
+  const ps=main.filter(p=>p.co===k), ts=PIECES.filter(p=>p.test&&p.co===k);
+  let html=back()+'<div class="pf-intro" style="margin:18px 0 28px"><span class="badge'+(k==='mt'?' badge--pitch':'')+'">'+esc(c.kind)+'</span><h1 class="h2">'+esc(c.n)+'</h1></div>';
+  html+=heroHtml(c.hero);
+  html+='<div class="pf-intro" style="margin:28px 0 36px">'+c.text.map(t=>'<p>'+t+'</p>').join('')+(c.facts.length?'<div class="pf-facts">'+c.facts.map(f=>'<span><b>'+f[0]+':</b> '+f[1]+'</span>').join('')+'</div>':'')+'</div>';
+  if(c.nda) html+='<div class="nda-list">'+NDA_ITEMS.map(n=>'<div class="nda-item"><b>'+esc(n.b)+'</b><p>'+esc(n.p)+'</p></div>').join('')+'</div><div class="btn-row" style="margin-top:24px"><a class="btn btn--primary" href="#contact">Request the private reel</a></div>';
+  else html+='<div class="pf-block"><h3>The work</h3>'+layout(ps.filter(p=>!(c.hero&&c.hero.t==='yt'&&p.id===c.hero.id)))+'</div>';
+  if(ts.length) html+='<div class="pf-block" style="margin-top:48px"><h3>Tests from this project</h3>'+layout(ts)+'</div>';
+  return html;
+}
+function viewReels(){
+  const r=main.filter(p=>p.reel);
+  return back()+'<div class="pf-intro" style="margin:18px 0 28px"><span class="badge">Reels</span><h1 class="h2">Demoreels</h1><p>Houdini FX and 3D reels from 2020 to 2024. The newest is first. Client work under NDA is in a private reel, available on request.</p></div>'+heroHtml({t:'yt',id:r[0].id})+'<div class="pf-block" style="margin-top:36px"><h3>All reels</h3>'+layout(r.slice(1))+'</div>';
+}
+function viewTests(){
+  return back()+'<div class="pf-intro" style="margin:18px 0 28px"><span class="badge">Tests</span><h1 class="h2">Tests & R&D</h1><p>Experiments, look tests and pieces that didn’t make a final cut.</p></div>'+layout(PIECES.filter(p=>p.test));
+}
+function chipRow(label,items,key,sel){
+  return '<div class="chips"><span class="chips__label">'+label+'</span><button class="chip" type="button" data-set="'+key+'" data-v="" aria-pressed="'+(!sel)+'">All</button>'+items.map(i=>'<button class="chip" type="button" data-set="'+key+'" data-v="'+i.k+'" aria-pressed="'+(sel===i.k)+'">'+esc(i.n)+'</button>').join('')+'</div>';
+}
+function viewCat(k){
+  const c=CATS.find(x=>x.k===k); if(!c) return viewNotFound();
+  const all=main.filter(p=>catKeys(p).includes(k));
+  const ps=all.filter(p=>hasCat(p,k,pfState.intent)&&(!pfState.tech||p.tech===pfState.tech));
+  let html=back()+'<div class="pf-intro" style="margin:18px 0 28px"><span class="badge">Category</span><h1 class="h2">'+esc(c.n)+'</h1></div>';
+  if(all.length){
+    html+='<div class="filters" style="margin-bottom:28px">'+(c.intents?chipRow('Purpose',INTENTS,'intent',pfState.intent):'')+chipRow('Technique',TECH,'tech',pfState.tech)+'</div>';
+    html+='<p class="pf-count" style="margin-bottom:16px">'+plural(ps.length,'piece')+'</p>';
+  }
+  return html+layout(ps);
+}
+function viewAll(){
+  const ps=main.filter(p=>(!pfState.cat||hasCat(p,pfState.cat,pfState.intent))&&(!pfState.co||p.co===pfState.co)&&(!pfState.tech||p.tech===pfState.tech));
+  const catObj=CATS.find(c=>c.k===pfState.cat);
+  let html=back()+'<div class="pf-intro" style="margin:18px 0 28px"><h1 class="h2">All work</h1><p>Filter by where the work lives, who it was for and how it was made. Click any tag on a piece to filter by it.</p></div>';
+  html+='<div class="filters" style="margin-bottom:24px">'+chipRow('Category',CATS,'cat',pfState.cat)+(catObj&&catObj.intents?chipRow('Purpose',INTENTS,'intent',pfState.intent):'')+
+    chipRow('Client',COMPANIES.filter(c=>!c.nda).map(c=>({k:c.k,n:c.n})),'co',pfState.co)+chipRow('Technique',TECH,'tech',pfState.tech)+'</div>';
+  html+='<p class="pf-count" style="margin-bottom:16px">'+plural(ps.length,'piece')+'</p>';
+  return html+layout(ps);
+}
+function viewNotFound(){return back()+'<div class="pf-empty" style="margin-top:24px">That folder doesn’t exist.</div>'}
+
+let pfCurrent=[];
+function pfRoute(parts){
+  pfCurrent=parts||[];
+  const home=document.getElementById('pfHome'), view=document.getElementById('pfView');
+  if(!parts||!parts.length||!parts[0]){home.hidden=false;view.hidden=true;return}
+  let html='';
+  if(parts[0]==='co') html=viewCompany(parts[1]);
+  else if(parts[0]==='reels') html=viewReels();
+  else if(parts[0]==='tests') html=viewTests();
+  else if(parts[0]==='cat') html=viewCat(parts[1]);
+  else if(parts[0]==='all') html=viewAll();
+  else html=viewNotFound();
+  view.innerHTML=html; home.hidden=true; view.hidden=false;
+}
+function rerender(){const y=window.scrollY;pfRoute(pfCurrent);window.scrollTo(0,y)}
+
+document.addEventListener('click',e=>{
+  const r=e.target.closest('[data-route]');
+  if(r){e.preventDefault();if(r.closest('[data-page="portfolio"]')&&!r.dataset.route.startsWith('cat/')){pfState.intent=null;pfState.tech=null}
+    if(r.dataset.route.startsWith('cat/')){pfState.intent=null;pfState.tech=null}
+    location.hash='portfolio'+(r.dataset.route?'/'+r.dataset.route:'');return}
+  const g=e.target.closest('[data-go="all"]');
+  if(g){pfState.cat=pfState.intent=pfState.co=pfState.tech=null;location.hash='portfolio/all';return}
+  const s=e.target.closest('[data-set]');
+  if(s){const k=s.dataset.set;pfState[k]=s.dataset.v||null;if(k==='cat')pfState.intent=null;rerender();return}
+  const t=e.target.closest('.tag[data-f]');
+  if(t){pfState.cat=pfState.intent=pfState.co=pfState.tech=null;
+    if(t.dataset.f==='cat'){const [a,b]=t.dataset.v.split(':');pfState.cat=a;pfState.intent=b||null}
+    else pfState[t.dataset.f]=t.dataset.v;
+    if(location.hash==='#portfolio/all')rerender();else location.hash='portfolio/all';return}
+});
+
+renderHome();
 
 const TOOLS=[
   {n:"Greeble effect",d:18,u:"https://belguithala.gumroad.com/l/mfdsj"},
@@ -451,7 +681,7 @@ const TOOLS=[
 document.getElementById('toolGrid').innerHTML=TOOLS.map(t=>
   '<a class="tool" href="'+t.u+'" target="_blank" rel="noopener noreferrer">'+
   '<span class="tool__name">'+esc(t.n)+'</span>'+
-  '<span class="tool__dl">HOUDINI HDA \u00b7 '+t.d+' DOWNLOADS</span></a>').join('');
+  '<span class="tool__dl">HOUDINI HDA · '+t.d+' DOWNLOADS</span></a>').join('');
 
 /* swap a facade for the real player only when asked */
 function playFacade(el){
@@ -471,17 +701,6 @@ document.addEventListener('keydown',e=>{
   if(v){e.preventDefault(); playFacade(v);}
 });
 
-
-/* ---------- tests (unlisted YouTube) ---------- */
-const TESTS=[
-  {id:"aam8YANZ0n0",t:"City sting — pixel 16",s:"Logo sting test · 4K"},
-  {id:"ONkPDdThnwc",t:"City sting — light ring",s:"Logo sting test · 4K"},
-  {id:"tCAChiTZCL4",t:"TV ident 01",s:"Broadcast ident test"}
-  /* {id:"",t:"",s:""} */
-];
-if(TESTS.length){document.getElementById('tests').hidden=false;
- document.getElementById('testGrid').innerHTML=TESTS.map(w=>'<div class="work"><div class="vid" data-yt="'+w.id+'" data-title="'+esc(w.t)+'" role="button" tabindex="0" aria-label="Play '+esc(w.t)+'"><img src="thumbs/'+w.id+'.jpg" alt="'+esc(w.t)+'" loading="lazy">'+PLAY+'</div><div class="work__meta"><span class="work__title">'+esc(w.t)+'</span><span class="work__sub">'+esc(w.s)+'</span></div></div>').join('');}
-
 /* ---------- intro end card ---------- */
 (function(){const el=document.getElementById('intro');if(!el)return;
  let seen=false;try{seen=sessionStorage.getItem('av-intro')==='1'}catch(e){}
@@ -494,32 +713,62 @@ if(TESTS.length){document.getElementById('tests').hidden=false;
  setTimeout(out,4000);
 })();
 
-/* ---------- inquiry configurator ---------- */
-const state={reality:null,domain:null,output:null,qty:null,duration:null,intent:null};
-const DATA={
-  reality:[{v:"Screen",sub:"Digital, web, social, broadcast"},{v:"Physical",sub:"Architecture, spatial, environments"}],
-  domain:{Screen:["Social Media","Website","TV/Broadcast","App/Digital Product","Presentation"],Physical:["Architecture","Interior","Urban / Environment","Product","Industrial"]},
-  output:["Images","Videos"],
-  duration:["0-15s","15-30s","30-60s","1-3 min","3-5 min","5+ min"],
-  intent:["Identity","Marketing","Information","Training / Analysis","Entertainment"]
-};
-const VOCAB={
-  Videos:{"Identity":"Logo animation, Brand film, Identity reveal","Marketing":"Product ad, Promo video, Social reel","Information":"Explainer video, Motion infographic, Tutorial","Training / Analysis":"Walkthrough, Process visualization, Data animation","Entertainment":"Short film, Motion graphics, Narrative spot"},
-  Images:{"Identity":"Logo, Brand system, Visual identity","Marketing":"Ad creative, Campaign visual, Social post","Information":"Infographic, Diagram, Data visualization","Training / Analysis":"Technical render, Annotated schematic, Process board","Entertainment":"Key art, Concept art, Poster"}
-};
-function optCard(label,sub){return '<div class="opt" data-v="'+label+'"><span class="opt__check">✓</span><span class="opt__title">'+label+'</span>'+(sub?'<span class="opt__sub">'+sub+'</span>':'')+'</div>';}
-function show(id){document.getElementById(id).style.display='block';}
-function hideFrom(ids){ids.forEach(i=>document.getElementById(i).style.display='none');}
-function bind(cid,cb){const c=document.getElementById(cid);c.querySelectorAll('.opt').forEach(el=>{el.addEventListener('click',()=>{c.querySelectorAll('.opt').forEach(o=>o.classList.remove('is-selected'));el.classList.add('is-selected');cb(el.dataset.v);});});}
+/* ---------- inquiry configurator (same taxonomy as the portfolio) ---------- */
+const Q={cat:null,intent:null,output:null,qty:null,dur:null,tech:null};
+const Q_CATS=[
+ {k:'social',n:'Social media',s:'Feeds, reels, stories, ads'},
+ {k:'website',n:'Website',s:'Hero films, product pages, e-commerce'},
+ {k:'app',n:'App',s:'In-app visuals, store assets, UI motion'},
+ {k:'tv',n:'TV',s:'Commercials, idents, LED and DOOH screens'},
+ {k:'product',n:'Product',s:'Packshots, product films, launches'},
+ {k:'events',n:'Live events',s:'Stage screens, openers, live visuals'},
+ {k:'architecture',n:'Architecture',s:'Exteriors, interiors, walkthroughs'},
+ {k:'urban',n:'Urban',s:'Masterplans, streets, city scale'},
+ {k:'industrial',n:'Industrial',s:'Machines, exploded views, technical'}
+];
+const Q_INTENTS=[{k:'branding',n:'Branding',s:'Logo animation, identity, brand film'},{k:'ad',n:'Ad',s:'Product ad, campaign, promo'},{k:'entertainment',n:'Entertainment',s:'Short film, story, spectacle'}];
+const Q_OUT=[{k:'Images',n:'Images',s:'Stills, key visuals, renders'},{k:'Videos',n:'Videos',s:'Films, loops, animations'},{k:'Both',n:'Both',s:'A campaign set'}];
+const Q_DUR=['0–15 s','15–30 s','30–60 s','1–3 min','3–5 min','5+ min'];
+const Q_TECH=[{k:'cgi',n:'CGI / 3D',s:'Full 3D and simulation. Maximum control and precision.'},{k:'hybrid',n:'Hybrid',s:'3D hero elements with AI for environments and variations.'},{k:'ai',n:'AI',s:'Fastest iteration. Ideal for concepts, social and volume.'},{k:'unsure',n:'Not sure',s:'I’ll recommend the right approach.'}];
+const hasIntents=k=>['social','website','app','tv','product','events'].includes(k);
 
-document.getElementById('s1').innerHTML=DATA.reality.map(o=>optCard(o.v,o.sub)).join('');
-bind('s1',v=>{state.reality=v;state.domain=null;state.output=null;state.duration=null;state.intent=null;hideFrom(['step3','step4','step5','step6','step7']);renderDomain();show('step2');});
-function renderDomain(){document.getElementById('s2').innerHTML=DATA.domain[state.reality].map(v=>optCard(v,'')).join('');bind('s2',v=>{state.domain=v;state.output=null;state.duration=null;state.intent=null;hideFrom(['step4','step5','step6','step7']);renderOutput();show('step3');});}
-function renderOutput(){document.getElementById('s3').innerHTML=DATA.output.map(v=>optCard(v,'')).join('');bind('s3',v=>{state.output=v;state.duration=null;state.intent=null;state.qty=null;hideFrom(['step5','step6','step7']);document.getElementById('qty').value='';document.getElementById('qtyLabel').textContent='Number of '+v;show('step4');});}
-document.getElementById('qty').addEventListener('input',e=>{state.qty=e.target.value;if(!state.qty){hideFrom(['step5','step6','step7']);return;}if(state.output==='Videos'){renderDuration();show('step5');}else{renderIntent();show('step6');}});
-function renderDuration(){document.getElementById('s5').innerHTML=DATA.duration.map(v=>optCard(v,'')).join('');bind('s5',v=>{state.duration=v;renderIntent();show('step6');});}
-function renderIntent(){document.getElementById('s6').innerHTML=DATA.intent.map(v=>optCard(v,'')).join('');bind('s6',v=>{state.intent=v;computeVocab();show('step7');});}
-function computeVocab(){const map=VOCAB[state.output]||VOCAB.Videos;document.getElementById('vocab').textContent=map[state.intent]||'—';document.getElementById('step6num').textContent=(state.output==='Videos'?'6':'5');document.getElementById('step7num').textContent=(state.output==='Videos'?'7':'6');}
+function qOpt(o){return '<div class="opt" data-v="'+o.k+'" tabindex="0" role="button"><span class="opt__check">✓</span><span class="opt__title">'+o.n+'</span>'+(o.s?'<span class="opt__sub">'+o.s+'</span>':'')+'</div>'}
+function qBind(id,cb){const c=document.getElementById(id);c.querySelectorAll('.opt').forEach(el=>{const f=()=>{c.querySelectorAll('.opt').forEach(o=>o.classList.remove('is-selected'));el.classList.add('is-selected');cb(el.dataset.v)};el.addEventListener('click',f);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}})})}
+function qShow(ids){['qs2','qs3','qs4','qs5','qs6','qs7'].forEach(i=>document.getElementById(i).hidden=!ids.includes(i));
+  let n=1;['qs2','qs3','qs4','qs5','qs6'].forEach(i=>{const el=document.getElementById(i);if(!el.hidden){n++;const s=el.querySelector('.qn');if(s)s.textContent=n}})}
+function qVisible(){const v=['qs3'];if(hasIntents(Q.cat))v.unshift('qs2');
+  if(Q.output){v.push('qs4')} if(Q.output&&Q.qty){if(Q.output!=='Images')v.push('qs5'); if(Q.output==='Images'||Q.dur)v.push('qs6')}
+  if(Q.tech&&v.includes('qs6'))v.push('qs7'); return v}
+function qRefresh(){
+  if(hasIntents(Q.cat)&&!Q.intent){qShow(['qs2']);return}
+  qShow(qVisible()); if(!document.getElementById('qs7').hidden) qBrief();
+}
+document.getElementById('q1').innerHTML=Q_CATS.map(qOpt).join('');
+qBind('q1',v=>{Q.cat=v;Q.intent=null;
+  document.getElementById('q2').innerHTML=Q_INTENTS.map(qOpt).join('');qBind('q2',x=>{Q.intent=x;qRefresh()});qRefresh()});
+document.getElementById('q3').innerHTML=Q_OUT.map(qOpt).join('');
+qBind('q3',v=>{Q.output=v;qRefresh()});
+document.getElementById('qty').addEventListener('input',e=>{Q.qty=e.target.value||null;qRefresh()});
+document.getElementById('q5').innerHTML=Q_DUR.map(d=>qOpt({k:d,n:d})).join('');
+qBind('q5',v=>{Q.dur=v;qRefresh()});
+document.getElementById('q6').innerHTML=Q_TECH.map(qOpt).join('');
+qBind('q6',v=>{Q.tech=v;qRefresh()});
+
+function qBrief(){
+  const c=Q_CATS.find(x=>x.k===Q.cat), i=Q_INTENTS.find(x=>x.k===Q.intent), t=Q_TECH.find(x=>x.k===Q.tech);
+  const parts=[c.n+(i?' · '+i.n:''), Q.qty+' '+(Q.output==='Both'?'images + videos':Q.output.toLowerCase())+(Q.output!=='Images'&&Q.dur?' · '+Q.dur:''), t.n];
+  const line=parts.join(' — ');
+  document.getElementById('briefLine').textContent=line;
+  const n=(typeof main!=='undefined')?main.filter(p=>hasCat(p,Q.cat,Q.intent)).length:0;
+  const w=document.getElementById('briefWork');
+  w.textContent=n?'See related work ('+n+')':'See all work';
+  w.onclick=e=>{e.preventDefault();pfState.cat=n?Q.cat:null;pfState.intent=n?Q.intent:null;pfState.co=null;pfState.tech=null;location.hash='portfolio/all'};
+  document.getElementById('briefSend').onclick=()=>{
+    const body='Hi Alaa,\n\nHere is my project brief:\n'+line+'\n\nAbout the project:\n\n—\nSent from the Visual Inquiry on alaabelghith.github.io';
+    window.location.href='mailto:belguithalaa@gmail.com?subject='+encodeURIComponent('Project brief — '+c.n+(i?' '+i.n:''))+'&body='+encodeURIComponent(body);
+    document.getElementById('briefNote').textContent='Opening your email app… if nothing happens, write to belguithalaa@gmail.com with the brief above.';
+  };
+}
 
 /* ---------- contact form: compose a mail, no backend ---------- */
 document.getElementById('contactForm').addEventListener('submit',function(e){
