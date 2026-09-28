@@ -135,9 +135,39 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 .footer__bottom{border-top:1px solid #333;margin-top:40px;padding-top:24px;font-size:13px;color:#777}
 .stack-lg>*+*{margin-top:22px}.maxw-prose{max-width:68ch}
 [data-page]{display:none}
+
+/* ---- evening 2 additions ---- */
+.intro{position:fixed;inset:0;z-index:200;background:#0A0A0A;display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s}
+.intro video{width:min(100%,1280px);height:auto}
+.intro.is-out{opacity:0;visibility:hidden}
+.intro__skip{position:absolute;right:20px;bottom:20px;background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);font:500 13px var(--font);padding:8px 14px;border-radius:6px;cursor:pointer}
+.case{display:flex;flex-direction:column;gap:24px;padding-top:clamp(32px,5vw,56px);border-top:1px solid var(--line)}
+.case:first-of-type{border-top:0;padding-top:0}
+.case__head{display:flex;flex-direction:column;gap:10px;max-width:70ch}
+.case__head p{color:var(--muted);font-size:16px;line-height:1.6}
+.badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:rgba(124,58,237,.08);border-radius:4px;padding:4px 9px;width:max-content}
+.badge--pitch{color:#9a5b00;background:rgba(214,140,0,.12)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.vid--v{aspect-ratio:9/16}
+.sub-h{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.gallery a{display:block;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform .2s}
+.gallery a:hover img{transform:scale(1.03)}
+.wide-img{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.wide-img img{width:100%;height:auto;display:block}
+.pair{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;align-items:start}
+.pair a{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.pair img{width:100%;height:auto;display:block}
+.cap{font-size:13.5px;color:var(--muted)}
+.gallery--4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.gallery--4{grid-template-columns:repeat(2,1fr)}.grid-4{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(3,1fr)}.pair{grid-template-columns:1fr 1fr}.pair a:first-child{grid-column:1/-1}}
+@media(max-width:560px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){.intro{display:none}}
 </style>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true"><video id="introVid" src="media/endcard.mp4" muted playsinline preload="auto"></video><button class="intro__skip" type="button" id="introSkip">Skip</button></div>
 
 <header class="nav">
   <div class="container nav__inner">
@@ -199,10 +229,45 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 <div data-page="portfolio">
   <section class="section--tight center"><div class="container">
     <h1 class="h-page">Portfolio</h1>
-    <p class="lead mx-auto" style="margin-top:20px">Reels, simulation and FX work — and the Houdini tools behind it.</p>
+    <p class="lead mx-auto" style="margin-top:20px">Client campaigns, spec films, FX reels and the Houdini tools behind them.</p>
   </div></section>
+    <section class="section--tight" id="client-work"><div class="container" style="display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
+    <div><span class="eyebrow">Client work</span></div>
+    <div class="case">
+      <div class="case__head"><span class="badge">Client · DOOH campaign</span><h2 class="h2">16 Neuvième</h2>
+        <p>A campaign for 16 Neuvième, a Tunisian dynamic-display company: landscape films for LED billboards, vertical cuts for totem screens, a product visualisation of their display totem and a motion layout of their ad-space network. AI-assisted production: generation, compositing and edit.</p></div>
+      <div class="grid grid-3"><div class="work"><div class="vid" data-yt="YaSeEcUUVQM" data-title="Film 01 — Votre publicité ici" role="button" tabindex="0" aria-label="Play Film 01 — Votre publicité ici"><img src="thumbs/YaSeEcUUVQM.jpg" alt="Film 01 — Votre publicité ici" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Film 01 — Votre publicité ici</span><span class="work__sub">15 s · LED billboard</span></div></div><div class="work"><div class="vid" data-yt="2X97DB4_P8U" data-title="Film 02 — Signal to screen" role="button" tabindex="0" aria-label="Play Film 02 — Signal to screen"><img src="thumbs/2X97DB4_P8U.jpg" alt="Film 02 — Signal to screen" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Film 02 — Signal to screen</span><span class="work__sub">15 s · LED billboard</span></div></div><div class="work"><div class="vid" data-yt="Oi5BvZ40cSI" data-title="Totem reveal" role="button" tabindex="0" aria-label="Play Totem reveal"><img src="thumbs/Oi5BvZ40cSI.jpg" alt="Totem reveal" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Totem reveal</span><span class="work__sub">10 s · product film</span></div></div></div>
+      <div class="grid grid-4"><div class="work"><div class="vid vid--v" data-yt="G_LYx2Rv8vI" data-title="Film 03" role="button" tabindex="0" aria-label="Play Film 03"><img src="thumbs/G_LYx2Rv8vI.jpg" alt="Film 03" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Film 03</span><span class="work__sub">Vertical · totem screens</span></div></div><div class="work"><div class="vid vid--v" data-yt="lZaa0dvJ9Kc" data-title="Film 04" role="button" tabindex="0" aria-label="Play Film 04"><img src="thumbs/lZaa0dvJ9Kc.jpg" alt="Film 04" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Film 04</span><span class="work__sub">Vertical · totem screens</span></div></div><div class="work"><div class="vid vid--v" data-yt="49ZrCe-a0Sw" data-title="Totem exploded view" role="button" tabindex="0" aria-label="Play Totem exploded view"><img src="thumbs/49ZrCe-a0Sw.jpg" alt="Totem exploded view" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Totem exploded view</span><span class="work__sub">Product visualisation</span></div></div><div class="work"><div class="vid vid--v" data-yt="9Vv5Fx3zzJE" data-title="Ad-space layout" role="button" tabindex="0" aria-label="Play Ad-space layout"><img src="thumbs/9Vv5Fx3zzJE.jpg" alt="Ad-space layout" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Ad-space layout</span><span class="work__sub">Motion design</span></div></div></div>
+      <p class="cap">Delivered for 16 Neuvième — Affichage Dynamique.</p>
+    </div>
+    <div class="case">
+      <div class="case__head"><span class="badge">Client · brand package</span><h2 class="h2">Candles &amp; Chocolate</h2>
+        <p>A full brand package for Amatun's Candles &amp; Chocolate line: identity, more than eighty brand applications, product visuals, social ad templates, ad films and a website mockup. A human-directed AI pipeline from first mark to finished campaign.</p></div>
+      <div class="grid grid-3"><div class="work"><div class="vid vid--v" data-yt="As-3piEYNRE" data-title="Family gifting ad" role="button" tabindex="0" aria-label="Play Family gifting ad"><img src="thumbs/As-3piEYNRE.jpg" alt="Family gifting ad" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Family gifting ad</span><span class="work__sub">Animated · 28 s</span></div></div><div class="work"><div class="vid vid--v" data-yt="gxDXjUTZE-Y" data-title="Gift-box ad" role="button" tabindex="0" aria-label="Play Gift-box ad"><img src="thumbs/gxDXjUTZE-Y.jpg" alt="Gift-box ad" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Gift-box ad</span><span class="work__sub">Product film · 19 s</span></div></div><div class="work"><div class="vid vid--v" data-yt="dzpns4ZFEhU" data-title="Brand reel" role="button" tabindex="0" aria-label="Play Brand reel"><img src="thumbs/dzpns4ZFEhU.jpg" alt="Brand reel" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Brand reel</span><span class="work__sub">Product visuals · 10 s</span></div></div></div>
+      <span class="sub-h">Product visuals &amp; ad templates</span><div class="gallery"><a href="img/cc/still_bear_template_02.jpg" target="_blank" rel="noopener"><img src="img/cc/still_bear_template_02.jpg" alt="" loading="lazy"></a><a href="img/cc/still_heart_template_01.jpg" target="_blank" rel="noopener"><img src="img/cc/still_heart_template_01.jpg" alt="" loading="lazy"></a><a href="img/cc/still_candle_template_02.jpg" target="_blank" rel="noopener"><img src="img/cc/still_candle_template_02.jpg" alt="" loading="lazy"></a><a href="img/cc/still_heart_template_03.jpg" target="_blank" rel="noopener"><img src="img/cc/still_heart_template_03.jpg" alt="" loading="lazy"></a><a href="img/cc/still_shot1.jpg" target="_blank" rel="noopener"><img src="img/cc/still_shot1.jpg" alt="" loading="lazy"></a><a href="img/cc/still_shot3.jpg" target="_blank" rel="noopener"><img src="img/cc/still_shot3.jpg" alt="" loading="lazy"></a><a href="img/cc/still_shot5.jpg" target="_blank" rel="noopener"><img src="img/cc/still_shot5.jpg" alt="" loading="lazy"></a><a href="img/cc/still_ad1.jpg" target="_blank" rel="noopener"><img src="img/cc/still_ad1.jpg" alt="" loading="lazy"></a><a href="img/cc/still_ad3.jpg" target="_blank" rel="noopener"><img src="img/cc/still_ad3.jpg" alt="" loading="lazy"></a><a href="img/cc/still_templates_fr3.jpg" target="_blank" rel="noopener"><img src="img/cc/still_templates_fr3.jpg" alt="" loading="lazy"></a></div>
+      <span class="sub-h">Brand applications</span><div class="gallery gallery--4"><a href="img/cc/app_Storefront_Sign.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Storefront_Sign.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Shopping_Bag.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Shopping_Bag.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Business_Card.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Business_Card.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Chocolate_Box_Lid.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Chocolate_Box_Lid.jpg" alt="" loading="lazy"></a><a href="img/cc/app_candle_jar_box.jpg" target="_blank" rel="noopener"><img src="img/cc/app_candle_jar_box.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Instagram_Profile_Image.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Instagram_Profile_Image.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Website_Header_Logo.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Website_Header_Logo.jpg" alt="" loading="lazy"></a><a href="img/cc/app_Gift_Voucher.jpg" target="_blank" rel="noopener"><img src="img/cc/app_Gift_Voucher.jpg" alt="" loading="lazy"></a></div>
+      <a class="wide-img" href="img/cc/grid_all.jpg" target="_blank" rel="noopener"><img src="img/cc/grid_all.jpg" alt="Every brand application in the Candles &amp; Chocolate package" loading="lazy"></a>
+      <p class="cap">The full application set: signage, packaging, print, social and web.</p>
+    </div>
+  </div></section>
+
+  <section class="section--tight" id="spec-pitch"><div class="container" style="display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
+    <div><span class="eyebrow">Spec &amp; pitch</span></div>
+    <div class="case">
+      <div class="case__head"><span class="badge">Spec work</span><h2 class="h2">AI product films</h2>
+        <p>Five 15-second product films across five categories — beverage, fashion, telecom, beauty and confectionery. All brands are fictional. AI-assisted generation, look development and edit.</p></div>
+      <div class="work"><div class="vid" data-yt="gyW_0ZEds_E" data-title="Spec reel — five product films" role="button" tabindex="0" aria-label="Play Spec reel — five product films"><img src="thumbs/gyW_0ZEds_E.jpg" alt="Spec reel — five product films" loading="lazy"><span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div><div class="work__meta"><span class="work__title">Spec reel — five product films</span><span class="work__sub">75 s · beverage, fashion, telecom, beauty, chocolate</span></div></div>
+    </div>
+    <div class="case">
+      <div class="case__head"><span class="badge badge--pitch">Pitch prototype</span><h2 class="h2">Maison Turki — Compose ta Box</h2>
+        <p>An unsolicited concept for Maison Turki, a Tunisian pastry house — not commissioned. An AI pipeline isolated 421 individual pastries from the shop's catalogue photos, and an interactive prototype lets customers fill any gift box piece by piece before ordering.</p></div>
+      <a class="wide-img" href="img/mt/cutouts_grid.jpg" target="_blank" rel="noopener"><img src="img/mt/cutouts_grid.jpg" alt="Grid of individually isolated pastry pieces" loading="lazy"></a>
+      <div class="pair"><div class="cap" style="align-self:center">Before and after: the shop's catalogue photos (left in each sheet) and the single pieces the pipeline isolated from them (right).</div><a href="img/mt/before_after_01.jpg" target="_blank" rel="noopener"><img src="img/mt/before_after_01.jpg" alt="Before and after sheet" loading="lazy"></a><a href="img/mt/before_after_53.jpg" target="_blank" rel="noopener"><img src="img/mt/before_after_53.jpg" alt="Before and after sheet" loading="lazy"></a></div>
+    </div>
+  </div></section>
+
   <section class="section--tight"><div class="container">
-    <h2 class="h2" style="margin-bottom:8px">Selected Work</h2>
+    <span class="eyebrow">FX &amp; 3D</span><h2 class="h2" style="margin:12px 0 8px">Reels and simulation</h2>
     <p class="lead" style="margin-bottom:36px">Click any frame to play.</p>
     <div class="grid grid-3" id="workGrid"></div>
   </div></section>
@@ -219,6 +284,11 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
       <p class="lead" style="margin-bottom:0">Film, product visualization and skincare campaign work delivered for studio clients
       &mdash; including a feature broadcast on Rai 3 &mdash; cannot be published here. A private reel is available on request.</p>
     </div>
+  </div></section>
+  <section class="section--tight" id="tests" hidden><div class="container">
+    <span class="eyebrow">Tests</span><h2 class="h2" style="margin:12px 0 8px">Tests &amp; R&amp;D</h2>
+    <p class="lead" style="margin-bottom:36px">Experiments, look tests and pieces that didn't make a final cut.</p>
+    <div class="grid grid-3" id="testGrid"></div>
   </div></section>
   </div>
 
@@ -398,6 +468,24 @@ document.addEventListener('keydown',e=>{
   const v=e.target.closest&&e.target.closest('.vid[data-yt]');
   if(v){e.preventDefault(); playFacade(v);}
 });
+
+
+/* ---------- tests (unlisted YouTube) ---------- */
+const TESTS=[/* {id:"",t:"",s:""} */];
+if(TESTS.length){document.getElementById('tests').hidden=false;
+ document.getElementById('testGrid').innerHTML=TESTS.map(w=>'<div class="work"><div class="vid" data-yt="'+w.id+'" data-title="'+esc(w.t)+'" role="button" tabindex="0" aria-label="Play '+esc(w.t)+'"><img src="thumbs/'+w.id+'.jpg" alt="'+esc(w.t)+'" loading="lazy">'+PLAY+'</div><div class="work__meta"><span class="work__title">'+esc(w.t)+'</span><span class="work__sub">'+esc(w.s)+'</span></div></div>').join('');}
+
+/* ---------- intro end card ---------- */
+(function(){const el=document.getElementById('intro');if(!el)return;
+ let seen=false;try{seen=sessionStorage.getItem('av-intro')==='1'}catch(e){}
+ const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const out=()=>{el.classList.add('is-out');try{sessionStorage.setItem('av-intro','1')}catch(e){}setTimeout(()=>el.remove(),800)};
+ if(seen||reduce){el.remove();return}
+ const v=document.getElementById('introVid');document.getElementById('introSkip').addEventListener('click',out);
+ v.addEventListener('ended',()=>setTimeout(out,250));
+ const p=v.play();if(p&&p.catch)p.catch(out);
+ setTimeout(out,4000);
+})();
 
 /* ---------- inquiry configurator ---------- */
 const state={reality:null,domain:null,output:null,qty:null,duration:null,intent:null};
