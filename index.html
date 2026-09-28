@@ -240,6 +240,7 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 @media(prefers-reduced-motion:reduce){.egg{transition:none}}
 @media(max-width:900px){.folders{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.folders{grid-template-columns:1fr 1fr;gap:12px}.chips__label{min-width:100%}}
+.folders.folders--disc{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}.folders--disc .folder__cover{aspect-ratio:16/9}.folders--disc .folder__empty{font-size:0}@media(max-width:520px){.folders.folders--disc{grid-template-columns:1fr 1fr;gap:10px}}.folders--disc .folder__name{font-size:14px}.disc-group{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}.disc-group__name{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.tag--disc{border-style:dashed}
 </style>
 </head>
 <body>
@@ -312,7 +313,7 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
       </div>
       <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Reels</span></div><div class="folders" id="fReels"></div></div>
       <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Clients</span></div><div class="folders" id="fClients"></div></div>
-      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Categories</span></div><div class="folders" id="fCats"></div><p class="folder__meta" id="fSoon"></p></div>
+      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Categories</span></div><div class="folders" id="fCats"></div><p class="folder__meta" id="fSoon"></p></div><div class="pf-group"><div class="pf-group__head"><span class="eyebrow">3D &amp; VFX disciplines</span><p class="folder__meta" style="margin:0">For studios and recruiters: one folder per technique. New shots land here through 2026, building the 2026 demoreel.</p></div><div id="fDisc"></div></div>
       <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Tools</span></div>
         <p class="lead" style="margin-top:-6px">Houdini digital assets, published and in use &mdash; 47 downloads to date.</p>
         <div class="grid grid-3" id="toolGrid"></div></div>
@@ -467,6 +468,36 @@ const CATS=[
 ];
 const INTENTS=[{k:'branding',n:'Branding'},{k:'ad',n:'Ad'},{k:'entertainment',n:'Entertainment'}];
 const TECH=[{k:'cgi',n:'CGI / 3D'},{k:'hybrid',n:'Hybrid'},{k:'ai',n:'AI'}];
+/* 3D & VFX disciplines, for studios and recruiters. Tag a piece with disc:['pyro',...] to file it here. */
+const DISC_GROUPS=[{k:'sim',n:'Simulation FX',tab:'FX'},{k:'char',n:'Character FX & rigging',tab:'CFX'},{k:'look',n:'Look & world',tab:'Look'},{k:'tools',n:'Tools & pipeline',tab:'Tools'}];
+const DISC=[
+ {k:'water',g:'sim',n:'Water · FLIP',d:'FLIP liquids: splashes, pours, whitewater and liquid product shots.'},
+ {k:'ocean',g:'sim',n:'Oceans & whitewater',d:'Ocean spectra, wakes, foam and spray at shot scale.'},
+ {k:'pyro',g:'sim',n:'Smoke & fire · pyro',d:'Sparse pyro: smoke plumes, fire, torches and large smoke columns.'},
+ {k:'explosions',g:'sim',n:'Explosions',d:'Pyro, RBD and debris together: fireballs, shockwaves, secondary smoke.'},
+ {k:'rbd',g:'sim',n:'RBD · destruction',d:'Fracturing, constraints, building collapse, debris and dust.'},
+ {k:'grains',g:'sim',n:'Grains · sand & snow',d:'Granular sims: sand, snow, soil and collapsing piles.'},
+ {k:'particles',g:'sim',n:'Particles · POP',d:'POP networks: sparks, trails, dust and instanced debris.'},
+ {k:'cloth',g:'sim',n:'Cloth · Vellum',d:'Vellum cloth: tearing, flags, garments and pressure objects.'},
+ {k:'organic',g:'sim',n:'Organic · soft body',d:'Soft bodies and organic motion: flesh, jiggle, growth and tissue.'},
+ {k:'crowds',g:'sim',n:'Crowds',d:'Agent crowds: locomotion, terrain adaptation, ragdoll and variation.'},
+ {k:'magic',g:'sim',n:'Magic & energy FX',d:'Stylised FX: energy, portals, spells and abstract effects.'},
+ {k:'rigging',g:'char',n:'Rigging',d:'Character and prop rigs: body, face and deformation.'},
+ {k:'hair',g:'char',n:'Hair & fur · grooming',d:'Grooms, guide simulation and fur for characters.'},
+ {k:'muscles',g:'char',n:'Muscles & skin',d:'Muscle and skin-sliding simulation for characters and creatures.'},
+ {k:'animation',g:'char',n:'Animation',d:'Character, creature and prop animation.'},
+ {k:'lookdev',g:'look',n:'Look dev & shading',d:'Materials and shading that hold up in close-up.'},
+ {k:'lighting',g:'look',n:'Lighting & rendering',d:'Shot lighting, render passes and AOVs.'},
+ {k:'environment',g:'look',n:'Environments',d:'Full environments, set extension and matte-painting support.'},
+ {k:'procedural',g:'look',n:'Procedural modeling',d:'Procedural buildings, terrain and scattering in Houdini.'},
+ {k:'modeling',g:'look',n:'Modeling & texturing',d:'Hero assets, UVs and textures.'},
+ {k:'comp',g:'look',n:'Compositing',d:'Integration, CG over plate and final comp.'},
+ {k:'realtime',g:'look',n:'Real-time · Unreal',d:'Unreal Engine scenes and real-time FX.'},
+ {k:'hda',g:'tools',n:'HDAs & VEX tools',d:'Houdini digital assets and VEX tools, built for artists.'},
+ {k:'pipeline',g:'tools',n:'Pipeline & automation',d:'Python tools, batch pipelines and automation.'}
+];
+const discOf=k=>DISC.find(d=>d.k===k);
+
 const catName=k=>(CATS.find(c=>c.k===k)||{}).n||k;
 const intentName=k=>(INTENTS.find(c=>c.k===k)||{}).n||k;
 const techName=k=>(TECH.find(c=>c.k===k)||{}).n||k;
@@ -560,7 +591,7 @@ const main=PIECES.filter(p=>!p.test);
 function tagsHtml(p){
   const c=p.cats.map(x=>{const [a,b]=x.split(':');return '<button class="tag" type="button" data-f="cat" data-v="'+x+'">#'+a+(b?'-'+b:'')+'</button>'}).join('');
   const co=coOf(p.co);
-  return '<div class="tags">'+c+'<button class="tag tag--co" type="button" data-f="co" data-v="'+p.co+'">#'+co.tag+'</button><button class="tag tag--tech" type="button" data-f="tech" data-v="'+p.tech+'">#'+(p.tech==='cgi'?'cgi-3d':p.tech)+'</button></div>';
+  return '<div class="tags">'+c+'<button class="tag tag--co" type="button" data-f="co" data-v="'+p.co+'">#'+co.tag+'</button><button class="tag tag--tech" type="button" data-f="tech" data-v="'+p.tech+'">#'+(p.tech==='cgi'?'cgi-3d':p.tech)+'</button>'+(p.disc||[]).map(d=>'<button class="tag tag--disc" type="button" data-route="disc/'+d+'">#'+d+'</button>').join('')+'</div>';
 }
 function meta(p){return '<div class="work__meta"><span class="work__title">'+esc(p.t)+'</span><span class="work__sub">'+esc(p.s||'')+'</span></div>'+tagsHtml(p)}
 function pieceHtml(p){
@@ -614,6 +645,12 @@ function renderHome(){
     return ps.length?folderCard('cat/'+c.k,c.n,plural(ps.length,'piece'),coverOf(ps[0]),c.intents?'Screen':'Physical'):folderCard('cat/'+c.k,c.n,'Coming soon',null,c.intents?'Screen':'Physical',{empty:true});
   }).join('');
   document.getElementById('fSoon').textContent='';
+  const dg=document.getElementById('fDisc');
+  if(dg) dg.innerHTML=DISC_GROUPS.map(g=>'<div class="disc-group"><div class="disc-group__name">'+g.n+'</div><div class="folders folders--disc">'+DISC.filter(d=>d.g===g.k).map(d=>{
+    const ps=main.filter(p=>(p.disc||[]).includes(d.k));
+    return ps.length?folderCard('disc/'+d.k,d.n,plural(ps.length,'piece'),coverOf(ps[0]),g.tab):folderCard('disc/'+d.k,d.n,'Coming soon',null,g.tab,{empty:true});
+  }).join('')+'</div></div>').join('');
+
 }
 
 /* ---- views ---- */
@@ -653,6 +690,13 @@ function viewCat(k){
   }
   return html+layout(ps);
 }
+function viewDisc(k){
+  const d=discOf(k); if(!d) return viewNotFound();
+  const g=DISC_GROUPS.find(x=>x.k===d.g), ps=main.filter(p=>(p.disc||[]).includes(k));
+  let html=back()+'<div class="pf-intro" style="margin:18px 0 28px"><span class="badge">'+esc(g.n)+'</span><h1 class="h2">'+esc(d.n)+'</h1><p>'+esc(d.d)+'</p></div>';
+  if(!ps.length) return html+'<p class="pf-count">In production. A dedicated shot for this discipline lands here during 2026, then goes into the 2026 demoreel. <a href="#contact">Get in touch →</a></p>';
+  return html+'<p class="pf-count" style="margin-bottom:16px">'+plural(ps.length,'piece')+'</p>'+layout(ps);
+}
 function viewAll(){
   const ps=main.filter(p=>(!pfState.cat||hasCat(p,pfState.cat,pfState.intent))&&(!pfState.co||p.co===pfState.co)&&(!pfState.tech||p.tech===pfState.tech));
   const catObj=CATS.find(c=>c.k===pfState.cat);
@@ -678,6 +722,7 @@ function pfRoute(parts){
   if(parts[0]==='co') html=viewCompany(parts[1]);
   else if(parts[0]==='reels') html=viewReels();
   else if(parts[0]==='cat') html=viewCat(parts[1]);
+  else if(parts[0]==='disc') html=viewDisc(parts[1]);
   else if(parts[0]==='all') html=viewAll();
   else html=viewNotFound();
   view.innerHTML=html; home.hidden=true; view.hidden=false; if(parts[0]==='all') armEgg();
