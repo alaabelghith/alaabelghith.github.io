@@ -473,7 +473,12 @@ document.addEventListener('keydown',e=>{
 
 
 /* ---------- tests (unlisted YouTube) ---------- */
-const TESTS=[/* {id:"",t:"",s:""} */];
+const TESTS=[
+  {id:"aam8YANZ0n0",t:"City sting — pixel 16",s:"Logo sting test · 4K"},
+  {id:"ONkPDdThnwc",t:"City sting — light ring",s:"Logo sting test · 4K"},
+  {id:"tCAChiTZCL4",t:"TV ident 01",s:"Broadcast ident test"}
+  /* {id:"",t:"",s:""} */
+];
 if(TESTS.length){document.getElementById('tests').hidden=false;
  document.getElementById('testGrid').innerHTML=TESTS.map(w=>'<div class="work"><div class="vid" data-yt="'+w.id+'" data-title="'+esc(w.t)+'" role="button" tabindex="0" aria-label="Play '+esc(w.t)+'"><img src="thumbs/'+w.id+'.jpg" alt="'+esc(w.t)+'" loading="lazy">'+PLAY+'</div><div class="work__meta"><span class="work__title">'+esc(w.t)+'</span><span class="work__sub">'+esc(w.s)+'</span></div></div>').join('');}
 
