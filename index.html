@@ -216,6 +216,20 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 .brief{display:flex;flex-direction:column;gap:14px}
 .brief__line{font-size:clamp(20px,2.4vw,26px);font-weight:600;letter-spacing:-.01em}
 .brief__btns{display:flex;flex-wrap:wrap;gap:10px}
+.folder__logo{position:absolute;right:10px;bottom:10px;background:#fff;border-radius:6px;padding:5px 8px;display:flex;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.folder__logo img{height:22px;width:auto;display:block}
+.co-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.co-logos{display:flex;gap:14px;align-items:center}
+.co-logo{height:64px;width:auto;max-width:200px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.co-site{font-size:15px;color:var(--accent);width:max-content}
+.nda-teaser{position:relative;display:block}
+.nda-teaser img{filter:brightness(.72)}
+.nda-teaser__btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;color:var(--ink);font-size:14px;font-weight:600;padding:10px 16px;border-radius:6px;white-space:nowrap}
+.nda-teaser:hover img{filter:brightness(.85)}
+.egg{opacity:0;transform:translateY(12px);transition:opacity .8s ease,transform .8s ease;margin-top:clamp(64px,10vw,120px);padding-top:32px;border-top:1px dashed var(--line-strong)}
+.egg.is-in{opacity:1;transform:none}
+.egg__hi{font-size:15px;color:var(--muted);margin-bottom:24px}
+@media(prefers-reduced-motion:reduce){.egg{transition:none}}
 @media(max-width:900px){.folders{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.folders{grid-template-columns:1fr 1fr;gap:12px}.chips__label{min-width:100%}}
 </style>
@@ -288,9 +302,9 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
         <p class="lead mx-auto" style="margin-top:20px">Open a folder, or browse every piece and filter by category, client or technique.</p>
         <div class="btn-row" style="justify-content:center;margin-top:24px"><button class="btn btn--primary" type="button" data-go="all">Browse all work</button></div>
       </div>
-      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Clients</span></div><div class="folders" id="fClients"></div></div>
       <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Reels</span></div><div class="folders" id="fReels"></div></div>
-      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Categories</span></div><div class="folders" id="fCats"></div></div>
+      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Clients</span></div><div class="folders" id="fClients"></div></div>
+      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Categories</span></div><div class="folders" id="fCats"></div><p class="folder__meta" id="fSoon"></p></div>
       <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Tools</span></div>
         <p class="lead" style="margin-top:-6px">Houdini digital assets, published and in use &mdash; 47 downloads to date.</p>
         <div class="grid grid-3" id="toolGrid"></div></div>
@@ -438,6 +452,7 @@ const CATS=[
  {k:'tv',n:'TV',intents:true},
  {k:'product',n:'Product',intents:true},
  {k:'events',n:'Live events',intents:true},
+ {k:'dooh',n:'DOOH / FOOH',intents:true},
  {k:'architecture',n:'Architecture'},
  {k:'urban',n:'Urban'},
  {k:'industrial',n:'Industrial'}
@@ -450,28 +465,29 @@ const techName=k=>(TECH.find(c=>c.k===k)||{}).n||k;
 
 /* Clients / owners. Order = order of folders. */
 const COMPANIES=[
- {k:'16n',tag:'16neuvieme',n:'16 Neuvième',kind:'Client · DOOH campaign · 2026',
+ {k:'16n',tag:'16neuvieme',n:'16 Neuvième',logo:'img/logos/16n.png',site:null,kind:'Client · DOOH campaign · 2026',
   hero:{t:'yt',id:'YaSeEcUUVQM'},
   text:['A campaign for 16 Neuvième, a Tunisian dynamic-display company. Landscape films for LED billboards, vertical cuts for totem screens, a product visualisation of their display totem and a motion layout of their ad-space network.',
         'AI-assisted production: generation, compositing and edit, delivered in every screen format the network runs.'],
   facts:[['Role','Direction, generation, compositing, edit'],['Formats','16:9, 9:16, 4K'],['Credit','Delivered for 16 Neuvième — Affichage Dynamique']]},
- {k:'cc',tag:'candles-chocolate',n:'Candles & Chocolate',kind:'Client · brand package for Amatun · 2026',
+ {k:'cc',tag:'candles-chocolate',n:'Candles & Chocolate',logo:'img/logos/cc.png',logo2:'img/logos/amatun.png',site:'https://shop.amatun.com/',siteLabel:'shop.amatun.com',kind:'Client · brand package for Amatun · 2026',
   hero:{t:'img',src:'img/cc/grid_all.jpg'},
   text:['A full brand package for Amatun’s Candles & Chocolate line: identity, more than eighty brand applications across signage, packaging, print, social and web, product visuals, social ad templates and ad films.',
         'A human-directed AI pipeline, from the first mark to the finished campaign.'],
   facts:[['Role','Brand identity, visuals, ad films'],['Deliverables','Identity · 86 applications · 3 films · ad templates']]},
- {k:'mt',tag:'maison-turki',n:'Maison Turki',kind:'Pitch prototype · not commissioned',
+ {k:'mt',tag:'maison-turki',n:'Maison Turki',logo:'img/logos/mt.png',site:'https://maisonturki.tn/',siteLabel:'maisonturki.tn',kind:'Pitch prototype · not commissioned',
   hero:{t:'video',src:'media/mt_box_builder.mp4',poster:'media/mt_box_builder.jpg'},
   text:['An unsolicited concept for Maison Turki, a Tunisian pastry house. An AI pipeline isolated 421 individual pastries from the shop’s catalogue photos, and an interactive prototype lets customers fill any gift box piece by piece before ordering.',
         'Code on GitHub: <a href="https://github.com/alaabelghith/compose-ta-box" target="_blank" rel="noopener" style="color:var(--accent)">compose-ta-box</a>.'],
   facts:[['Role','Concept, AI cutout pipeline, prototype direction'],['Status','Pitch, not commissioned']]},
- {k:'acr',tag:'acr',n:'ACR Advertising',kind:'Studio · 2D series · 2020',
-  hero:null,
-  text:['2D animation on the series Wled El Bhar (Sons of the Sea) at ACR Advertising, January to June 2020.'],
+ {k:'acr',tag:'acr',n:'ACR Advertising',kind:'Studio · 2D series · 2020',site:'https://acr-advertising.com/',siteLabel:'acr-advertising.com',
+  hero:{t:'yt',id:'vEvTeigkcuI'},
+  text:['2D animation on the series Wled El Bhar (Sons of the Sea), broadcast for Ramadan 2020, at ACR Advertising from January to June 2020.',
+        'More frames and breakdowns on <a href="https://alabelguith.artstation.com/projects/d8O6ZW" target="_blank" rel="noopener" style="color:var(--accent)">ArtStation</a> · series listing on <a href="https://www.imdb.com/title/tt12343910/" target="_blank" rel="noopener" style="color:var(--accent)">IMDb</a>.'],
   facts:[['Role','2D animator']]},
  {k:'nda',tag:'nda',n:'Under NDA',kind:'Film, product & skincare work',nda:true,
   hero:null,
-  text:['Studio and client work I can’t publish. A private reel is available on request.'],
+  text:['Studio and client work under NDA. The reels below are private, read-only links: please don’t share them.'],
   facts:[]},
  {k:'personal',tag:'personal',n:'Personal & spec',kind:'Spec films, FX studies, school work',
   hero:{t:'yt',id:'gyW_0ZEds_E'},
@@ -479,8 +495,8 @@ const COMPANIES=[
   facts:[]}
 ];
 const NDA_ITEMS=[
- {b:'To Be Italian — feature film, broadcast on Rai 3',p:'3D generalist & rigger at CGS, September 2024 to March 2025. Also promos, product visualisation and FOOH work for the studio. My name is in the film’s credits.'},
- {b:'Skincare campaign — stills and video',p:'Freelance product CGI for a studio client, July to December 2025.'}
+ {b:'Studio reel 2025 — CGS',p:'3D generalist & rigger at CGS, September 2024 to March 2025: character work on the feature To Be Italian (broadcast on Rai 3), plus promos, product visualisation and live-event content. My name is in the film’s credits.',img:'img/nda/studio_teaser.jpg',href:'https://drive.google.com/file/d/10BhJ85PY-DrHULcxGJtCh6sL08hqMCPK/view'},
+ {b:'Product reel 2025 — freelance',p:'Product CGI for a skincare brand and RBD simulation for mobile game ads, freelance for studio clients, 2025.',img:'img/nda/product_teaser.jpg',href:'https://drive.google.com/file/d/1khyP1LoLX0lqjO5XXmdUwkxubZhyvU0k/view'}
 ];
 const coOf=k=>COMPANIES.find(c=>c.k===k);
 
@@ -492,7 +508,7 @@ const PIECES=[
  {kind:'yt',id:'Oi5BvZ40cSI',o:'h',t:'Totem reveal',s:'10 s · product film',co:'16n',cats:['product:ad'],tech:'ai'},
  {kind:'yt',id:'G_LYx2Rv8vI',o:'v',t:'Film 03',s:'Vertical · totem screens',co:'16n',cats:['social:ad','tv:ad'],tech:'ai'},
  {kind:'yt',id:'lZaa0dvJ9Kc',o:'v',t:'Film 04',s:'Vertical · totem screens',co:'16n',cats:['social:ad','tv:ad'],tech:'ai'},
- {kind:'yt',id:'49ZrCe-a0Sw',o:'v',t:'Totem exploded view',s:'Product visualisation',co:'16n',cats:['product:ad','industrial'],tech:'ai'},
+ {kind:'yt',id:'49ZrCe-a0Sw',o:'v',t:'Totem exploded view',s:'Product visualisation',co:'16n',cats:['product:ad'],tech:'ai'},
  {kind:'yt',id:'9Vv5Fx3zzJE',o:'v',t:'Ad-space layout',s:'Motion design',co:'16n',cats:['social:ad'],tech:'ai'},
  // Candles & Chocolate
  {kind:'yt',id:'As-3piEYNRE',o:'v',t:'Family gifting ad',s:'Animated · 28 s',co:'cc',cats:['social:ad'],tech:'ai'},
@@ -505,9 +521,9 @@ const PIECES=[
  // Maison Turki
  {kind:'video',src:'media/mt_box_builder.mp4',poster:'media/mt_box_builder.jpg',o:'h',t:'Box builder prototype',s:'Screen recording · 39 s',co:'mt',cats:['website:ad','app:ad'],tech:'hybrid'},
  {kind:'img',src:'img/mt/cutouts_grid.jpg',o:'h',t:'421 single-piece cutouts',s:'AI pipeline output',co:'mt',cats:['product:ad','website:ad'],tech:'ai'},
- {kind:'gallery',t:'Before / after',s:'Catalogue photos → isolated pieces',co:'mt',cats:['product:ad'],tech:'ai',cols:2,contain:true,imgs:['img/mt/before_after_01.jpg','img/mt/before_after_53.jpg']},
+ {kind:'img',src:'img/mt/before_after_01.jpg',o:'h',small:true,t:'Before / after',s:'Catalogue photos (left) → isolated pieces (right)',co:'mt',cats:['product:ad'],tech:'ai'},
  // ACR
- {kind:'link',href:'https://alabelguith.artstation.com/projects/d8O6ZW',o:'h',t:'Wled El Bhar / Sons of the Sea',s:'2D series animation — on ArtStation',co:'acr',cats:['tv:entertainment'],tech:'cgi'},
+ {kind:'yt',id:'vEvTeigkcuI',o:'h',t:'Wled El Bhar — episode 1',s:'2D series animation · Ramadan 2020',co:'acr',cats:['tv:entertainment'],tech:'cgi'},
  // Personal
  {kind:'yt',id:'gyW_0ZEds_E',o:'h',t:'AI product films — spec reel',s:'75 s · beverage, fashion, telecom, beauty, chocolate · fictional brands',co:'personal',cats:['tv:ad','social:ad','product:ad'],tech:'ai'},
  {kind:'yt',id:'w63HVqN_Xr0',o:'h',t:'Demoreel 2023/2024',s:'Houdini FX',co:'personal',cats:['tv:entertainment'],tech:'cgi',reel:true},
@@ -540,7 +556,7 @@ function meta(p){return '<div class="work__meta"><span class="work__title">'+esc
 function pieceHtml(p){
   if(p.kind==='yt') return '<div class="work"><div class="vid'+(p.o==='v'?' vid--v':'')+'" data-yt="'+p.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="thumbs/'+p.id+'.jpg" alt="'+esc(p.t)+'" loading="lazy">'+PLAY+'</div>'+meta(p)+'</div>';
   if(p.kind==='video') return '<div class="work"><video class="wide-img" src="'+p.src+'" poster="'+p.poster+'" muted loop playsinline controls preload="none" style="width:100%;height:auto;background:#fff"></video>'+meta(p)+'</div>';
-  if(p.kind==='img') return '<div class="work"><a class="wide-img" href="'+p.src+'" target="_blank" rel="noopener"><img src="'+p.src+'" alt="'+esc(p.t)+'" loading="lazy"></a>'+meta(p)+'</div>';
+  if(p.kind==='img') return '<div class="work"'+(p.small?' style="max-width:240px"':'')+'><a class="wide-img" href="'+p.src+'" target="_blank" rel="noopener"><img src="'+p.src+'" alt="'+esc(p.t)+'" loading="lazy"></a>'+meta(p)+'</div>';
   if(p.kind==='link') return '<div class="work"><a class="linkcard" href="'+p.href+'" target="_blank" rel="noopener noreferrer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v7H3V3h7"/></svg><span>View on ArtStation</span></a>'+meta(p)+'</div>';
   if(p.kind==='gallery'){
     const cls='gallery'+(p.cols===4?' gallery--4':'');const st=p.cols===2?' style="grid-template-columns:repeat(2,1fr)"':'';
@@ -551,7 +567,7 @@ function pieceHtml(p){
 }
 /* lay pieces out by shape so rows stay even */
 function layout(list){
-  const h=list.filter(p=>p.kind!=='gallery'&&p.o!=='v'), v=list.filter(p=>p.kind==='yt'&&p.o==='v'), g=list.filter(p=>p.kind==='gallery');
+  const h=list.filter(p=>p.kind!=='gallery'&&p.o!=='v'&&!p.small), v=list.filter(p=>p.kind==='yt'&&p.o==='v'), g=list.filter(p=>p.kind==='gallery'||p.small);
   let out='';
   if(h.length) out+='<div class="grid grid-3">'+h.map(pieceHtml).join('')+'</div>';
   if(v.length) out+='<div class="grid grid-4">'+v.map(pieceHtml).join('')+'</div>';
@@ -566,9 +582,9 @@ function heroHtml(h){
   return '';
 }
 function folderCard(route,name,meta,cover,tab,opts){
-  opts=opts||{};
+  opts=opts||{};const logo=opts.logo?'<span class="folder__logo"><img src="'+opts.logo+'" alt=""></span>':'';
   let inner=cover?'<img src="'+cover+'" alt="" loading="lazy">':opts.label?'<div class="folder__lock">'+opts.label+'</div>':(opts.lock?'<div class="folder__lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private reel on request</div>':'<div class="folder__empty">Coming soon</div>');
-  return '<button class="folder'+(opts.empty?' is-empty':'')+'" type="button" data-route="'+route+'"><div class="folder__cover">'+inner+(tab?'<span class="folder__tab">'+tab+'</span>':'')+'</div><div><div class="folder__name">'+esc(name)+'</div><div class="folder__meta">'+meta+'</div></div></button>';
+  return '<button class="folder'+(opts.empty?' is-empty':'')+'" type="button" data-route="'+route+'"><div class="folder__cover">'+inner+(tab?'<span class="folder__tab">'+tab+'</span>':'')+logo+'</div><div><div class="folder__name">'+esc(name)+'</div><div class="folder__meta">'+meta+'</div></div></button>';
 }
 const plural=(n,w)=>n+' '+w+(n===1?'':'s');
 
@@ -576,18 +592,18 @@ const plural=(n,w)=>n+' '+w+(n===1?'':'s');
 function renderHome(){
   document.getElementById('fClients').innerHTML=COMPANIES.map(c=>{
     const ps=main.filter(p=>p.co===c.k);
-    const cover=c.k==='cc'?'img/cc/grid_all.jpg':c.k==='mt'?'media/mt_box_builder.jpg':(ps[0]?coverOf(ps[0]):null);
+    const cover=c.k==='cc'?'img/cc/grid_all.jpg':c.k==='mt'?'media/mt_box_builder.jpg':c.nda?'img/nda/studio_teaser.jpg':(ps[0]?coverOf(ps[0]):null);
     const tab=c.k==='mt'?'Pitch':c.k==='personal'?'Personal':c.nda?'NDA':'Client';
-    return folderCard('co/'+c.k,c.n,c.nda?'2 projects · private':plural(ps.length,'piece'),cover,tab,{lock:c.nda,label:c.k==='acr'?'2D series · on ArtStation':null});
+    return folderCard('co/'+c.k,c.n,c.nda?'2 private reels':plural(ps.length,'piece'),cover,tab,{logo:c.logo});
   }).join('');
-  const reels=main.filter(p=>p.reel), tests=PIECES.filter(p=>p.test);
-  document.getElementById('fReels').innerHTML=
-    folderCard('reels','Demoreels',plural(reels.length,'reel')+' · 2020–2024',reels[0]?coverOf(reels[0]):null,'Reels')+
-    folderCard('tests','Tests & R&D',plural(tests.length,'piece'),tests[0]?coverOf(tests[0]):null,'Tests',{empty:!tests.length});
-  document.getElementById('fCats').innerHTML=CATS.map(c=>{
+  const reels=main.filter(p=>p.reel);
+  document.getElementById('fReels').innerHTML=folderCard('reels','Demoreels',plural(reels.length,'reel')+' · 2020–2024',reels[0]?coverOf(reels[0]):null,'Reels');
+  const full=CATS.filter(c=>main.some(p=>catKeys(p).includes(c.k))), soon=CATS.filter(c=>!full.includes(c));
+  document.getElementById('fCats').innerHTML=full.map(c=>{
     const ps=main.filter(p=>catKeys(p).includes(c.k));
-    return folderCard('cat/'+c.k,c.n,ps.length?plural(ps.length,'piece'):'Coming soon',ps[0]?coverOf(ps[0]):null,c.intents?'Screen':'Physical',{empty:!ps.length});
+    return folderCard('cat/'+c.k,c.n,plural(ps.length,'piece'),coverOf(ps[0]),c.intents?'Screen':'Physical');
   }).join('');
+  document.getElementById('fSoon').textContent=soon.length?'Coming soon: '+soon.map(c=>c.n).join(' · '):'';
 }
 
 /* ---- views ---- */
@@ -596,12 +612,13 @@ function back(){return '<button class="pf-back" type="button" data-route="">← 
 function viewCompany(k){
   const c=coOf(k); if(!c) return viewNotFound();
   const ps=main.filter(p=>p.co===k), ts=PIECES.filter(p=>p.test&&p.co===k);
-  let html=back()+'<div class="pf-intro" style="margin:18px 0 28px"><span class="badge'+(k==='mt'?' badge--pitch':'')+'">'+esc(c.kind)+'</span><h1 class="h2">'+esc(c.n)+'</h1></div>';
+  const logos=[c.logo,c.logo2].filter(Boolean).map(l=>'<img src="'+l+'" alt="" class="co-logo">').join('');
+  const site=c.site?'<a class="co-site" href="'+c.site+'" target="_blank" rel="noopener">'+esc(c.siteLabel||c.site)+' ↗</a>':'';
+  let html=back()+'<div class="co-head" style="margin:18px 0 28px"><div class="pf-intro"><span class="badge'+(k==='mt'?' badge--pitch':'')+'">'+esc(c.kind)+'</span><h1 class="h2">'+esc(c.n)+'</h1>'+site+'</div>'+(logos?'<div class="co-logos">'+logos+'</div>':'')+'</div>';
   html+=heroHtml(c.hero);
   html+='<div class="pf-intro" style="margin:28px 0 36px">'+c.text.map(t=>'<p>'+t+'</p>').join('')+(c.facts.length?'<div class="pf-facts">'+c.facts.map(f=>'<span><b>'+f[0]+':</b> '+f[1]+'</span>').join('')+'</div>':'')+'</div>';
-  if(c.nda) html+='<div class="nda-list">'+NDA_ITEMS.map(n=>'<div class="nda-item"><b>'+esc(n.b)+'</b><p>'+esc(n.p)+'</p></div>').join('')+'</div><div class="btn-row" style="margin-top:24px"><a class="btn btn--primary" href="#contact">Request the private reel</a></div>';
-  else html+='<div class="pf-block"><h3>The work</h3>'+layout(ps.filter(p=>!(c.hero&&c.hero.t==='yt'&&p.id===c.hero.id)))+'</div>';
-  if(ts.length) html+='<div class="pf-block" style="margin-top:48px"><h3>Tests from this project</h3>'+layout(ts)+'</div>';
+  if(c.nda) html+='<div class="grid grid-2">'+NDA_ITEMS.map(n=>'<div class="work"><a class="wide-img nda-teaser" href="'+n.href+'" target="_blank" rel="noopener"><img src="'+n.img+'" alt="" loading="lazy"><span class="nda-teaser__btn">Watch the reel · read-only ↗</span></a><div class="work__meta"><span class="work__title">'+esc(n.b)+'</span><span class="work__sub">'+esc(n.p)+'</span></div></div>').join('')+'</div>';
+  else html+='<div class="pf-block"><h3>The work</h3>'+layout(ps.filter(p=>!(c.hero&&((c.hero.t==='yt'&&p.id===c.hero.id)||(c.hero.t==='video'&&p.src===c.hero.src)))))+'</div>';
   return html;
 }
 function viewReels(){
@@ -632,8 +649,13 @@ function viewAll(){
   html+='<div class="filters" style="margin-bottom:24px">'+chipRow('Category',CATS,'cat',pfState.cat)+(catObj&&catObj.intents?chipRow('Purpose',INTENTS,'intent',pfState.intent):'')+
     chipRow('Client',COMPANIES.filter(c=>!c.nda).map(c=>({k:c.k,n:c.n})),'co',pfState.co)+chipRow('Technique',TECH,'tech',pfState.tech)+'</div>';
   html+='<p class="pf-count" style="margin-bottom:16px">'+plural(ps.length,'piece')+'</p>';
-  return html+layout(ps);
+  const tests=PIECES.filter(p=>p.test);
+  const egg=tests.length?'<div id="eggSentinel" style="height:1px"></div><div class="egg" id="egg" hidden><p class="egg__hi">You scrolled through everything. Here’s what didn’t make the final cut.</p><div class="pf-block"><h3>Tests & R&D</h3>'+layout(tests)+'</div></div>':'';
+  return html+layout(ps)+egg;
 }
+function armEgg(){const s=document.getElementById('eggSentinel'),e=document.getElementById('egg');if(!s||!e)return;
+  if(!('IntersectionObserver' in window)){e.hidden=false;return}
+  const io=new IntersectionObserver(en=>{if(en[0].isIntersecting){e.hidden=false;requestAnimationFrame(()=>e.classList.add('is-in'));io.disconnect()}},{rootMargin:'0px 0px -40px 0px'});io.observe(s)}
 function viewNotFound(){return back()+'<div class="pf-empty" style="margin-top:24px">That folder doesn’t exist.</div>'}
 
 let pfCurrent=[];
@@ -644,11 +666,10 @@ function pfRoute(parts){
   let html='';
   if(parts[0]==='co') html=viewCompany(parts[1]);
   else if(parts[0]==='reels') html=viewReels();
-  else if(parts[0]==='tests') html=viewTests();
   else if(parts[0]==='cat') html=viewCat(parts[1]);
   else if(parts[0]==='all') html=viewAll();
   else html=viewNotFound();
-  view.innerHTML=html; home.hidden=true; view.hidden=false;
+  view.innerHTML=html; home.hidden=true; view.hidden=false; if(parts[0]==='all') armEgg();
 }
 function rerender(){const y=window.scrollY;pfRoute(pfCurrent);window.scrollTo(0,y)}
 
@@ -722,6 +743,7 @@ const Q_CATS=[
  {k:'tv',n:'TV',s:'Commercials, idents, LED and DOOH screens'},
  {k:'product',n:'Product',s:'Packshots, product films, launches'},
  {k:'events',n:'Live events',s:'Stage screens, openers, live visuals'},
+ {k:'dooh',n:'DOOH / FOOH',s:'LED billboards, totems, fake out-of-home'},
  {k:'architecture',n:'Architecture',s:'Exteriors, interiors, walkthroughs'},
  {k:'urban',n:'Urban',s:'Masterplans, streets, city scale'},
  {k:'industrial',n:'Industrial',s:'Machines, exploded views, technical'}
@@ -730,7 +752,7 @@ const Q_INTENTS=[{k:'branding',n:'Branding',s:'Logo animation, identity, brand f
 const Q_OUT=[{k:'Images',n:'Images',s:'Stills, key visuals, renders'},{k:'Videos',n:'Videos',s:'Films, loops, animations'},{k:'Both',n:'Both',s:'A campaign set'}];
 const Q_DUR=['0–15 s','15–30 s','30–60 s','1–3 min','3–5 min','5+ min'];
 const Q_TECH=[{k:'cgi',n:'CGI / 3D',s:'Full 3D and simulation. Maximum control and precision.'},{k:'hybrid',n:'Hybrid',s:'3D hero elements with AI for environments and variations.'},{k:'ai',n:'AI',s:'Fastest iteration. Ideal for concepts, social and volume.'},{k:'unsure',n:'Not sure',s:'I’ll recommend the right approach.'}];
-const hasIntents=k=>['social','website','app','tv','product','events'].includes(k);
+const hasIntents=k=>['social','website','app','tv','product','events','dooh'].includes(k);
 
 function qOpt(o){return '<div class="opt" data-v="'+o.k+'" tabindex="0" role="button"><span class="opt__check">✓</span><span class="opt__title">'+o.n+'</span>'+(o.s?'<span class="opt__sub">'+o.s+'</span>':'')+'</div>'}
 function qBind(id,cb){const c=document.getElementById(id);c.querySelectorAll('.opt').forEach(el=>{const f=()=>{c.querySelectorAll('.opt').forEach(o=>o.classList.remove('is-selected'));el.classList.add('is-selected');cb(el.dataset.v)};el.addEventListener('click',f);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}})})}
