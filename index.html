@@ -156,7 +156,7 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 .badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:rgba(124,58,237,.08);border-radius:4px;padding:4px 9px;width:max-content}
 .badge--pitch{color:#9a5b00;background:rgba(214,140,0,.12)}
 .grid-4{grid-template-columns:repeat(4,1fr)}
-.vid--v{aspect-ratio:9/16}
+.vid--v{aspect-ratio:9/16}.vid--s{aspect-ratio:1/1}
 .sub-h{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:8px}
 .gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .gallery a{display:block;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
@@ -578,7 +578,14 @@ const PIECES=[
  // Tests (shown in the Tests folder and at the bottom of their client folder only)
  {kind:'yt',id:'aam8YANZ0n0',o:'h',t:'City sting — pixel 16',s:'Logo sting test · 4K',co:'16n',cats:['tv:branding'],tech:'ai',test:true},
  {kind:'yt',id:'ONkPDdThnwc',o:'h',t:'City sting — light ring',s:'Logo sting test · 4K',co:'16n',cats:['tv:branding'],tech:'ai',test:true},
- {kind:'yt',id:'tCAChiTZCL4',o:'h',t:'TV ident 01',s:'Broadcast ident test',co:'16n',cats:['tv:branding'],tech:'ai',test:true}
+ {kind:'yt',id:'tCAChiTZCL4',o:'h',t:'TV ident 01',s:'Broadcast ident test',co:'16n',cats:['tv:branding'],tech:'ai',test:true},
+ {kind:'yt',id:'0iN2_tomFY4',o:'h',t:'TV ident 02',s:'Broadcast ident test',co:'16n',cats:['tv:branding'],tech:'ai',test:true},
+ {kind:'yt',id:'0heiuUVhI7k',o:'s',t:'Wild card 01',s:'Billboard test · square',co:'16n',cats:['social:ad'],tech:'ai',test:true},
+ {kind:'yt',id:'8kNAPvXLUto',o:'s',t:'Wild card 02',s:'Billboard test · square',co:'16n',cats:['social:ad'],tech:'ai',test:true},
+ {kind:'yt',id:'8Iy7_q-m4kc',o:'s',t:'Wild card 03',s:'Billboard test · square',co:'16n',cats:['social:ad'],tech:'ai',test:true},
+ {kind:'yt',id:'1JLI_Fc13ME',o:'v',t:'Wild card 04',s:'City test · vertical',co:'16n',cats:['social:ad'],tech:'ai',test:true},
+ {kind:'yt',id:'nS2ZtW-8esM',o:'v',t:'Wild card 05',s:'City test · vertical',co:'16n',cats:['social:ad'],tech:'ai',test:true},
+ {kind:'yt',id:'hMXhxYQyyJs',o:'s',t:'Head disintegration',s:'Houdini POP test · particles + strands',co:'personal',cats:['tv:entertainment'],tech:'cgi',test:true}
  /* add: {kind:'yt',id:'',o:'h',t:'',s:'',co:'16n',cats:['social:ad'],tech:'ai',test:true} */
 ];
 
@@ -595,7 +602,7 @@ function tagsHtml(p){
 }
 function meta(p){return '<div class="work__meta"><span class="work__title">'+esc(p.t)+'</span><span class="work__sub">'+esc(p.s||'')+'</span></div>'+tagsHtml(p)}
 function pieceHtml(p){
-  if(p.kind==='yt') return '<div class="work"><div class="vid'+(p.o==='v'?' vid--v':'')+'" data-yt="'+p.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="thumbs/'+p.id+'.jpg" alt="'+esc(p.t)+'" loading="lazy">'+PLAY+'</div>'+meta(p)+'</div>';
+  if(p.kind==='yt') return '<div class="work"><div class="vid'+(p.o==='v'?' vid--v':p.o==='s'?' vid--s':'')+'" data-yt="'+p.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="thumbs/'+p.id+'.jpg" alt="'+esc(p.t)+'" loading="lazy">'+PLAY+'</div>'+meta(p)+'</div>';
   if(p.kind==='video') return '<div class="work"><video class="wide-img" src="'+p.src+'" poster="'+p.poster+'" muted loop playsinline controls preload="none" style="width:100%;height:auto;background:#fff"></video>'+meta(p)+'</div>';
   if(p.kind==='img') return '<div class="work"'+(p.small?' style="max-width:240px"':'')+'><a class="wide-img" href="'+p.src+'" target="_blank" rel="noopener"><img src="'+p.src+'" alt="'+esc(p.t)+'" loading="lazy"></a>'+meta(p)+'</div>';
   if(p.kind==='link') return '<div class="work"><a class="linkcard" href="'+p.href+'" target="_blank" rel="noopener noreferrer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v7H3V3h7"/></svg><span>View on ArtStation</span></a>'+meta(p)+'</div>';
@@ -608,9 +615,10 @@ function pieceHtml(p){
 }
 /* lay pieces out by shape so rows stay even */
 function layout(list){
-  const h=list.filter(p=>p.kind!=='gallery'&&p.o!=='v'&&!p.small), v=list.filter(p=>p.kind==='yt'&&p.o==='v'), g=list.filter(p=>p.kind==='gallery'||p.small);
+  const h=list.filter(p=>p.kind!=='gallery'&&p.o!=='v'&&p.o!=='s'&&!p.small), v=list.filter(p=>p.kind==='yt'&&p.o==='v'), sq=list.filter(p=>p.kind==='yt'&&p.o==='s'), g=list.filter(p=>p.kind==='gallery'||p.small);
   let out='';
   if(h.length) out+='<div class="grid grid-3">'+h.map(pieceHtml).join('')+'</div>';
+  if(sq.length) out+='<div class="grid grid-4">'+sq.map(pieceHtml).join('')+'</div>';
   if(v.length) out+='<div class="grid grid-4">'+v.map(pieceHtml).join('')+'</div>';
   g.forEach(p=>out+=pieceHtml(p));
   return out||'<div class="pf-empty">Nothing here yet — this folder fills as new work is published.</div>';
