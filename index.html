@@ -524,6 +524,11 @@ const COMPANIES=[
   text:['2D animation on the series Wled El Bhar (Sons of the Sea), broadcast for Ramadan 2020, at ACR Advertising from January to June 2020.',
         'More frames and breakdowns on <a href="https://alabelguith.artstation.com/projects/d8O6ZW" target="_blank" rel="noopener" style="color:var(--accent)">ArtStation</a> · series listing on <a href="https://www.imdb.com/title/tt12343910/" target="_blank" rel="noopener" style="color:var(--accent)">IMDb</a>.'],
   facts:[['Role','2D animator'],['Broadcast','Nessma TV, Ramadan 2020']]},
+ {k:'lab',tag:'lab',n:'Lab',lab:true,kind:'Real-time and interactive experiments',site:'lab/world-window/',siteLabel:'Open the live demo',
+  hero:{t:'video',src:'media/world_window.mp4',poster:'media/world_window.jpg'},
+  text:['World Window turns a screen into a window: the view follows your head, so the scene keeps real depth behind the glass instead of sliding like a picture. It runs in the browser with Three.js and off-axis projection, tracks the head through any webcam with MediaPipe, and works with the mouse too. The scene, Sidi Bou Said at dusk, is made entirely in code.',
+        'The clip is recorded live: a phone used as a webcam tracks my head (inset, bottom left) and the view follows. Try it yourself with the live demo link above; the mouse works if you have no camera. Code on GitHub: <a href="https://github.com/alaabelghith/world-window" target="_blank" rel="noopener" style="color:var(--accent)">world-window</a>.'],
+  facts:[['Role','Concept and direction, AI-assisted build'],['Stack','Three.js · WebGL · MediaPipe']]},
  {k:'nda',tag:'nda',n:'Under NDA',kind:'Film, product & skincare work',nda:true,
   hero:null,
   text:['Studio and client work under NDA. The reels below are private, read-only links: please don’t share them.'],
@@ -561,6 +566,9 @@ const PIECES=[
  {kind:'video',src:'media/mt_box_builder.mp4',poster:'media/mt_box_builder.jpg',o:'h',t:'Box builder prototype',s:'Screen recording · 39 s',co:'mt',cats:['website:ad','app:ad'],tech:'hybrid'},
  {kind:'img',src:'img/mt/cutouts_grid.jpg',o:'h',t:'421 single-piece cutouts',s:'AI pipeline output',co:'mt',cats:['product:ad','website:ad'],tech:'ai'},
  {kind:'img',src:'img/mt/before_after_01_short.jpg',o:'h',small:true,t:'Before / after',s:'Catalogue photos (left) → isolated pieces (right)',co:'mt',cats:['product:ad'],tech:'ai'},
+ // Lab
+ {kind:'video',src:'media/world_window.mp4',poster:'media/world_window.jpg',o:'h',t:'World Window — Sidi Bou Said, dusk',s:'Head-tracked 3D window · real-time · recorded live',co:'lab',cats:['dooh:entertainment','events:entertainment'],tech:'cgi'},
+ {kind:'img',src:'img/lab/ww_left_right.jpg',o:'h',t:'Two head positions',s:'Same scene, two moments from the live recording',co:'lab',cats:['dooh:entertainment','events:entertainment'],tech:'cgi'},
  // ACR
  {kind:'yt',id:'vEvTeigkcuI',o:'h',t:'Wled El Bhar — episode 1',s:'2D series animation · Ramadan 2020',co:'acr',cats:['tv:entertainment'],tech:'cgi'},
  // Personal
@@ -642,7 +650,7 @@ function renderHome(){
   document.getElementById('fClients').innerHTML=COMPANIES.map(c=>{
     const ps=main.filter(p=>p.co===c.k);
     const cover=c.k==='cc'?'img/cc/grid_all.jpg':c.k==='mt'?'media/mt_box_builder.jpg':c.nda?'img/nda/studio_teaser.jpg':(ps[0]?coverOf(ps[0]):null);
-    const tab=c.k==='mt'?'Pitch':c.k==='personal'?'Personal':c.nda?'NDA':'Client';
+    const tab=c.k==='mt'?'Pitch':c.lab?'Lab':c.k==='personal'?'Personal':c.nda?'NDA':'Client';
     return folderCard('co/'+c.k,c.n,c.nda?'2 private reels':plural(ps.length,'piece'),cover,tab,{logo:c.logo});
   }).join('');
   const reels=main.filter(p=>p.reel);
