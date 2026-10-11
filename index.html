@@ -195,6 +195,21 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 .pf-hero img,.pf-hero video{width:100%;height:auto;display:block}
 .pf-hero .vid{border:0;border-radius:0}
 .pf-hero--v{max-width:420px}
+/* before / after slider */
+.cmp{position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:8px;border:1px solid var(--line);background:var(--card-2);--pos:50%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.cmp__b{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.cmp__line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15);pointer-events:none}
+.cmp__line i{position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.3);display:grid;place-items:center}
+.cmp__line i::before{content:'\2039\00a0\203A';font-size:20px;line-height:1;color:#0a0a0a;font-weight:600;margin-top:-2px}
+.cmp__tag{position:absolute;top:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(10,10,10,.55);padding:4px 8px;border-radius:4px;pointer-events:none}
+.cmp__tag--b{left:10px}.cmp__tag--a{right:10px}
+.cmp__range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none}
+.cmp__range::-webkit-slider-runnable-track{height:100%}
+.cmp__range::-webkit-slider-thumb{-webkit-appearance:none;width:48px;height:100%}
+.cmp__range::-moz-range-track{height:100%}
+.cmp__range::-moz-range-thumb{width:48px;height:100%;border:0}
+.cmp__range:focus-visible+.cmp__line i{outline:2px solid var(--accent);outline-offset:3px}
 .pf-intro{display:flex;flex-direction:column;gap:12px;max-width:72ch}
 .pf-intro p{color:var(--muted);font-size:16.5px;line-height:1.65}
 .pf-facts{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
@@ -572,6 +587,9 @@ const PIECES=[
  {kind:'img',src:'img/mt/cutouts_grid.jpg',o:'h',t:'421 single-piece cutouts',s:'AI pipeline output',co:'mt',cats:['product:ad','website:ad'],tech:'ai'},
  {kind:'img',src:'img/mt/before_after_01_short.jpg',o:'h',small:true,t:'Before / after',s:'Catalogue photos (left) → isolated pieces (right)',co:'mt',cats:['product:ad'],tech:'ai'},
  // Fashion Mirror
+ {kind:'compare',before:'img/fm/compare/jebba_before.jpg',after:'img/fm/compare/jebba_after.jpg',o:'h',t:'White Tunisian jebba',s:'Drag the line · before / after · rendered on the kiosk',co:'fm',cats:['app:ad','product:ad'],tech:'ai'},
+ {kind:'compare',before:'img/fm/compare/tee_dark_before.jpg',after:'img/fm/compare/tee_dark_after.jpg',o:'h',t:'Black tee',s:'Drag the line · before / after · rendered on the kiosk',co:'fm',cats:['app:ad','product:ad'],tech:'ai'},
+ {kind:'compare',before:'img/fm/compare/tee_print_before.jpg',after:'img/fm/compare/tee_print_after.jpg',o:'h',t:'Printed tee',s:'Drag the line · before / after · rendered on the kiosk',co:'fm',cats:['app:ad','product:ad'],tech:'ai'},
  {kind:'video',src:'media/fashion_mirror.mp4',poster:'media/fashion_mirror.jpg',o:'v',t:'Fashion Mirror — live demo',s:'Pick, size scan, try-on, QR · recorded on the kiosk · 86 s',co:'fm',cats:['app:ad','product:ad','events:ad'],tech:'ai'},
  {kind:'img',src:'img/fm/kiosk_screens.jpg',o:'h',t:'Kiosk screens',s:'Welcome, catalogue, size scan, result · Arabic, French, English',co:'fm',cats:['app:ad'],tech:'ai'},
  {kind:'img',src:'img/fm/size_scan.png',o:'h',t:'Size Scan — open source',s:'Front and side silhouette → chest, waist, hips → size · runs in the browser',co:'fm',cats:['website:ad','app:ad'],tech:'ai'},
@@ -610,7 +628,7 @@ const PIECES=[
 /* ---- helpers ---- */
 const catKeys=p=>[...new Set(p.cats.map(c=>c.split(':')[0]))];
 const hasCat=(p,cat,intent)=>p.cats.some(c=>{const [a,b]=c.split(':');return a===cat&&(!intent||b===intent)});
-const coverOf=p=>p.kind==='yt'?'thumbs/'+p.id+'.jpg':p.kind==='video'?p.poster:p.kind==='img'?p.src:p.kind==='gallery'?p.imgs[0]:null;
+const coverOf=p=>p.kind==='compare'?p.after:p.kind==='yt'?'thumbs/'+p.id+'.jpg':p.kind==='video'?p.poster:p.kind==='img'?p.src:p.kind==='gallery'?p.imgs[0]:null;
 const main=PIECES.filter(p=>!p.test);
 
 function tagsHtml(p){
@@ -623,6 +641,7 @@ function pieceHtml(p){
   if(p.kind==='yt') return '<div class="work"><div class="vid'+(p.o==='v'?' vid--v':p.o==='s'?' vid--s':'')+'" data-yt="'+p.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="thumbs/'+p.id+'.jpg" alt="'+esc(p.t)+'" loading="lazy">'+PLAY+'</div>'+meta(p)+'</div>';
   if(p.kind==='video') return '<div class="work"><video class="wide-img" src="'+p.src+'" poster="'+p.poster+'" muted loop playsinline controls preload="none" style="width:100%;height:auto;background:#fff"></video>'+meta(p)+'</div>';
   if(p.kind==='img') return '<div class="work"'+(p.small?' style="max-width:240px"':'')+'><a class="wide-img" href="'+p.src+'" target="_blank" rel="noopener"><img src="'+p.src+'" alt="'+esc(p.t)+'" loading="lazy"></a>'+meta(p)+'</div>';
+  if(p.kind==='compare') return '<div class="work"><div class="cmp"><img src="'+p.after+'" alt="After: '+esc(p.t)+'" loading="lazy"><img class="cmp__b" src="'+p.before+'" alt="Before" loading="lazy"><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span><input class="cmp__range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Drag to compare before and after"><span class="cmp__line"><i></i></span></div>'+meta(p)+'</div>';
   if(p.kind==='link') return '<div class="work"><a class="linkcard" href="'+p.href+'" target="_blank" rel="noopener noreferrer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v7H3V3h7"/></svg><span>View on ArtStation</span></a>'+meta(p)+'</div>';
   if(p.kind==='gallery'){
     const cls='gallery'+(p.cols===4?' gallery--4':'');const st=p.cols===2?' style="grid-template-columns:repeat(2,1fr)"':'';
@@ -633,8 +652,11 @@ function pieceHtml(p){
 }
 /* lay pieces out by shape so rows stay even */
 function layout(list){
+  const cmp=list.filter(p=>p.kind==='compare');
+  list=list.filter(p=>p.kind!=='compare');
   const h=list.filter(p=>p.kind!=='gallery'&&p.o!=='v'&&p.o!=='s'&&!p.small), v=list.filter(p=>p.kind==='yt'&&p.o==='v'), sq=list.filter(p=>p.kind==='yt'&&p.o==='s'), g=list.filter(p=>p.kind==='gallery'||p.small);
   let out='';
+  if(cmp.length) out+='<div class="grid grid-3">'+cmp.map(pieceHtml).join('')+'</div>';
   if(h.length) out+='<div class="grid grid-3">'+h.map(pieceHtml).join('')+'</div>';
   if(sq.length) out+='<div class="grid grid-4">'+sq.map(pieceHtml).join('')+'</div>';
   if(v.length) out+='<div class="grid grid-4">'+v.map(pieceHtml).join('')+'</div>';
@@ -798,6 +820,7 @@ function playFacade(el){
   el.innerHTML=''; el.appendChild(f);
 }
 document.addEventListener('click',e=>{const v=e.target.closest('.vid[data-yt]'); if(v) playFacade(v);});
+document.addEventListener('input',e=>{const r=e.target.closest('.cmp__range'); if(r) r.parentNode.style.setProperty('--pos',r.value+'%');});
 document.addEventListener('keydown',e=>{
   if(e.key!=='Enter'&&e.key!==' ') return;
   const v=e.target.closest&&e.target.closest('.vid[data-yt]');
