@@ -11,3 +11,5 @@ To add a piece: append to the `WORK` array in the script block and drop a
 `thumbs/<videoId>.jpg` beside it.
 
 Served by GitHub Pages from the default branch.
+
+Licence: the site code is MIT, see [LICENSE](LICENSE). The images, videos and client work are not covered: all rights reserved.
