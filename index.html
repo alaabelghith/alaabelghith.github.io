@@ -501,6 +501,7 @@ const DISC=[
  {k:'hair',g:'char',n:'Hair & fur · grooming',d:'Grooms, guide simulation and fur for characters.'},
  {k:'muscles',g:'char',n:'Muscles & skin',d:'Muscle and skin-sliding simulation for characters and creatures.'},
  {k:'animation',g:'char',n:'Animation',d:'Character, creature and prop animation.'},
+ {k:'motion',g:'look',n:'Motion design',d:'Logo animation, idents, sports packages and broadcast-style motion graphics.'},
  {k:'lookdev',g:'look',n:'Look dev & shading',d:'Materials and shading that hold up in close-up.'},
  {k:'lighting',g:'look',n:'Lighting & rendering',d:'Shot lighting, render passes and AOVs.'},
  {k:'environment',g:'look',n:'Environments',d:'Full environments, set extension and matte-painting support.'},
@@ -549,6 +550,11 @@ const COMPANIES=[
   text:['A Houdini tool that turns research models into one production node. It builds a human body in real units, age in years, height in cm and weight in kg, and solves the body to hit those numbers exactly, from a 6-year-old child to an 80-year-old man. Gender, muscle, breasts, buttocks and a volume-keeping surface smooth shape it further.',
         'Type a sentence and NVIDIA’s Kimodo model animates the body, on my own GPU, inside Houdini. Wire a curve into the node and Kimodo generates the motion on that path: in the film he runs along a curve I drew and finishes with a gymnast’s forward roll. Next: textures, then crowds.'],
   facts:[['Role','Concept and direction, Houdini integration, AI-assisted build'],['Stack','Houdini Python SOP · NVIDIA Kimodo · SOMA and Anny body models · local GPU'],['Status','Free and open source, v1.0 (Apache-2.0)']]},
+ {k:'ft',tag:'football-tunisia',n:'Football Tunisia',kind:'Own project · Houdini HDA + motion · 2026',site:'https://github.com/alaabelghith/houdini-hdas',siteLabel:'HDA free on GitHub',
+  hero:{t:'yt',id:'gds9RC5kdxs'},
+  text:['Every crest of the Tunisian Ligue 1, knitted stitch by stitch: the league, the 16 clubs and the national team. Each logo is traced to vectors and grown as knitted cloth by one Houdini digital asset, then rendered in Karma in a single scripted batch: 18 crests, one node.',
+        'The asset, <em>alaa.knitting_effect</em>, reveals the knit with a radius and remap ramp, builds the stitches and yarn as swept, twisted strands, and can deform the knitted logo with a Vellum cloth. It is free on GitHub under MIT. The roll call is cut to the beat, 12 beats per crest at 180 BPM. Fan-made, not affiliated with the clubs or the Tunisian Football Federation.'],
+  facts:[['Role','Concept, Houdini HDA, rendering, motion design, edit'],['Stack','Houdini 20.5 · VEX · Vellum · Karma · Python batch'],['Asset','alaa.knitting_effect · 4 inputs: geo, reveal, cloth rest, cloth anim'],['Status','HDA free on GitHub (MIT)']]},
  {k:'lai',tag:'live-ai',n:'Live AI',lab:true,kind:'Own tool · real-time AI visuals · 2026',
   hero:{t:'yt',id:'qh6qRlZANz8'},
   text:['A live visual engine for stages and events. A camera films the performer and an open image model restyles every frame in real time: 1280×720 at 60 fps on a single RTX 5070 Ti. Seven style presets switch instantly, and a typed prompt is on screen about 3.5 seconds later, without the video ever stopping.',
@@ -584,6 +590,8 @@ const PIECES=[
  {kind:'yt',id:'4f_W35TixIM',o:'h',t:'Human Generator — the tool in 79 s',s:'Houdini · real-unit bodies + text-to-motion',co:'hg',cats:[],tech:'ai',disc:['hda','pipeline','crowds']},
  {kind:'img',src:'img/hg/lineup.jpg',o:'h',t:'Six bodies, six exact targets',s:'6 to 80 years · 21 to 169 kg · one node each',co:'hg',cats:[],tech:'ai',disc:['hda','pipeline']},
  {kind:'img',src:'img/hg/path_run.jpg',o:'h',t:'Motion generated on a drawn curve',s:'Kimodo path constraint · run, then a forward roll',co:'hg',cats:[],tech:'ai',disc:['pipeline','animation']},
+ {kind:'yt',id:'gds9RC5kdxs',o:'h',t:'Tunisian Ligue 1 — every crest knitted',s:'88 s · 18 crests · Houdini HDA + Karma',co:'ft',cats:['social:entertainment','tv:entertainment'],tech:'cgi',disc:['motion','cloth','hda','animation']},
+ {kind:'yt',id:'14s0GIi05p4',o:'h',t:'Knitting Effect HDA — breakdown',s:'58 s · input, node, reveal mask, stitches, yarn, cloth deform, render',co:'ft',cats:[],tech:'cgi',disc:['hda','cloth','procedural','animation']},
  // 16 Neuvième
  {kind:'yt',id:'YaSeEcUUVQM',o:'h',t:'Film 01 — Votre publicité ici',s:'15 s · LED billboard',co:'16n',cats:['tv:ad'],tech:'ai'},
  {kind:'yt',id:'2X97DB4_P8U',o:'h',t:'Film 02 — Signal to screen',s:'15 s · LED billboard',co:'16n',cats:['tv:ad'],tech:'ai'},
@@ -823,6 +831,7 @@ document.addEventListener('click',e=>{
 renderHome();
 
 const TOOLS=[
+  {n:"Knitting effect",d:"NEW · FREE ON GITHUB",u:"https://github.com/alaabelghith/houdini-hdas"},
   {n:"Greeble effect",d:18,u:"https://belguithala.gumroad.com/l/mfdsj"},
   {n:"Scattered effect",d:10,u:"https://belguithala.gumroad.com/l/mcrha"},
   {n:"Reaction diffusion",d:7,u:"https://belguithala.gumroad.com/l/flszgv"},
@@ -833,7 +842,7 @@ const TOOLS=[
 document.getElementById('toolGrid').innerHTML=TOOLS.map(t=>
   '<a class="tool" href="'+t.u+'" target="_blank" rel="noopener noreferrer">'+
   '<span class="tool__name">'+esc(t.n)+'</span>'+
-  '<span class="tool__dl">HOUDINI HDA · '+t.d+' DOWNLOADS</span></a>').join('');
+  '<span class="tool__dl">HOUDINI HDA · '+(typeof t.d==='number'?t.d+' DOWNLOADS':t.d)+'</span></a>').join('');
 
 /* swap a facade for the real player only when asked */
 function playFacade(el){
