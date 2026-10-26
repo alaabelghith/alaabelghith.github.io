@@ -268,6 +268,7 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
     <nav class="nav__links" id="navlinks">
       <a data-nav="home" href="#home">Home</a>
       <a data-nav="portfolio" href="#portfolio">Portfolio</a>
+      <a data-nav="benchmark" href="#benchmark">Benchmark</a>
       <a data-nav="inquiry" href="#inquiry">Inquiry</a>
       <a data-nav="about" href="#about">About</a>
       <a data-nav="contact" href="#contact">Contact</a>
@@ -392,6 +393,23 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 </div>
 
 
+<!-- ===== BENCHMARK ===== -->
+<div data-page="benchmark">
+  <section class="section--tight"><div class="container">
+    <span class="eyebrow">Benchmark · updated monthly</span>
+    <h1 class="h-page" style="margin:16px 0 24px">Local AI Model Atlas</h1>
+    <p class="lead">I test every open AI model I use on my own workstation (RTX 5070 Ti, 16 GB) on real VFX, 3D and ad jobs: packshots, FOOH, multilingual text, retouching, textures, AI render passes. Speed, size, licence and my verdict for 66 models, filterable like a spreadsheet.</p>
+    <div class="grid grid-3" style="margin-top:36px">
+      <div class="card"><span class="eyebrow">Main image model</span><h3 class="h3" style="margin:10px 0 8px">MOSS</h3><p>Won 11 of the image tests. Apache-2.0, 12 s per image.</p></div>
+      <div class="card"><span class="eyebrow">Editing</span><h3 class="h3" style="margin:10px 0 8px">Qwen 2.1 · FLUX 3 Klein</h3><p>Qwen for exact edits; FLUX 3 for paid work and Arabic text.</p></div>
+      <div class="card"><span class="eyebrow">Render pass · real time</span><h3 class="h3" style="margin:10px 0 8px">FLUX.2 klein 4B</h3><p>Fastest (3 s), most consistent over a Houdini flipbook.</p></div>
+    </div>
+    <div class="btn-row" style="margin-top:32px"><a href="lab/benchmark/index.html" class="btn btn--primary" target="_blank" rel="noopener">Open the full atlas</a><a href="lab/benchmark/index.html#results" class="btn btn--soft" target="_blank" rel="noopener">See all 60 test slides</a></div>
+    <div style="margin-top:32px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff"><iframe src="lab/benchmark/index.html?embed" title="Local AI Model Atlas" loading="lazy" style="width:100%;height:85vh;min-height:560px;border:0;display:block"></iframe></div>
+    <p class="muted" style="font-size:14px;margin-top:14px">Round 1 (Oct 2026): six image models, 60+ tests. Next: video models (LTX-2.5, MiniMax H3), then 3D, voice and audio. Licences are my reading of each model card, not legal advice.</p>
+  </div></section>
+</div>
+
 <!-- ===== ABOUT ===== -->
 <div data-page="about">
   <section class="section--tight"><div class="container">
@@ -452,7 +470,7 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 
 <script>
 /* ---------- page router ---------- */
-const PAGES=['home','portfolio','inquiry','about','contact'];
+const PAGES=['home','portfolio','benchmark','inquiry','about','contact'];
 function go(hash){
   const parts=(hash||'').split('/'); let id=parts[0];
   if(!PAGES.includes(id)) id='home';
