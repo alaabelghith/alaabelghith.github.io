@@ -513,6 +513,7 @@ const CATS=[
  {k:'product',n:'Product',intents:true},
  {k:'events',n:'Live events',intents:true},
  {k:'dooh',n:'DOOH / FOOH',intents:true},
+ {k:'graphic',n:'Graphic design',intents:true},
  {k:'architecture',n:'Architecture'},
  {k:'urban',n:'Urban'},
  {k:'industrial',n:'Industrial'}
@@ -571,6 +572,11 @@ const COMPANIES=[
   text:['An unsolicited concept for Maison Turki, a Tunisian pastry house. An AI pipeline isolated 421 individual pastries from the shop’s catalogue photos, and an interactive prototype lets customers fill any gift box piece by piece before ordering.',
         'Code on GitHub: <a href="https://github.com/alaabelghith/compose-ta-box" target="_blank" rel="noopener" style="color:var(--accent)">compose-ta-box</a>.'],
   facts:[['Role','Concept, AI cutout pipeline, prototype direction'],['Status','Pitch, not commissioned']]},
+ {k:'lp',tag:'la-palmera',n:'La Palmera',pitch:true,kind:'Creative test · pitch · not commissioned · 2026',
+  hero:{t:'video',src:'media/lp_teaser_9x16.mp4',poster:'media/lp_teaser_9x16.jpg',v:true},
+  text:['A launch campaign written as a creative test for La Palmera, a new nightclub in Saint-Jean-d’Angély, France, opening on 5 December. The club has three rooms, so the idea is one night, three worlds: the neon palm of the logo is the hero, and each room gets its own colour world taken from the club’s palettes.',
+        'Delivered as a launch poster, an Instagram story, three room cards and a 15-second teaser in vertical and 4:5, with a publishing plan for the weeks before opening. Backgrounds, video clips and music made with open AI models on my own workstation; layout, type and motion finished by hand. The logo belongs to the club; shown here as a pitch, not a commissioned job.'],
+  facts:[['Role','Concept, art direction, graphic design, motion, edit'],['Deliverables','Poster 4:5 · story 9:16 · 3 room cards · 15 s teaser (9:16, 4:5)'],['Stack','Open image, video and music models on a local GPU · Python layout · ffmpeg'],['Status','Pitch, not commissioned']]},
  {k:'acr',tag:'acr',n:'ACR Advertising',logo:'img/logos/nessma.jpg',kind:'Studio · 2D series · broadcast on Nessma · 2020',site:'https://acr-advertising.com/',siteLabel:'acr-advertising.com',
   hero:{t:'yt',id:'vEvTeigkcuI'},
   text:['2D animation on the series Wled El Bhar (Sons of the Sea), broadcast for Ramadan 2020, at ACR Advertising from January to June 2020.',
@@ -668,6 +674,11 @@ const PIECES=[
  // Lab
  {kind:'video',src:'media/world_window.mp4',poster:'media/world_window.jpg',o:'h',t:'World Window — Sidi Bou Said, dusk',s:'Head-tracked 3D window · real-time · recorded live',co:'lab',cats:['dooh:entertainment','events:entertainment'],tech:'cgi'},
  {kind:'img',src:'img/lab/ww_left_right.jpg',o:'h',t:'Two head positions',s:'Same scene, two moments from the live recording',co:'lab',cats:['dooh:entertainment','events:entertainment'],tech:'cgi'},
+ // La Palmera
+ {kind:'gallery',t:'Launch poster and the three rooms',s:'Poster 4:5 · Salle Principale, Salle Soleil, Salle 80/90',co:'lp',cats:['graphic:ad','social:ad','events:ad'],tech:'ai',cols:4,contain:true,
+  imgs:['poster_4x5','salle_principale_4x5','salle_soleil_4x5','salle_retro_4x5'].map(f=>'img/lp/'+f+'.jpg')},
+ {kind:'video',src:'media/lp_teaser_4x5.mp4',poster:'media/lp_teaser_4x5.jpg',o:'p',t:'Launch teaser',s:'15 s · 4:5 feed cut · AI clips + hand-made type and motion',co:'lp',cats:['social:ad','events:ad','graphic:ad'],tech:'ai',disc:['motion']},
+ {kind:'img',src:'img/lp/story_9x16.jpg',o:'p',t:'Instagram story',s:'9:16 · launch announcement',co:'lp',cats:['graphic:ad','social:ad'],tech:'ai'},
  // ACR
  {kind:'yt',id:'vEvTeigkcuI',o:'h',t:'Wled El Bhar — episode 1',s:'2D series animation · Ramadan 2020',co:'acr',cats:['tv:entertainment'],tech:'cgi'},
  // Personal
@@ -753,7 +764,7 @@ function renderHome(){
   document.getElementById('fClients').innerHTML=COMPANIES.map(c=>{
     const ps=main.filter(p=>p.co===c.k);
     const cover=c.k==='cc'?'img/cc/grid_all.jpg':c.k==='mt'?'media/mt_box_builder.jpg':c.nda?'img/nda/studio_teaser.jpg':(ps[0]?coverOf(ps[0]):null);
-    const tab=c.k==='mt'?'Pitch':c.lab?'Lab':c.k==='personal'?'Personal':c.nda?'NDA':'Client';
+    const tab=(c.k==='mt'||c.pitch)?'Pitch':c.lab?'Lab':c.k==='personal'?'Personal':c.nda?'NDA':'Client';
     return folderCard('co/'+c.k,c.n,c.nda?'2 private reels':plural(ps.length,'piece'),cover,tab,{logo:c.logo});
   }).join('');
   const reels=main.filter(p=>p.reel);
@@ -780,7 +791,7 @@ function viewCompany(k){
   const ps=main.filter(p=>p.co===k), ts=PIECES.filter(p=>p.test&&p.co===k);
   const logos=[c.logo,c.logo2].filter(Boolean).map(l=>'<img src="'+l+'" alt="" class="co-logo">').join('');
   const site=c.site?'<a class="co-site" href="'+c.site+'" target="_blank" rel="noopener">'+esc(c.siteLabel||c.site)+' ↗</a>':'';
-  let html=back()+'<div class="co-head" style="margin:18px 0 28px"><div class="pf-intro"><span class="badge'+(k==='mt'?' badge--pitch':'')+'">'+esc(c.kind)+'</span><h1 class="h2">'+esc(c.n)+'</h1>'+site+'</div>'+(logos?'<div class="co-logos">'+logos+'</div>':'')+'</div>';
+  let html=back()+'<div class="co-head" style="margin:18px 0 28px"><div class="pf-intro"><span class="badge'+((k==='mt'||c.pitch)?' badge--pitch':'')+'">'+esc(c.kind)+'</span><h1 class="h2">'+esc(c.n)+'</h1>'+site+'</div>'+(logos?'<div class="co-logos">'+logos+'</div>':'')+'</div>';
   html+=heroHtml(c.hero);
   html+='<div class="pf-intro" style="margin:28px 0 36px">'+c.text.map(t=>'<p>'+t+'</p>').join('')+(c.facts.length?'<div class="pf-facts">'+c.facts.map(f=>'<span><b>'+f[0]+':</b> '+f[1]+'</span>').join('')+'</div>':'')+'</div>';
   if(c.nda) html+='<div class="grid grid-2">'+NDA_ITEMS.map(n=>'<div class="work"><a class="wide-img nda-teaser" href="'+n.href+'" target="_blank" rel="noopener"><img src="'+n.img+'" alt="" loading="lazy"><span class="nda-teaser__btn">Watch the reel · read-only ↗</span></a><div class="work__meta"><span class="work__title">'+esc(n.b)+'</span><span class="work__sub">'+esc(n.p)+'</span></div></div>').join('')+'</div>';
