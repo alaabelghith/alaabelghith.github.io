@@ -338,24 +338,53 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
   </div></section>
 </div>
 
-<!-- ===== INQUIRY ===== -->
+<script id="inquiryPricing" type="application/json">{"version":"tn-2026-11-14-v1","currency":"TND","sources":{"talento":{"label":"Talento · edits of supplied footage","text":"80–300 DT for one short social edit","url":"https://www.talento.tn/recruter/montage-video-tunisie"},"kanaevo":{"label":"Kanaevo · short AI ads","text":"From 350 DT for one ad up to 15 seconds, or 890 DT for three under shared direction","url":"https://kanaevo.com/creation-video-ia-tunisie/"},"fiverrMati":{"label":"Fiverr · AI UGC order from a Tunisian buyer","text":"The buyer's reviewed order shows $50 (about 152 DT). Video length and included revisions are unknown.","url":"https://www.fiverr.com/ai_mati"},"fiverrOmar":{"label":"Fiverr · another AI UGC order from a Tunisian buyer","text":"The buyer's reviewed order shows $50–100 (about 152–303 DT). Video length and included revisions are unknown.","url":"https://www.fiverr.com/omarmalik121/create-hyper-realistic-ai-ugc-video-ads-for-tiktok-facebook-and-instgram"},"motion":{"label":"Motion Adverts · social graphics","text":"50 DT for one graphic social post","url":"https://motionadverts.tn/simulateur-de-devis-tunisie-quote-simulator-tunis/"},"vexace":{"label":"VexAce Studio · architecture images","text":"100–300 DT per rendered view, depending on scope","url":"https://vexacestudio.com/pricing/"},"artVisions":{"label":"Art Visions · Tunisian product CGI offer","text":"Product CGI starts at 220 DT. Animation is a separately quoted option.","url":"https://paratunisie.com/services/design-3d-tunisie"},"reddit3D":{"label":"Reddit Tunisia · freelancer’s reported 3D pricing","text":"One freelancer cites $150 or more (about 455 DT) for a model or simple animation, depending on the brief. This is a self-reported starting point.","url":"https://www.reddit.com/r/Tunisia/comments/1izb4th"},"fiverr3D":{"label":"Fiverr · reviewed 3D social teaser by a Tunisia-based artist","text":"A US buyer’s order for a storyboard-led 3D teaser shows CHF 400–600 (about 1,440–2,165 DT). Length and exact scope are unknown.","url":"https://www.fiverr.com/amirmallek"}},"rates":{"edit15":{"first":[95,170],"repeat":[70,130],"scope":"Your footage is ready to edit. One short cut, basic captions and one output format.","sources":["talento"]},"edit30":{"first":[130,230],"repeat":[95,170],"scope":"Your footage is ready to edit. One short cut, basic captions and one output format.","sources":["talento"]},"aiScript15":{"first":[170,230],"repeat":[140,185],"scope":"You supply the final script and brand assets. One simple AI-assisted clip, one format and basic sound. Original creative direction and complex scenes are quoted separately.","sources":["fiverrMati","fiverrOmar"]},"ai15":{"first":[260,340],"repeat":[180,240],"scope":"One simple creative direction, AI-assisted production, one output format and basic sound.","sources":["kanaevo"]},"ai30":{"first":[340,460],"repeat":[240,340],"scope":"One simple creative direction, AI-assisted production, one output format and basic sound.","sources":[]},"hybrid15":{"first":[480,750],"repeat":[320,520],"scope":"One simple clip, up to 15 seconds. You supply a usable product model. Includes a 3D product with an AI-assisted setting, one camera move and one format. Custom effects are quoted separately.","sources":[]},"socialImage":{"first":[55,80],"repeat":[30,50],"scope":"One image with supplied text, brand assets and a straightforward layout.","sources":["motion"]},"socialSlides":{"first":[100,150],"repeat":[75,115],"scope":"Up to five related images in one swipeable post. Text is supplied. Custom illustration is quoted separately.","sources":[]},"webImage":{"first":[90,150],"repeat":[55,100],"scope":"One simple graphic with supplied assets. Website or app design and development are quoted separately.","sources":[]},"archView":{"first":[100,180],"repeat":[70,130],"scope":"A usable furnished/textured 3D model is supplied. Related views use the same scene. Model construction, redesign and cleanup are quoted separately.","sources":["vexace"]},"cgi15":{"first":[650,950],"repeat":[420,650],"scope":"One simple product animation, up to 15 seconds, using a supplied render-ready model, one scene, one camera move and one format. Modeling, rigging and simulations are quoted separately.","sources":["reddit3D","fiverr3D"]},"cgiProductImage":{"first":[180,280],"repeat":[90,150],"scope":"One studio-style product image from a supplied render-ready model. Related angles reuse the same scene. Modeling and advanced materials are quoted separately.","sources":["artVisions"]},"hybridProductImage":{"first":[140,220],"repeat":[75,120],"scope":"One image with a supplied 3D product model and an AI-assisted background. Related images reuse the same product and setup. New modeling and complex compositing are quoted separately.","sources":[]}}}</script>
+<style>
+  .inq-item { padding: 24px; margin-bottom: 16px; }
+  .inq-item legend { margin-left: 4px; padding: 0 8px; font-weight: 600; }
+  .inq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
+  .inq-grid .field { margin: 0; }
+  .inq-grid :is(select, input[type=number], textarea, input[type=text]) { box-sizing: border-box; width: 100%; padding: 10px; font: inherit; color: inherit; background: var(--bg, #fff); border: 1px solid var(--line, #aaa); border-radius: 6px; }
+  .inq-wrap .field label { display: block; margin-bottom: 5px; }
+  .inq-wide { grid-column: 1 / -1; }
+  .inq-wrap details { padding: 10px 0; }
+  .inq-wrap details summary { cursor: pointer; }
+  .inq-wrap [hidden] { display: none !important; }
+  .inq-wrap p, .inq-wrap ol, .inq-wrap ul { margin: 0 0 12px; }
+  .inq-scope { font-size: .9em; }
+  .inq-wrap a.inq-source { text-decoration: underline; }
+  @media (max-width: 600px) { .inq-grid { grid-template-columns: 1fr; } .inq-item { padding: 16px; } }
+</style>
 <div data-page="inquiry">
-  <section class="section--tight"><div class="container">
+  <section class="section--tight inq-wrap"><div class="container">
     <h1 class="h-page">Visual Inquiry</h1>
-    <p class="lead" style="margin-top:18px">Six quick choices turn into a brief you can send, and show you related work.</p>
-    <div style="margin-top:56px"><h2 class="h3" style="margin-bottom:20px">1. Where will it live?</h2><div class="grid grid-3" id="q1"></div></div>
-    <div id="qs2" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px">2. What is it for?</h2><div class="grid grid-3" id="q2"></div></div>
-    <div id="qs3" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px"><span class="qn"></span>. Output</h2><div class="grid grid-3" id="q3"></div></div>
-    <div id="qs4" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px"><span class="qn"></span>. Quantity</h2><div class="card card--pad-lg"><div class="field" style="margin:0"><label for="qty">How many pieces?</label><input id="qty" type="number" min="1" placeholder="e.g., 3"></div></div></div>
-    <div id="qs5" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px"><span class="qn"></span>. Video length</h2><div class="grid grid-3" id="q5"></div></div>
-    <div id="qs6" style="margin-top:48px" hidden><h2 class="h3" style="margin-bottom:20px"><span class="qn"></span>. Production approach</h2><div class="grid grid-2" id="q6"></div></div>
-    <div id="qs7" style="margin-top:48px" hidden>
-      <h2 class="h3" style="margin-bottom:20px">Your brief</h2>
-      <div class="result brief"><div class="result__label">Based on your choices:</div><div class="brief__line" id="briefLine">—</div>
-        <div class="brief__btns"><button class="btn btn--primary" type="button" id="briefSend">Send this brief</button><a class="btn btn--outline" id="briefWork" href="#portfolio">See related work</a></div>
-        <p class="muted" style="font-size:13.5px" id="briefNote">Opens your email app with the brief filled in. Or write to belguithalaa@gmail.com.</p></div>
-    </div>
+    <p class="lead" style="margin:18px 0 36px">Tell Alaa what you want to show, where, and how many images or videos you need. Add another item for mixed work and describe unusual ideas in your own words.</p>
+    <form id="inquiryForm">
+      <div id="inquiryItems"></div>
+      <button type="button" class="btn btn--outline" id="inquiryAdd">Add another item</button>
+      <div class="inq-grid" style="margin-top:32px">
+        <div class="field inq-wide"><label for="inquiryNotes">Tell me about the project (optional)</label><textarea id="inquiryNotes" rows="4" maxlength="950" placeholder="What should the audience see? Mention your deadline, any reference links, and files you already have."></textarea></div>
+        <div class="field"><label for="inquiryBudget">Target budget in DT (optional)</label><input type="number" min="1" max="9999999" step="1" id="inquiryBudget"></div>
+        <label class="field" style="align-self:end"><input type="checkbox" id="inquiryFlexible"> Discuss the price or a smaller scope</label>
+      </div>
+      <div class="result brief" style="margin-top:32px">
+        <h3 class="h3" style="margin-bottom:12px">Your brief</h3>
+        <p id="inquiryTotal" role="status" aria-live="polite"></p>
+        <ol id="inquirySummary"></ol>
+        <details id="inquiryRefs" hidden><summary>Examples of prices for similar work</summary>
+          <p>These are published offers or individual reviewed orders. The estimate is Anything Visual’s planning range. Each scope can differ.</p><ul id="inquirySourceList"></ul>
+        </details>
+        <p class="inq-scope">These are Anything Visual planning ranges in DT before applicable taxes, not final offers. Alaa confirms scope, timing and the agreed price in a written quote.</p>
+        <div class="brief__btns">
+          <button class="btn btn--primary" type="submit">Open email draft</button>
+          <button class="btn btn--outline" type="button" id="inquiryCopy">Copy brief</button>
+          <a class="btn btn--outline" id="inquiryWork" href="#portfolio">See related work</a>
+        </div>
+        <p class="muted inq-scope" id="inquiryStatus" aria-live="polite" style="margin-top:12px">You can also email <a href="mailto:belguithalaa@gmail.com">belguithalaa@gmail.com</a>.</p>
+      </div>
+    </form>
   </div></section>
+
 
   <section class="section--tight"><div class="container">
     <div style="border-top:1px solid var(--line);padding-top:clamp(40px,6vw,64px)">
@@ -922,63 +951,234 @@ document.addEventListener('keydown',e=>{
  setTimeout(out,4000);
 })();
 
-/* ---------- inquiry configurator (same taxonomy as the portfolio) ---------- */
-const Q={cat:null,intent:null,output:null,qty:null,dur:null,tech:null};
-const Q_CATS=[
- {k:'social',n:'Social media',s:'Feeds, reels, stories, ads'},
- {k:'website',n:'Website',s:'Hero films, product pages, e-commerce'},
- {k:'app',n:'App',s:'In-app visuals, store assets, UI motion'},
- {k:'tv',n:'TV',s:'Commercials, idents, LED and DOOH screens'},
- {k:'product',n:'Product',s:'Packshots, product films, launches'},
- {k:'events',n:'Live events',s:'Stage screens, openers, live visuals'},
- {k:'dooh',n:'DOOH / FOOH',s:'LED billboards, totems, fake out-of-home'},
- {k:'architecture',n:'Architecture',s:'Exteriors, interiors, walkthroughs'},
- {k:'urban',n:'Urban',s:'Masterplans, streets, city scale'},
- {k:'industrial',n:'Industrial',s:'Machines, exploded views, technical'}
-];
-const Q_INTENTS=[{k:'branding',n:'Branding',s:'Logo animation, identity, brand film'},{k:'ad',n:'Ad',s:'Product ad, campaign, promo'},{k:'entertainment',n:'Entertainment',s:'Short film, story, spectacle'}];
-const Q_OUT=[{k:'Images',n:'Images',s:'Stills, key visuals, renders'},{k:'Videos',n:'Videos',s:'Films, loops, animations'},{k:'Both',n:'Both',s:'A campaign set'}];
-const Q_DUR=['0–15 s','15–30 s','30–60 s','1–3 min','3–5 min','5+ min'];
-const Q_TECH=[{k:'cgi',n:'CGI / 3D',s:'Full 3D and simulation. Maximum control and precision.'},{k:'hybrid',n:'Hybrid',s:'3D hero elements with AI for environments and variations.'},{k:'ai',n:'AI',s:'Fastest iteration. Ideal for concepts, social and volume.'},{k:'unsure',n:'Not sure',s:'I’ll recommend the right approach.'}];
-const hasIntents=k=>['social','website','app','tv','product','events','dooh'].includes(k);
+/* Pricing catalog is embedded as JSON by the local preview builder. */
+{
+  const pricing = JSON.parse(document.getElementById('inquiryPricing').textContent);
+  const form = document.getElementById('inquiryForm');
+  const items = document.getElementById('inquiryItems');
+  const add = document.getElementById('inquiryAdd');
+  const total = document.getElementById('inquiryTotal');
+  const summary = document.getElementById('inquirySummary');
+  const refs = document.getElementById('inquiryRefs');
+  const refList = document.getElementById('inquirySourceList');
+  const work = document.getElementById('inquiryWork');
+  const status = document.getElementById('inquiryStatus');
+  const email = 'belguithalaa@gmail.com';
+  const number = new Intl.NumberFormat('en');
+  const cost = ([low, high]) => `${number.format(low)}–${number.format(high)} DT`;
+  const categoryLabel = category => category.k === 'dooh' ? 'Outdoor screen' : category.n;
+  let nextId = 0;
 
-function qOpt(o){return '<div class="opt" data-v="'+o.k+'" tabindex="0" role="button"><span class="opt__check">✓</span><span class="opt__title">'+o.n+'</span>'+(o.s?'<span class="opt__sub">'+o.s+'</span>':'')+'</div>'}
-function qBind(id,cb){const c=document.getElementById(id);c.querySelectorAll('.opt').forEach(el=>{const f=()=>{c.querySelectorAll('.opt').forEach(o=>o.classList.remove('is-selected'));el.classList.add('is-selected');cb(el.dataset.v)};el.addEventListener('click',f);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}})})}
-function qShow(ids){['qs2','qs3','qs4','qs5','qs6','qs7'].forEach(i=>document.getElementById(i).hidden=!ids.includes(i));
-  let n=1;['qs2','qs3','qs4','qs5','qs6'].forEach(i=>{const el=document.getElementById(i);if(!el.hidden){n++;const s=el.querySelector('.qn');if(s)s.textContent=n}})}
-function qVisible(){const v=['qs3'];if(hasIntents(Q.cat))v.unshift('qs2');
-  if(Q.output){v.push('qs4')} if(Q.output&&Q.qty){if(Q.output!=='Images')v.push('qs5'); if(Q.output==='Images'||Q.dur)v.push('qs6')}
-  if(Q.tech&&v.includes('qs6'))v.push('qs7'); return v}
-function qRefresh(){
-  if(hasIntents(Q.cat)&&!Q.intent){qShow(['qs2']);return}
-  qShow(qVisible()); if(!document.getElementById('qs7').hidden) qBrief();
-}
-document.getElementById('q1').innerHTML=Q_CATS.map(qOpt).join('');
-qBind('q1',v=>{Q.cat=v;Q.intent=null;
-  document.getElementById('q2').innerHTML=Q_INTENTS.map(qOpt).join('');qBind('q2',x=>{Q.intent=x;qRefresh()});qRefresh()});
-document.getElementById('q3').innerHTML=Q_OUT.map(qOpt).join('');
-qBind('q3',v=>{Q.output=v;qRefresh()});
-document.getElementById('qty').addEventListener('input',e=>{Q.qty=e.target.value||null;qRefresh()});
-document.getElementById('q5').innerHTML=Q_DUR.map(d=>qOpt({k:d,n:d})).join('');
-qBind('q5',v=>{Q.dur=v;qRefresh()});
-document.getElementById('q6').innerHTML=Q_TECH.map(qOpt).join('');
-qBind('q6',v=>{Q.tech=v;qRefresh()});
+  function control(id, name, label, markup, classes = '') {
+    return `<div class="field ${classes}"><label for="${id}-${name}">${label}</label>${markup.replace('@', `id="${id}-${name}" name="${name}"`)}</div>`;
+  }
 
-function qBrief(){
-  const c=Q_CATS.find(x=>x.k===Q.cat), i=Q_INTENTS.find(x=>x.k===Q.intent), t=Q_TECH.find(x=>x.k===Q.tech);
-  const parts=[c.n+(i?' · '+i.n:''), Q.qty+' '+(Q.output==='Both'?'images + videos':Q.output.toLowerCase())+(Q.output!=='Images'&&Q.dur?' · '+Q.dur:''), t.n];
-  const line=parts.join(' — ');
-  document.getElementById('briefLine').textContent=line;
-  const n=(typeof main!=='undefined')?main.filter(p=>hasCat(p,Q.cat,Q.intent)).length:0;
-  const w=document.getElementById('briefWork');
-  w.textContent=n?'See related work ('+n+')':'See all work';
-  w.onclick=e=>{e.preventDefault();pfState.cat=n?Q.cat:null;pfState.intent=n?Q.intent:null;pfState.co=null;pfState.tech=null;location.hash='portfolio/all'};
-  document.getElementById('briefSend').onclick=()=>{
-    const body='Hi Alaa,\n\nHere is my project brief:\n'+line+'\n\nAbout the project:\n\n—\nSent from the Visual Inquiry on alaabelghith.github.io';
-    window.location.href='mailto:belguithalaa@gmail.com?subject='+encodeURIComponent('Project brief — '+c.n+(i?' '+i.n:''))+'&body='+encodeURIComponent(body);
-    document.getElementById('briefNote').textContent='Opening your email app… if nothing happens, write to belguithalaa@gmail.com with the brief above.';
-  };
+  function option(value, label) {
+    return `<option value="${esc(value)}">${esc(label)}</option>`;
+  }
+
+  function addLine() {
+    if (items.children.length >= 12) return;
+    const id = `inq-${++nextId}`;
+    const categories = option('', 'Choose a category') + CATS.map(c => option(c.k, categoryLabel(c))).join('') + option('other', 'Other / film');
+    const line = document.createElement('fieldset');
+    line.className = 'card inq-item';
+    line.innerHTML = `<legend></legend><div class="inq-grid">
+      ${control(id, 'category', 'Where will it appear?', `<select @ required>${categories}</select>`, 'inq-wide')}
+      ${control(id, 'output', 'What do you need?', '<select @ required><option value="">Choose images or videos</option><option value="image">Images</option><option value="video">Videos</option><option value="custom">Something else</option></select>')}
+      ${control(id, 'quantity', 'How many?', '<input @ type="number" min="1" max="999" step="1" value="1" required>')}
+      <div class="inq-grid inq-wide" data-duration hidden>
+        ${control(id, 'duration', 'Length of each video', '<input @ type="number" min="1" max="9999" step="1" placeholder="e.g. 15">')}
+        ${control(id, 'unit', 'Unit', '<select @><option value="second">Seconds</option><option value="minute">Minutes</option></select>')}
+      </div>
+      <details class="inq-wide"><summary>More details (optional)</summary><div class="inq-grid" style="margin-top:12px">
+        ${control(id, 'assets', 'What can you supply?', '<select @><option value="unknown">Not sure yet</option><option value="footage">Footage ready to edit</option><option value="script">Final script and brand assets</option><option value="model">Ready-to-use 3D model</option><option value="brand">Text and brand assets</option></select>')}
+        ${control(id, 'method', 'Production preference', '<select @><option value="auto">Recommend an approach</option><option value="ai">AI-assisted</option><option value="hybrid">AI + 3D</option><option value="cgi">Full 3D</option></select>')}
+        <label class="inq-wide"><input type="checkbox" name="shared"> These pieces share the same look and assets</label>
+        <label class="inq-wide" data-slides hidden><input type="checkbox" name="slides"> A swipeable post with up to five images</label>
+        ${control(id, 'description', 'Anything specific for this item?', '<input @ type="text" maxlength="160" placeholder="e.g. five short animations from the same logo">', 'inq-wide')}
+      </div></details>
+      <div class="inq-wide"><button type="button" class="btn btn--outline" data-remove>Remove item</button></div>
+    </div>`;
+    line.querySelector('[data-remove]').addEventListener('click', () => {
+      line.remove();
+      refresh();
+    });
+    items.append(line);
+    refresh();
+    if (nextId > 1) line.querySelector('select').focus();
+  }
+
+  function readLine(line) {
+    const get = name => line.querySelector(`[name=${name}]`);
+    const value = name => get(name).value;
+    const category = value('category');
+    const output = value('output');
+    const video = output === 'video';
+    const duration = Number(value('duration'));
+    const unit = value('unit');
+    const quantity = Number(value('quantity'));
+    const canSwipe = category === 'social' && output === 'image';
+    line.querySelector('[data-duration]').hidden = !video;
+    get('duration').disabled = !video;
+    get('duration').required = video;
+    line.querySelector('[data-slides]').hidden = !canSwipe;
+    return {
+      category, output, quantity, duration: video ? duration : 0, unit,
+      seconds: video ? duration * (unit === 'minute' ? 60 : 1) : 0,
+      method: value('method'), assets: value('assets'), shared: get('shared').checked,
+      swipe: canSwipe && get('slides').checked, description: value('description').trim(),
+      valid: Boolean(category && output && get('quantity').validity.valid && get('duration').validity.valid)
+    };
+  }
+
+  function selectRate(item) {
+    const {category, output, quantity, seconds, method, assets, swipe} = item;
+    if (quantity > 12 || output === 'custom') return null;
+    const productWork = ['social', 'website', 'product'].includes(category) && assets === 'model';
+    if (output === 'image') {
+      if (category === 'architecture' && assets === 'model' && ['auto', 'cgi'].includes(method)) return 'archView';
+      if (productWork && !swipe && method === 'hybrid') return 'hybridProductImage';
+      if (productWork && !swipe && (method === 'cgi' || (category === 'product' && method === 'auto'))) return 'cgiProductImage';
+      if (!['auto', 'ai'].includes(method)) return null;
+      if (category === 'social' && ['unknown', 'brand'].includes(assets)) return swipe ? 'socialSlides' : 'socialImage';
+      if (['website', 'app'].includes(category) && ['unknown', 'brand'].includes(assets)) return 'webImage';
+    }
+    if (output !== 'video') return null;
+    if (productWork && seconds <= 15 && method === 'hybrid') return 'hybrid15';
+    if (productWork && seconds <= 15 && (method === 'cgi' || (category === 'product' && method === 'auto'))) return 'cgi15';
+    if (category !== 'social' || seconds > 30) return null;
+    if (assets === 'footage' && method === 'auto') return seconds <= 15 ? 'edit15' : 'edit30';
+    if (['auto', 'ai'].includes(method)) {
+      if (assets === 'script' && seconds <= 15) return 'aiScript15';
+      if (['unknown', 'brand', 'script'].includes(assets)) return seconds <= 15 ? 'ai15' : 'ai30';
+    }
+    return null;
+  }
+
+  function estimate(item) {
+    const rule = pricing.rates[selectRate(item)];
+    if (!rule) return null;
+    return {
+      amount: rule.first.map((price, side) => price + (item.quantity - 1) * (item.shared ? rule.repeat[side] : price)),
+      scope: rule.scope, sources: rule.sources
+    };
+  }
+
+  function describe(item) {
+    const category = CATS.find(c => c.k === item.category);
+    const chosenCategory = category ? categoryLabel(category) : 'Other / film';
+    const type = item.swipe ? 'swipeable post' : {image: 'image', video: 'video', custom: 'item'}[item.output];
+    const length = item.duration ? ` · ${item.duration} ${item.unit}${item.duration === 1 ? '' : 's'} each` : '';
+    const preference = {ai: 'AI-assisted', hybrid: 'AI + 3D', cgi: 'Full 3D'}[item.method];
+    const assets = {footage: 'footage ready to edit', script: 'final script and brand assets supplied', model: 'ready-to-use 3D model', brand: 'text and brand assets supplied'}[item.assets];
+    const extra = [preference, assets, item.shared ? 'same look and assets' : '', item.description].filter(Boolean);
+    return `${chosenCategory} · ${item.quantity} ${type}${item.quantity === 1 ? '' : 's'}${length}${extra.length ? ' · ' + extra.join(' · ') : ''}`;
+  }
+
+  function refresh() {
+    const lines = [...items.children];
+    const completed = [];
+    lines.forEach((line, i) => {
+      line.querySelector('legend').textContent = `Item ${i + 1}`;
+      line.querySelector('[data-remove]').hidden = lines.length < 2;
+      const item = readLine(line);
+      if (item.valid) completed.push({item, detail: describe(item), estimate: estimate(item)});
+    });
+    add.disabled = lines.length >= 12;
+    const priced = completed.filter(c => c.estimate);
+    const partial = completed.length !== lines.length || priced.length !== lines.length;
+    const amount = priced.reduce(([low, high], c) => [low + c.estimate.amount[0], high + c.estimate.amount[1]], [0, 0]);
+    total.textContent = priced.length
+      ? `${partial ? 'Estimated items subtotal' : 'Anything Visual planning estimate'} · ${cost(amount)}`
+      : completed.length ? 'These items need a custom quote.' : 'Complete an item to see an estimate.';
+    summary.replaceChildren(...completed.map(c => {
+      const li = document.createElement('li');
+      li.textContent = `${c.detail} · ${c.estimate ? cost(c.estimate.amount) : 'Custom quote'}`;
+      if (c.estimate) {
+        const scope = document.createElement('small');
+        scope.style.display = 'block';
+        scope.textContent = c.estimate.scope;
+        li.append(scope);
+      }
+      return li;
+    }));
+    const sourceIds = [...new Set(priced.flatMap(c => c.estimate.sources))];
+    refs.hidden = sourceIds.length === 0;
+    refList.replaceChildren(...sourceIds.map(key => {
+      const source = pricing.sources[key];
+      const li = document.createElement('li');
+      const link = document.createElement('a');
+      link.className = 'inq-source';
+      link.href = source.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = source.label;
+      li.append(link, ` · ${source.text}`);
+      return li;
+    }));
+    const firstWithWork = completed.find(c => main.some(p => hasCat(p, c.item.category)));
+    work.textContent = firstWithWork ? 'See related work' : 'See all work';
+    work.onclick = event => {
+      event.preventDefault();
+      pfState.cat = firstWithWork?.item.category ?? null;
+      pfState.intent = null;
+      pfState.co = null;
+      pfState.tech = null;
+      location.hash = 'portfolio/all';
+    };
+    return completed;
+  }
+
+  function briefText() {
+    const completed = refresh();
+    const notes = document.getElementById('inquiryNotes').value.trim();
+    const budget = document.getElementById('inquiryBudget').value;
+    const flexible = document.getElementById('inquiryFlexible').checked;
+    return [
+      'Hi Alaa,', '', 'Here is my project brief:',
+      ...completed.map((c, i) => `${i + 1}. ${c.detail} · ${c.estimate ? cost(c.estimate.amount) : 'Custom quote'}`),
+      '', total.textContent, `Inquiry catalog: ${pricing.version} · indicative range, before applicable taxes.`,
+      budget ? `Target budget: ${budget} DT` : '',
+      flexible ? 'I would like to discuss the price or a smaller scope.' : '',
+      notes ? `Project notes: ${notes}` : ''
+    ].filter((line, i) => line || i === 1 || i === completed.length + 3).join('\n');
+  }
+
+  async function copyBrief() {
+    if (!form.reportValidity()) return;
+    const brief = briefText();
+    try {
+      await navigator.clipboard.writeText(brief);
+      status.textContent = `Brief copied. Paste it into an email to ${email}.`;
+    } catch {
+      const copy = document.createElement('textarea');
+      copy.readOnly = true;
+      copy.rows = 7;
+      copy.style.width = '100%';
+      copy.setAttribute('aria-label', 'Project brief to copy');
+      copy.value = brief;
+      status.replaceChildren(`Copy the selected brief and send it to ${email}.`, copy);
+      copy.select();
+    }
+  }
+
+  add.addEventListener('click', addLine);
+  items.addEventListener('input', refresh);
+  document.getElementById('inquiryCopy').addEventListener('click', copyBrief);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const draft = `mailto:${email}?subject=Visual%20Inquiry&body=${encodeURIComponent(briefText())}`;
+    if (draft.length > 1900) {
+      void copyBrief();
+      return;
+    }
+    location.href = draft;
+    status.textContent = `Your email draft should open. You can also copy your brief and email it to ${email}.`;
+  });
+  addLine();
 }
+
 
 /* ---------- contact form: compose a mail, no backend ---------- */
 document.getElementById('contactForm').addEventListener('submit',function(e){
