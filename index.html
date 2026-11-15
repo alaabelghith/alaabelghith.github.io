@@ -621,6 +621,11 @@ const COMPANIES=[
   text:['A Houdini tool that turns research models into one production node. It builds a human body in real units, age in years, height in cm and weight in kg, and solves the body to hit those numbers exactly, from a 6-year-old child to an 80-year-old man. Gender, muscle, breasts, buttocks and a volume-keeping surface smooth shape it further.',
         'Type a sentence and NVIDIA’s Kimodo model animates the body, on my own GPU, inside Houdini. Wire a curve into the node and Kimodo generates the motion on that path: in the film he runs along a curve I drew and finishes with a gymnast’s forward roll. Next: textures, then crowds.'],
   facts:[['Role','Concept and direction, Houdini integration, AI-assisted build'],['Stack','Houdini Python SOP · NVIDIA Kimodo · SOMA and Anny body models · local GPU'],['Status','Free and open source, v1.0 (Apache-2.0)']]},
+ {k:'wb',tag:'wheel-builder',n:'Wheel Builder',kind:'Own tool · Houdini HDA · 2026',site:'https://github.com/alaabelghith/houdini-hdas/blob/main/hdas/alaa.wheel_builder.1.2.hda',siteLabel:'Get the HDA on GitHub',
+  hero:{t:'yt',id:'wv4tkBDCSIE'},
+  text:['A procedural Houdini HDA for building a wheel from two independent outputs: alloy and tire. Its controls cover fitment, tire profile, alloy-face patterns and tire tread families.',
+        'The walkthrough demonstrates the neutral-gray modeling prototype; it is a general-purpose modeling asset, not a vehicle fitment certification.'],
+  facts:[['Role','Concept, procedural design, HDA build and demo'],['Stack','Houdini 20.5 · Python SOP · procedural geometry'],['Outputs','OUT_ALLOY · OUT_TIRE · combined preview'],['Status','HDA v1.2 on GitHub']]},
  {k:'ft',tag:'football-tunisia',n:'Football Tunisia',kind:'Own project · Houdini HDA + motion · 2026',site:'https://github.com/alaabelghith/houdini-hdas',siteLabel:'HDA free on GitHub',
   hero:{t:'yt',id:'gds9RC5kdxs'},
   text:['Every crest of the Tunisian Ligue 1, knitted stitch by stitch: the league, the 16 clubs and the national team. Each logo is traced to vectors and grown as knitted cloth by one Houdini digital asset, then rendered in Karma in a single scripted batch: 18 crests, one node.',
@@ -658,6 +663,7 @@ const coOf=k=>COMPANIES.find(c=>c.k===k);
 
 /* Every piece. cats: "channel:intent" or a standalone category key. */
 const PIECES=[
+ {kind:'yt',id:'wv4tkBDCSIE',o:'h',t:'Wheel Builder HDA — procedural wheel generator',s:'57 s · 19 controls · alloy and tire outputs',co:'wb',cats:[],tech:'cgi',disc:['hda','procedural','modeling']},
  {kind:'yt',id:'4f_W35TixIM',o:'h',t:'Human Generator — the tool in 79 s',s:'Houdini · real-unit bodies + text-to-motion',co:'hg',cats:[],tech:'ai',disc:['hda','pipeline','crowds']},
  {kind:'img',src:'img/hg/lineup.jpg',o:'h',t:'Six bodies, six exact targets',s:'6 to 80 years · 21 to 169 kg · one node each',co:'hg',cats:[],tech:'ai',disc:['hda','pipeline']},
  {kind:'img',src:'img/hg/path_run.jpg',o:'h',t:'Motion generated on a drawn curve',s:'Kimodo path constraint · run, then a forward roll',co:'hg',cats:[],tech:'ai',disc:['pipeline','animation']},
@@ -793,7 +799,7 @@ function renderHome(){
   document.getElementById('fClients').innerHTML=COMPANIES.map(c=>{
     const ps=main.filter(p=>p.co===c.k);
     const cover=c.k==='cc'?'img/cc/grid_all.jpg':c.k==='mt'?'media/mt_box_builder.jpg':c.nda?'img/nda/studio_teaser.jpg':(ps[0]?coverOf(ps[0]):null);
-    const tab=(c.k==='mt'||c.pitch)?'Pitch':c.lab?'Lab':c.k==='personal'?'Personal':c.nda?'NDA':'Client';
+    const tab=(c.k==='mt'||c.pitch)?'Pitch':c.lab?'Lab':c.k==='personal'?'Personal':c.nda?'NDA':c.kind.startsWith('Own tool')?'Tool':'Client';
     return folderCard('co/'+c.k,c.n,c.nda?'2 private reels':plural(ps.length,'piece'),cover,tab,{logo:c.logo});
   }).join('');
   const reels=main.filter(p=>p.reel);
