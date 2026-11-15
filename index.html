@@ -663,7 +663,7 @@ const coOf=k=>COMPANIES.find(c=>c.k===k);
 
 /* Every piece. cats: "channel:intent" or a standalone category key. */
 const PIECES=[
- {kind:'yt',id:'wv4tkBDCSIE',o:'h',t:'Wheel Builder HDA — procedural wheel generator',s:'57 s · 19 controls · alloy and tire outputs',co:'wb',cats:[],tech:'cgi',disc:['hda','procedural','modeling']},
+ {kind:'yt',id:'wv4tkBDCSIE',cover:'https://i.ytimg.com/vi/wv4tkBDCSIE/hqdefault.jpg',o:'h',t:'Wheel Builder HDA — procedural wheel generator',s:'57 s · 19 controls · alloy and tire outputs',co:'wb',cats:[],tech:'cgi',disc:['hda','procedural','modeling']},
  {kind:'yt',id:'4f_W35TixIM',o:'h',t:'Human Generator — the tool in 79 s',s:'Houdini · real-unit bodies + text-to-motion',co:'hg',cats:[],tech:'ai',disc:['hda','pipeline','crowds']},
  {kind:'img',src:'img/hg/lineup.jpg',o:'h',t:'Six bodies, six exact targets',s:'6 to 80 years · 21 to 169 kg · one node each',co:'hg',cats:[],tech:'ai',disc:['hda','pipeline']},
  {kind:'img',src:'img/hg/path_run.jpg',o:'h',t:'Motion generated on a drawn curve',s:'Kimodo path constraint · run, then a forward roll',co:'hg',cats:[],tech:'ai',disc:['pipeline','animation']},
@@ -745,7 +745,7 @@ const PIECES=[
 /* ---- helpers ---- */
 const catKeys=p=>[...new Set(p.cats.map(c=>c.split(':')[0]))];
 const hasCat=(p,cat,intent)=>p.cats.some(c=>{const [a,b]=c.split(':');return a===cat&&(!intent||b===intent)});
-const coverOf=p=>p.kind==='compare'?p.after:p.kind==='yt'?'thumbs/'+p.id+'.jpg':p.kind==='video'?p.poster:p.kind==='img'?p.src:p.kind==='gallery'?p.imgs[0]:null;
+const coverOf=p=>p.kind==='compare'?p.after:p.kind==='yt'?(p.cover||'thumbs/'+p.id+'.jpg'):p.kind==='video'?p.poster:p.kind==='img'?p.src:p.kind==='gallery'?p.imgs[0]:null;
 const main=PIECES.filter(p=>!p.test);
 
 function tagsHtml(p){
@@ -755,7 +755,7 @@ function tagsHtml(p){
 }
 function meta(p){return '<div class="work__meta"><span class="work__title">'+esc(p.t)+'</span><span class="work__sub">'+esc(p.s||'')+'</span></div>'+tagsHtml(p)}
 function pieceHtml(p){
-  if(p.kind==='yt') return '<div class="work"><div class="vid'+(p.o==='v'?' vid--v':p.o==='s'?' vid--s':'')+'" data-yt="'+p.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="thumbs/'+p.id+'.jpg" alt="'+esc(p.t)+'" loading="lazy">'+PLAY+'</div>'+meta(p)+'</div>';
+  if(p.kind==='yt') return '<div class="work"><div class="vid'+(p.o==='v'?' vid--v':p.o==='s'?' vid--s':'')+'" data-yt="'+p.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="'+(p.cover||'thumbs/'+p.id+'.jpg')+'" alt="'+esc(p.t)+'" loading="lazy">'+PLAY+'</div>'+meta(p)+'</div>';
   if(p.kind==='video') return '<div class="work"><video class="wide-img" src="'+p.src+'" poster="'+p.poster+'" muted loop playsinline controls preload="none" style="width:100%;height:auto;background:#fff"></video>'+meta(p)+'</div>';
   if(p.kind==='img') return '<div class="work"'+(p.small?' style="max-width:240px"':'')+'><a class="wide-img" href="'+p.src+'" target="_blank" rel="noopener"><img src="'+p.src+'" alt="'+esc(p.t)+'" loading="lazy"></a>'+meta(p)+'</div>';
   if(p.kind==='compare') return '<div class="work"><div class="cmp"><img src="'+p.after+'" alt="After: '+esc(p.t)+'" loading="lazy"><img class="cmp__b" src="'+p.before+'" alt="Before" loading="lazy"><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span><input class="cmp__range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Drag to compare before and after"><span class="cmp__line"><i></i></span></div>'+meta(p)+'</div>';
@@ -782,7 +782,7 @@ function layout(list){
 }
 function heroHtml(h){
   if(!h) return '';
-  if(h.t==='yt'){const p=PIECES.find(x=>x.id===h.id)||{t:'',o:'h'};return '<div class="pf-hero'+(p.o==='v'?' pf-hero--v':'')+'"><div class="vid'+(p.o==='v'?' vid--v':'')+'" data-yt="'+h.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="thumbs/'+h.id+'.jpg" alt="" loading="eager">'+PLAY+'</div></div>';}
+  if(h.t==='yt'){const p=PIECES.find(x=>x.id===h.id)||{t:'',o:'h'};return '<div class="pf-hero'+(p.o==='v'?' pf-hero--v':'')+'"><div class="vid'+(p.o==='v'?' vid--v':'')+'" data-yt="'+h.id+'" data-title="'+esc(p.t)+'" role="button" tabindex="0" aria-label="Play '+esc(p.t)+'"><img src="'+(p.cover||'thumbs/'+h.id+'.jpg')+'" alt="" loading="eager">'+PLAY+'</div></div>';}
   if(h.t==='video') return '<div class="pf-hero'+(h.v?' pf-hero--v':'')+'"><video src="'+h.src+'" poster="'+h.poster+'" muted loop playsinline controls preload="none"></video></div>';
   if(h.t==='img') return '<a class="pf-hero" href="'+h.src+'" target="_blank" rel="noopener" style="display:block"><img src="'+h.src+'" alt=""></a>';
   return '';
