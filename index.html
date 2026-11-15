@@ -619,7 +619,8 @@ const COMPANIES=[
  {k:'personal',tag:'personal',n:'Personal & spec',kind:'Spec films, FX studies, school work',
   hero:{t:'yt',id:'gyW_0ZEds_E'},
   text:['Work made on my own initiative: spec product films with fictional brands, Houdini FX studies, and the projects from my master’s in Barcelona and my licence at ESAD Tunis.'],
-  facts:[]}
+  facts:[]},
+ {k:'wb',tag:'wheel-builder',n:'Wheel Builder',kind:'Own tool · Houdini SOP HDA prototype · 2026',site:'https://raw.githubusercontent.com/alaabelghith/houdini-hdas/main/hdas/alaa.wheel_builder.1.2.hda',siteLabel:'Download Wheel Builder HDA',hero:{t:'video',src:'media/wheel_builder_hda_teaser.mp4',poster:'media/wheel_builder_hda_poster.png'},text:['A procedural vehicle wheel study packaged as a Houdini SOP asset. One network builds two independent outputs: a joined alloy and a tire with an adjustable tread family. This neutral-gray geometry is a prototype; fitment review comes before a future exploded assembly, mud or snow trace study, and integration into a larger car HDA.'],facts:[['Role','Houdini procedural modeling and HDA design'],['Outputs','Alloy · tire'],['Version','1.2 · Houdini 20.5'],['Status','Geometry prototype']]}
 ];
 const NDA_ITEMS=[
  {b:'Studio reel 2025 — CGS',p:'3D generalist & rigger at CGS, September 2024 to March 2025: character work on the feature To Be Italian (broadcast on Rai 3), plus promos, product visualisation and live-event content. My name is in the film’s credits.',img:'img/nda/studio_teaser.jpg',href:'https://drive.google.com/file/d/10BhJ85PY-DrHULcxGJtCh6sL08hqMCPK/view'},
@@ -629,6 +630,8 @@ const coOf=k=>COMPANIES.find(c=>c.k===k);
 
 /* Every piece. cats: "channel:intent" or a standalone category key. */
 const PIECES=[
+ {kind:'video',src:'media/wheel_builder_hda_teaser.mp4',poster:'media/wheel_builder_hda_poster.png',o:'h',t:'Wheel Builder — procedural alloy + tire',s:'Houdini SOP HDA · two independent geometry outputs',co:'wb',cats:[],tech:'cgi',disc:['hda','procedural']},
+ 
  {kind:'yt',id:'4f_W35TixIM',o:'h',t:'Human Generator — the tool in 79 s',s:'Houdini · real-unit bodies + text-to-motion',co:'hg',cats:[],tech:'ai',disc:['hda','pipeline','crowds']},
  {kind:'img',src:'img/hg/lineup.jpg',o:'h',t:'Six bodies, six exact targets',s:'6 to 80 years · 21 to 169 kg · one node each',co:'hg',cats:[],tech:'ai',disc:['hda','pipeline']},
  {kind:'img',src:'img/hg/path_run.jpg',o:'h',t:'Motion generated on a drawn curve',s:'Kimodo path constraint · run, then a forward roll',co:'hg',cats:[],tech:'ai',disc:['pipeline','animation']},
