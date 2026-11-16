@@ -1,0 +1,15 @@
+# Anything Visual
+
+> Anything Visual is the freelance working name of Alaa Belghith, an independent Houdini FX and 3D artist based in Tunis, Tunisia. This site is his portfolio and creative technology lab.
+
+## Portfolio
+- https://alaabelghith.github.io/ — Houdini FX, product CGI, motion, and AI-assisted video.
+
+## Experiments
+- https://alaabelghith.github.io/lab/benchmark/ — Local AI Model Atlas with author-documented workstation tests.
+- https://alaabelghith.github.io/lab/seat-view/ — Cinema seat-view concept demo.
+- https://alaabelghith.github.io/lab/seat-view/carthage.html — 3D view of the Roman Theatre of Carthage.
+- https://alaabelghith.github.io/lab/size-scan/ — Experimental browser-based body-measurement estimate.
+- https://alaabelghith.github.io/lab/world-window/ — Head-tracked off-axis projection experiment.
+
+Contact: belguithalaa@gmail.com

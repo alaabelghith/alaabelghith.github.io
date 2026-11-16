@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alaabelghith.github.io/sitemap.xml
