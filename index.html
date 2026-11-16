@@ -191,6 +191,9 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
 .folder__meta{font-size:13px;color:var(--muted)}
 .folder:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:10px}
 .folder.is-empty{opacity:.7}
+.pf-index{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px 24px;padding:0;margin:14px 0 0}
+.pf-index a{font-size:14px;color:var(--muted);border-bottom:1px solid transparent;padding-bottom:2px;display:inline-block}
+.pf-index a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 .pf-back{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);cursor:pointer;background:none;border:0;padding:0;font-family:inherit}
 .pf-back:hover{color:var(--accent)}
 .pf-hero{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--card-2)}
@@ -336,6 +339,23 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.05}
       <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Tools</span></div>
         <p class="lead" style="margin-top:-6px">Houdini digital assets, published and in use &mdash; 47 downloads to date.</p>
         <div class="grid grid-3" id="toolGrid"></div></div>
+      <div class="pf-group"><div class="pf-group__head"><span class="eyebrow">Project pages</span><p class="folder__meta" style="margin:0">One page per project: the full write-up, stills and films.</p></div>
+        <ul class="pf-index" aria-label="Project pages">
+          <li><a href="/work/16-neuvieme/">16 Neuvième — DOOH campaign films</a></li>
+          <li><a href="/work/candles-and-chocolate/">Candles &amp; Chocolate — brand package</a></li>
+          <li><a href="/work/maison-turki/">Maison Turki — gift-box prototype</a></li>
+          <li><a href="/work/la-palmera/">La Palmera — launch campaign pitch</a></li>
+          <li><a href="/work/acr-advertising/">ACR Advertising — 2D series animation</a></li>
+          <li><a href="/work/fashion-mirror/">Fashion Mirror — AI try-on kiosk</a></li>
+          <li><a href="/work/human-generator/">Human Generator — free Houdini tool</a></li>
+          <li><a href="/work/wheel-builder/">Wheel Builder — procedural Houdini HDA</a></li>
+          <li><a href="/work/football-tunisia/">Football Tunisia — knitted crests</a></li>
+          <li><a href="/work/live-ai/">Live AI — real-time AI visuals</a></li>
+          <li><a href="/work/seat-view/">Seat View — 3D seat preview</a></li>
+          <li><a href="/work/world-window/">World Window — head-tracked 3D window</a></li>
+          <li><a href="/work/personal-and-spec/">Personal &amp; spec — films and FX</a></li>
+        </ul>
+      </div>
     </div>
     <div id="pfView" hidden></div>
   </div></section>
@@ -790,10 +810,14 @@ function heroHtml(h){
   if(h.t==='img') return '<a class="pf-hero" href="'+h.src+'" target="_blank" rel="noopener" style="display:block"><img src="'+h.src+'" alt=""></a>';
   return '';
 }
+/* company folders that also exist as crawlable pages under /work/<slug>/ */
+const WORK_PAGES={'16n':'16-neuvieme','cc':'candles-and-chocolate','mt':'maison-turki','lp':'la-palmera','acr':'acr-advertising','fm':'fashion-mirror','hg':'human-generator','wb':'wheel-builder','ft':'football-tunisia','lai':'live-ai','sv':'seat-view','lab':'world-window','personal':'personal-and-spec'};
 function folderCard(route,name,meta,cover,tab,opts){
   opts=opts||{};const logo=opts.logo?'<span class="folder__logo"><img src="'+opts.logo+'" alt=""></span>':'';
   let inner=cover?'<img src="'+cover+'" alt="" loading="lazy">':opts.label?'<div class="folder__lock">'+opts.label+'</div>':(opts.lock?'<div class="folder__lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private reel on request</div>':'<div class="folder__empty">Coming soon</div>');
-  return '<button class="folder'+(opts.empty?' is-empty':'')+'" type="button" data-route="'+route+'"><div class="folder__cover">'+inner+(tab?'<span class="folder__tab">'+tab+'</span>':'')+logo+'</div><div><div class="folder__name">'+esc(name)+'</div><div class="folder__meta">'+meta+'</div></div></button>';
+  const body='<div class="folder__cover">'+inner+(tab?'<span class="folder__tab">'+tab+'</span>':'')+logo+'</div><div><div class="folder__name">'+esc(name)+'</div><div class="folder__meta">'+meta+'</div></div>';
+  if(opts.href) return '<a class="folder'+(opts.empty?' is-empty':'')+'" href="'+opts.href+'" data-route="'+route+'">'+body+'</a>';
+  return '<button class="folder'+(opts.empty?' is-empty':'')+'" type="button" data-route="'+route+'">'+body+'</button>';
 }
 const plural=(n,w)=>n+' '+w+(n===1?'':'s');
 
@@ -803,7 +827,7 @@ function renderHome(){
     const ps=main.filter(p=>p.co===c.k);
     const cover=c.k==='cc'?'img/cc/grid_all.jpg':c.k==='mt'?'media/mt_box_builder.jpg':c.nda?'img/nda/studio_teaser.jpg':(ps[0]?coverOf(ps[0]):null);
     const tab=(c.k==='mt'||c.pitch)?'Pitch':c.lab?'Lab':c.k==='personal'?'Personal':c.nda?'NDA':c.kind.startsWith('Own tool')?'Tool':'Client';
-    return folderCard('co/'+c.k,c.n,c.nda?'2 private reels':plural(ps.length,'piece'),cover,tab,{logo:c.logo});
+    return folderCard('co/'+c.k,c.n,c.nda?'2 private reels':plural(ps.length,'piece'),cover,tab,{logo:c.logo,href:WORK_PAGES[c.k]?'/work/'+WORK_PAGES[c.k]+'/':null});
   }).join('');
   const reels=main.filter(p=>p.reel);
   document.getElementById('fReels').innerHTML=folderCard('reels','Demoreels',plural(reels.length,'reel')+' · 2020–2024',reels[0]?coverOf(reels[0]):null,'Reels');

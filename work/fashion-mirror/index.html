@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Mirror — AI try-on kiosk | Alaa Belghith</title>
+<meta name="description" content="An AI fitting-room mirror for clothing shops: pick a piece, stand in front of the camera, see yourself wearing it in under 20 seconds, then scan a QR code.">
+<link rel="canonical" href="https://alaabelghith.github.io/work/fashion-mirror/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Alaa Belghith — Anything Visual">
+<meta property="og:url" content="https://alaabelghith.github.io/work/fashion-mirror/">
+<meta property="og:title" content="Fashion Mirror — AI try-on kiosk | Alaa Belghith">
+<meta property="og:description" content="An AI fitting-room mirror for clothing shops: pick a piece, stand in front of the camera, see yourself wearing it in under 20 seconds, then scan a QR code.">
+<meta property="og:image" content="https://alaabelghith.github.io/media/fashion_mirror.jpg">
+<meta property="og:image:alt" content="Fashion Mirror live demo on the kiosk, phone as the camera">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 320'%3E%3Cg fill='none' stroke='%230A0A0A' stroke-width='14'%3E%3Cpath d='M 150,55 L 230,160 L 150,265 L 70,160 Z'/%3E%3Cline x1='100' y1='120' x2='200' y2='120'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../work.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://alaabelghith.github.io/work/fashion-mirror/#work","name":"Fashion Mirror","url":"https://alaabelghith.github.io/work/fashion-mirror/","description":"An AI fitting-room mirror for clothing shops. A shopper picks a piece on the screen, stands in front of the camera and sees themselves wearing it in under 20 seconds, then scans a QR code to keep the photo on their phone. Arabic, French and English, running on the shop's own PC.","image":"https://alaabelghith.github.io/media/fashion_mirror.jpg","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"virtual try-on, AI fitting room, kiosk, size scan, Fashion Mirror"}</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="../../"><span class="lockup"><svg class="brandmark" viewBox="60 45 180 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M 150,55 L 230,160 L 150,265 L 70,160 Z"/><line x1="100" y1="120" x2="200" y2="120"/></g></svg><span class="lockup__txt"><span class="lockup__a">ANYTHING</span><span class="lockup__b">VISUAL</span></span></span></a>
+    <nav class="nav__links">
+      <a href="../../">Home</a>
+      <a href="../../#portfolio">Portfolio</a>
+      <a href="../../#inquiry">Inquiry</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container page">
+  <p class="crumbs"><a href="../../#portfolio">← Portfolio</a> <span class="badge">Own product · AI try-on kiosk · 2026</span></p>
+  <h1 class="h-page">Fashion Mirror</h1>
+
+  <div class="prose">
+    <p>An AI fitting-room mirror for clothing shops. A shopper picks a piece on the screen, stands in front of the camera and sees themselves wearing it in under 20 seconds, then scans a QR code to keep the photo on their phone. Arabic, French and English, and everything runs on the shop’s own PC: no cloud, photos deleted after 24 hours.</p>
+    <p>The clip is recorded live on the kiosk, with a phone as the camera. The sizing step is open source: try it with your own camera in the <a href="../../lab/size-scan/">Size Scan demo</a>, code on GitHub: <a href="https://github.com/alaabelghith/size-scan" target="_blank" rel="noopener">size-scan</a>. The try-on software itself is not open source; the overview is at <a href="https://github.com/alaabelghith/fashion-mirror" target="_blank" rel="noopener">fashion-mirror</a>. Looking for pilot shops in Tunisia.</p>
+  </div>
+
+  <div class="pf-facts">
+    <span><b>Role:</b> Product, design, AI pipeline, kiosk software</span>
+    <span><b>Stack:</b> Open try-on model on a local GPU · MediaPipe · web kiosk</span>
+    <span><b>Status:</b> Working prototype, open to pilots</span>
+  </div>
+
+  <div class="media">
+    <figure class="work">
+      <video class="wide-img wide-img--v" src="../../media/fashion_mirror.mp4" poster="../../media/fashion_mirror.jpg" muted loop playsinline controls preload="none"></video>
+      <figcaption class="work__meta"><span class="work__title">Fashion Mirror — live demo</span><span class="work__sub">Pick, size scan, try-on, QR · recorded on the kiosk · 86 s</span></figcaption>
+    </figure>
+
+    <div class="grid grid-3">
+      <figure class="work">
+        <div class="cmp">
+          <img src="../../img/fm/compare/jebba_after.jpg" alt="After: white Tunisian jebba, rendered on the kiosk" loading="lazy">
+          <img class="cmp__b" src="../../img/fm/compare/jebba_before.jpg" alt="Before: shopper standing in front of the kiosk camera" loading="lazy">
+          <span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span>
+          <input class="cmp__range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Drag to compare before and after">
+          <span class="cmp__line"><i></i></span>
+        </div>
+        <figcaption class="work__meta"><span class="work__title">White Tunisian jebba</span><span class="work__sub">Drag the line · before / after · rendered on the kiosk</span></figcaption>
+      </figure>
+      <figure class="work">
+        <div class="cmp">
+          <img src="../../img/fm/compare/tee_dark_after.jpg" alt="After: black tee, rendered on the kiosk" loading="lazy">
+          <img class="cmp__b" src="../../img/fm/compare/tee_dark_before.jpg" alt="Before: shopper standing in front of the kiosk camera" loading="lazy">
+          <span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span>
+          <input class="cmp__range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Drag to compare before and after">
+          <span class="cmp__line"><i></i></span>
+        </div>
+        <figcaption class="work__meta"><span class="work__title">Black tee</span><span class="work__sub">Drag the line · before / after · rendered on the kiosk</span></figcaption>
+      </figure>
+      <figure class="work">
+        <div class="cmp">
+          <img src="../../img/fm/compare/tee_print_after.jpg" alt="After: printed tee, rendered on the kiosk" loading="lazy">
+          <img class="cmp__b" src="../../img/fm/compare/tee_print_before.jpg" alt="Before: shopper standing in front of the kiosk camera" loading="lazy">
+          <span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span>
+          <input class="cmp__range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Drag to compare before and after">
+          <span class="cmp__line"><i></i></span>
+        </div>
+        <figcaption class="work__meta"><span class="work__title">Printed tee</span><span class="work__sub">Drag the line · before / after · rendered on the kiosk</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="grid grid-3">
+      <figure class="work">
+        <a class="wide-img" href="../../img/fm/kiosk_screens.jpg" target="_blank" rel="noopener">
+          <img src="../../img/fm/kiosk_screens.jpg" alt="Kiosk screens: welcome, catalogue, size scan and result" loading="lazy">
+        </a>
+        <figcaption class="work__meta"><span class="work__title">Kiosk screens</span><span class="work__sub">Welcome, catalogue, size scan, result · Arabic, French, English</span></figcaption>
+      </figure>
+      <figure class="work">
+        <a class="wide-img" href="../../img/fm/size_scan.png" target="_blank" rel="noopener">
+          <img src="../../img/fm/size_scan.png" alt="Size Scan: front and side silhouette to chest, waist and hips, then a size" loading="lazy">
+        </a>
+        <figcaption class="work__meta"><span class="work__title">Size Scan — open source</span><span class="work__sub">Front and side silhouette → chest, waist, hips → size · runs in the browser</span></figcaption>
+      </figure>
+      <figure class="work">
+        <a class="wide-img" href="../../img/fm/collection.jpg" target="_blank" rel="noopener">
+          <img src="../../img/fm/collection.jpg" alt="Demo collection of 30 pieces, product shots generated on the kiosk PC" loading="lazy">
+        </a>
+        <figcaption class="work__meta"><span class="work__title">Demo collection, 30 pieces</span><span class="work__sub">Product shots generated on the kiosk PC with an open image model</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <nav class="next" aria-label="Next steps">
+    <a class="btn btn--primary" href="../../#inquiry">Start a visual inquiry</a>
+    <a class="btn btn--outline" href="../../#portfolio">All work</a>
+    <a class="btn btn--outline" href="../../lab/size-scan/">Try the size scan</a>
+    <a class="btn btn--outline" href="https://github.com/alaabelghith/fashion-mirror" target="_blank" rel="noopener">fashion-mirror on GitHub ↗</a>
+  </nav>
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer__grid">
+    <div class="footer__col"><div class="footer__brand"><span class="lockup"><svg class="brandmark" viewBox="60 45 180 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M 150,55 L 230,160 L 150,265 L 70,160 Z"/><line x1="100" y1="120" x2="200" y2="120"/></g></svg><span class="lockup__txt"><span class="lockup__a">ANYTHING</span><span class="lockup__b">VISUAL</span></span></span></div><p style="margin-top:12px">AI + 3D visual production — simulation, product CGI, FOOH and motion.</p></div>
+    <div class="footer__col"><h4>Contact</h4><p><a href="mailto:belguithalaa@gmail.com">belguithalaa@gmail.com</a></p><p>Tunis, Tunisia</p><p>Working remote, worldwide</p></div>
+    <div class="footer__col"><h4>Elsewhere</h4><p><a href="https://artstation.com/alabelguith" target="_blank" rel="noopener noreferrer">ArtStation</a></p><p><a href="https://youtube.com/@alaabelguith-2768" target="_blank" rel="noopener noreferrer">YouTube</a></p><p><a href="https://linkedin.com/in/alaabelghith" target="_blank" rel="noopener noreferrer">LinkedIn</a></p><p><a href="https://belguithala.gumroad.com" target="_blank" rel="noopener noreferrer">Gumroad</a></p></div>
+  </div>
+  <div class="footer__bottom">© 2026 Alaa Belghith · Anything Visual</div>
+</div></footer>
+
+<script>document.querySelectorAll('.cmp__range').forEach(function(r){r.addEventListener('input',function(){r.parentNode.style.setProperty('--pos',r.value+'%')})});</script>
+</body>
+</html>

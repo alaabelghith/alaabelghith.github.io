@@ -5,6 +5,21 @@
 ## Portfolio
 - https://alaabelghith.github.io/ — Houdini FX, product CGI, motion, and AI-assisted video.
 
+## Project pages
+- https://alaabelghith.github.io/work/16-neuvieme/ — DOOH campaign films for 16 Neuvième, a Tunisian dynamic-display company.
+- https://alaabelghith.github.io/work/candles-and-chocolate/ — Full brand package: identity, 86 applications, product visuals and ad films.
+- https://alaabelghith.github.io/work/maison-turki/ — Unsolicited gift-box prototype: 421 pastries isolated by an AI pipeline, then filled piece by piece.
+- https://alaabelghith.github.io/work/la-palmera/ — Launch campaign pitch for a nightclub: one night, three worlds.
+- https://alaabelghith.github.io/work/acr-advertising/ — 2D animation on the series Wled El Bhar, broadcast on Nessma for Ramadan 2020.
+- https://alaabelghith.github.io/work/fashion-mirror/ — AI fitting-room kiosk: see yourself in a garment in under 20 seconds, on the shop's own PC.
+- https://alaabelghith.github.io/work/human-generator/ — Free Houdini tool: real-unit bodies with text-to-motion, Apache-2.0.
+- https://alaabelghith.github.io/work/wheel-builder/ — Procedural Houdini HDA that builds a wheel from two independent outputs, alloy and tire.
+- https://alaabelghith.github.io/work/football-tunisia/ — Every Tunisian Ligue 1 crest knitted stitch by stitch by one Houdini asset, free under MIT.
+- https://alaabelghith.github.io/work/live-ai/ — Real-time AI visual engine: 1280×720 at 60 fps on a single GPU, offline.
+- https://alaabelghith.github.io/work/seat-view/ — Pick a seat and see the show from it: 20 cinema halls and the Roman theatre of Carthage.
+- https://alaabelghith.github.io/work/world-window/ — Head-tracked window: Three.js off-axis projection, MediaPipe head tracking.
+- https://alaabelghith.github.io/work/personal-and-spec/ — Spec product films, Houdini FX studies, and the projects from my master's and my licence.
+
 ## Experiments
 - https://alaabelghith.github.io/lab/benchmark/ — Local AI Model Atlas with author-documented workstation tests.
 - https://alaabelghith.github.io/lab/seat-view/ — Cinema seat-view concept demo.

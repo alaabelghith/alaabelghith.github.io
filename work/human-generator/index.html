@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Generator — free Houdini tool | Alaa Belghith</title>
+<meta name="description" content="A free Houdini tool that builds a human body in real units — age, height and weight solved exactly — and animates it from a typed sentence with NVIDIA Kimodo.">
+<link rel="canonical" href="https://alaabelghith.github.io/work/human-generator/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Alaa Belghith — Anything Visual">
+<meta property="og:url" content="https://alaabelghith.github.io/work/human-generator/">
+<meta property="og:title" content="Human Generator — free Houdini tool | Alaa Belghith">
+<meta property="og:description" content="A free Houdini tool that builds a human body in real units — age, height and weight solved exactly — and animates it from a typed sentence with NVIDIA Kimodo.">
+<meta property="og:image" content="https://alaabelghith.github.io/thumbs/4f_W35TixIM.jpg">
+<meta property="og:image:alt" content="Human Generator — the tool in 79 seconds, Houdini real-unit bodies and text-to-motion">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 320'%3E%3Cg fill='none' stroke='%230A0A0A' stroke-width='14'%3E%3Cpath d='M 150,55 L 230,160 L 150,265 L 70,160 Z'/%3E%3Cline x1='100' y1='120' x2='200' y2='120'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../work.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","@id":"https://alaabelghith.github.io/work/human-generator/#work","name":"Human Generator","url":"https://alaabelghith.github.io/work/human-generator/","description":"A Houdini tool that turns research models into one production node. It builds a human body in real units — age in years, height in cm and weight in kg — and solves the body to hit those numbers exactly, from a 6-year-old child to an 80-year-old man. A typed sentence animates the body through NVIDIA's Kimodo model on a local GPU.","image":"https://alaabelghith.github.io/thumbs/4f_W35TixIM.jpg","codeRepository":"https://github.com/alaabelghith/human-generator","license":"https://www.apache.org/licenses/LICENSE-2.0","programmingLanguage":"Python","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"Houdini, procedural body, text-to-motion, Kimodo, open source, HDA"}</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="../../"><span class="lockup"><svg class="brandmark" viewBox="60 45 180 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M 150,55 L 230,160 L 150,265 L 70,160 Z"/><line x1="100" y1="120" x2="200" y2="120"/></g></svg><span class="lockup__txt"><span class="lockup__a">ANYTHING</span><span class="lockup__b">VISUAL</span></span></span></a>
+    <nav class="nav__links">
+      <a href="../../">Home</a>
+      <a href="../../#portfolio">Portfolio</a>
+      <a href="../../#inquiry">Inquiry</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container page">
+  <p class="crumbs"><a href="../../#portfolio">← Portfolio</a> <span class="badge">Own tool · Houdini · 2026</span></p>
+  <h1 class="h-page">Human Generator</h1>
+
+  <div class="prose">
+    <p>A Houdini tool that turns research models into one production node. It builds a human body in real units, age in years, height in cm and weight in kg, and solves the body to hit those numbers exactly, from a 6-year-old child to an 80-year-old man. Gender, muscle, breasts, buttocks and a volume-keeping surface smooth shape it further.</p>
+    <p>Type a sentence and NVIDIA’s Kimodo model animates the body, on my own GPU, inside Houdini. Wire a curve into the node and Kimodo generates the motion on that path: in the film he runs along a curve I drew and finishes with a gymnast’s forward roll. Next: textures, then crowds.</p>
+  </div>
+
+  <div class="pf-facts">
+    <span><b>Role:</b> Concept and direction, Houdini integration, AI-assisted build</span>
+    <span><b>Stack:</b> Houdini Python SOP · NVIDIA Kimodo · SOMA and Anny body models · local GPU</span>
+    <span><b>Status:</b> Free and open source, v1.0 (Apache-2.0)</span>
+  </div>
+
+  <div class="media">
+    <figure class="work">
+      <a class="vid" href="https://www.youtube.com/watch?v=4f_W35TixIM" target="_blank" rel="noopener">
+        <img src="../../thumbs/4f_W35TixIM.jpg" alt="Human Generator — the tool in 79 seconds, real-unit bodies and text-to-motion" width="1280" height="720" loading="eager">
+        <span class="vid__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </a>
+      <figcaption class="work__meta"><span class="work__title">Human Generator — the tool in 79 s</span><span class="work__sub">Houdini · real-unit bodies + text-to-motion · watch on YouTube</span></figcaption>
+    </figure>
+
+    <div class="grid grid-2">
+      <figure class="work">
+        <a class="wide-img" href="../../img/hg/lineup.jpg" target="_blank" rel="noopener">
+          <img src="../../img/hg/lineup.jpg" alt="Six generated bodies matching six exact age and weight targets" loading="lazy">
+        </a>
+        <figcaption class="work__meta"><span class="work__title">Six bodies, six exact targets</span><span class="work__sub">6 to 80 years · 21 to 169 kg · one node each</span></figcaption>
+      </figure>
+      <figure class="work">
+        <a class="wide-img" href="../../img/hg/path_run.jpg" target="_blank" rel="noopener">
+          <img src="../../img/hg/path_run.jpg" alt="Motion generated on a drawn curve, run followed by a forward roll" loading="lazy">
+        </a>
+        <figcaption class="work__meta"><span class="work__title">Motion generated on a drawn curve</span><span class="work__sub">Kimodo path constraint · run, then a forward roll</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <nav class="next" aria-label="Next steps">
+    <a class="btn btn--primary" href="../../#inquiry">Start a visual inquiry</a>
+    <a class="btn btn--outline" href="../../#portfolio">All work</a>
+    <a class="btn btn--outline" href="https://github.com/alaabelghith/human-generator" target="_blank" rel="noopener">Free on GitHub ↗</a>
+  </nav>
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer__grid">
+    <div class="footer__col"><div class="footer__brand"><span class="lockup"><svg class="brandmark" viewBox="60 45 180 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M 150,55 L 230,160 L 150,265 L 70,160 Z"/><line x1="100" y1="120" x2="200" y2="120"/></g></svg><span class="lockup__txt"><span class="lockup__a">ANYTHING</span><span class="lockup__b">VISUAL</span></span></span></div><p style="margin-top:12px">AI + 3D visual production — simulation, product CGI, FOOH and motion.</p></div>
+    <div class="footer__col"><h4>Contact</h4><p><a href="mailto:belguithalaa@gmail.com">belguithalaa@gmail.com</a></p><p>Tunis, Tunisia</p><p>Working remote, worldwide</p></div>
+    <div class="footer__col"><h4>Elsewhere</h4><p><a href="https://artstation.com/alabelguith" target="_blank" rel="noopener noreferrer">ArtStation</a></p><p><a href="https://youtube.com/@alaabelguith-2768" target="_blank" rel="noopener noreferrer">YouTube</a></p><p><a href="https://linkedin.com/in/alaabelghith" target="_blank" rel="noopener noreferrer">LinkedIn</a></p><p><a href="https://belguithala.gumroad.com" target="_blank" rel="noopener noreferrer">Gumroad</a></p></div>
+  </div>
+  <div class="footer__bottom">© 2026 Alaa Belghith · Anything Visual</div>
+</div></footer>
+
+</body>
+</html>
