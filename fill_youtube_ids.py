@@ -15,6 +15,7 @@ CARD_RE = re.compile(rb'<div\b[^>]*>', re.IGNORECASE)
 CLASS_RE = re.compile(rb'\bclass="([^"]*)"', re.IGNORECASE)
 LABEL_RE = re.compile(rb'\baria-label="YouTube placeholder for (Y[0-9]+)"', re.IGNORECASE)
 DATA_RE = re.compile(rb'\bdata-youtube-id="[^"]*"', re.IGNORECASE)
+POSTER_RE = re.compile(rb'\bdata-poster="[^"]+"', re.IGNORECASE)
 VIDEO_ID_RE = re.compile(r'^Y[0-9]+$')
 YOUTUBE_ID_RE = re.compile(r'^[A-Za-z0-9_-]{6,}$')
 
@@ -60,7 +61,11 @@ def fill(html: bytes, mapping: dict[str, str]) -> tuple[bytes, set[str]]:
             continue
         if not DATA_RE.search(tag):
             raise ValueError(f'{video_id} placeholder has no data-youtube-id attribute')
+        # Change only the YouTube ID. Keep data-poster intact as the local thumbnail fallback.
+        poster = POSTER_RE.search(tag)
         updated_tag = DATA_RE.sub(b'data-youtube-id="' + mapping[video_id].encode('ascii') + b'"', tag, count=1)
+        if poster is not None and (POSTER_RE.search(updated_tag) is None or POSTER_RE.search(updated_tag).group(0) != poster.group(0)):
+            raise ValueError(f'{video_id} poster fallback was not preserved')
         if updated_tag != tag:
             changed += 1
         parts.extend((html[cursor:match.start()], updated_tag))
