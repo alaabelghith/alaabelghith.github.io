@@ -20,6 +20,7 @@
 - https://alaabelghith.github.io/work/world-window/ — Head-tracked window: Three.js off-axis projection, MediaPipe head tracking.
 - https://alaabelghith.github.io/work/personal-and-spec/ — Spec product films, Houdini FX studies, and the projects from my master's and my licence.
 - https://alaabelghith.github.io/work/fooh-black-friday/ — Kids Store — Black Friday FOOH spec ad for a fictional store.
+- https://alaabelghith.github.io/work/body-swap-dance/ — One 19-second body-swap video: a character montage followed by a 2×2 comparison grid.
 
 ## Experiments
 - https://alaabelghith.github.io/lab/benchmark/ — Local AI Model Atlas with author-documented workstation tests.
