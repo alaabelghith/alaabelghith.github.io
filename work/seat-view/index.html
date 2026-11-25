@@ -17,6 +17,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 320'%3E%3Cg fill='none' stroke='%230A0A0A' stroke-width='14'%3E%3Cpath d='M 150,55 L 230,160 L 150,265 L 70,160 Z'/%3E%3Cline x1='100' y1='120' x2='200' y2='120'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="../work.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","@id":"https://alaabelghith.github.io/work/seat-view/#work","name":"Seat View","url":"https://alaabelghith.github.io/work/seat-view/","description":"Pick a seat and see the show from it before you book, in a cinema hall or at the Roman theatre of Carthage. Each hall is generated from the seat map a booking site already serves: rows, seat numbers, duo seats and wheelchair places, with the aisles found from the grid. It runs in the browser with Three.js and WebGL.","image":"https://alaabelghith.github.io/thumbs/rAOOmMVhB2o.jpg","codeRepository":"https://github.com/alaabelghith/seat-view","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"seat view, Three.js, WebGL, cinema, Théâtre romain de Carthage, venue preview"}</script>
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does Seat View show a seat’s view?","acceptedAnswer":{"@type":"Answer","text":"Choose a seat on the 2D plan or in the 3D room, and the camera moves to seated eye height facing the screen. The viewer can estimate the screen distance and how much of the view the screen fills. Seat View gives venue teams an interactive way to explore sightlines from different seats."}},{"@type":"Question","name":"How many halls are included in the demo?","acceptedAnswer":{"@type":"Answer","text":"The demo includes 20 halls from three multiplexes, grouped into 16 distinct layouts. Hall names are anonymized in the public demo, and row and seat details come from public booking maps. Visitors can compare seats across layouts and view the screen from seated eye height."}},{"@type":"Question","name":"Does Seat View handle booking or live availability?","acceptedAnswer":{"@type":"Answer","text":"No. Seat View is designed to sit next to an existing booking flow rather than replace it. A link can return the visitor to the booking page; live availability would require the venue’s approved per-session seat data or API. The viewer demonstrates the 3D seat experience, not payment or seat inventory."}}]}</script>
 </head>
 <body>
 
@@ -67,7 +68,17 @@
     </div>
   </div>
 
-  <nav class="next" aria-label="Next steps">
+    <section class="prose" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    <h3>How does Seat View show a seat’s view?</h3>
+    <p>Choose a seat on the 2D plan or in the 3D room, and the camera moves to seated eye height facing the screen. The viewer can estimate the screen distance and how much of the view the screen fills. Seat View gives venue teams an interactive way to explore sightlines from different seats.</p>
+    <h3>How many halls are included in the demo?</h3>
+    <p>The demo includes 20 halls from three multiplexes, grouped into 16 distinct layouts. Hall names are anonymized in the public demo, and row and seat details come from public booking maps. Visitors can compare seats across layouts and view the screen from seated eye height.</p>
+    <h3>Does Seat View handle booking or live availability?</h3>
+    <p>No. Seat View is designed to sit next to an existing booking flow rather than replace it. A link can return the visitor to the booking page; live availability would require the venue’s approved per-session seat data or API. The viewer demonstrates the 3D seat experience, not payment or seat inventory.</p>
+  </section>
+
+<nav class="next" aria-label="Next steps">
     <a class="btn btn--primary" href="../../#inquiry">Start a visual inquiry</a>
     <a class="btn btn--outline" href="../../#portfolio">All work</a>
     <a class="btn btn--outline" href="../../lab/seat-view/">Open the live demo</a>

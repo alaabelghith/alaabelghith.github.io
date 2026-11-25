@@ -17,6 +17,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 320'%3E%3Cg fill='none' stroke='%230A0A0A' stroke-width='14'%3E%3Cpath d='M 150,55 L 230,160 L 150,265 L 70,160 Z'/%3E%3Cline x1='100' y1='120' x2='200' y2='120'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="../work.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","@id":"https://alaabelghith.github.io/work/world-window/#work","name":"World Window","url":"https://alaabelghith.github.io/work/world-window/","description":"World Window turns a screen into a window: the view follows your head, so the scene keeps real depth behind the glass instead of sliding like a picture. It runs in the browser with Three.js and off-axis projection, tracks the head through any webcam with MediaPipe, and works with the mouse too.","image":"https://alaabelghith.github.io/media/world_window.jpg","codeRepository":"https://github.com/alaabelghith/world-window","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"head tracking, off-axis projection, Three.js, MediaPipe, WebGL, Sidi Bou Said"}</script>
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does World Window create the window effect?","acceptedAnswer":{"@type":"Answer","text":"Off-axis projection treats the screen as a fixed rectangle in the scene and positions the camera at the viewer’s estimated eye position. The projection passes through the screen edges, keeping the scene aligned to the bezel while depth shifts with movement. This makes the display appear to open onto a three-dimensional scene."}},{"@type":"Question","name":"Can I use it without a webcam?","acceptedAnswer":{"@type":"Answer","text":"Yes. Move the mouse to shift the viewer position and scroll to lean in or out; webcam head tracking through MediaPipe is optional. The mouse and scroll controls work independently of the camera, letting visitors explore the effect from a computer without enabling webcam tracking."}},{"@type":"Question","name":"What scene is included?","acceptedAnswer":{"@type":"Answer","text":"The built-in scene is Sidi Bou Said at dusk, created in code with rooftops, domes, a minaret and the far shore. It uses no loaded textures or models. A separate GLB mode lets you load a model of your own and explore it through the same screen-based perspective effect."}}]}</script>
 </head>
 <body>
 
@@ -39,6 +40,8 @@
   <div class="prose">
     <p>World Window turns a screen into a window: the view follows your head, so the scene keeps real depth behind the glass instead of sliding like a picture. It runs in the browser with Three.js and off-axis projection, tracks the head through any webcam with MediaPipe, and works with the mouse too. The scene, Sidi Bou Said at dusk, is made entirely in code.</p>
     <p>The clip is recorded live: a phone used as a webcam tracks my head (inset, bottom left) and the view follows. Try it yourself with the <a href="../../lab/world-window/">live demo</a>; the mouse works if you have no camera. Code on GitHub: <a href="https://github.com/alaabelghith/world-window" target="_blank" rel="noopener">world-window</a>.</p>
+
+<p>World Window treats the screen as a fixed rectangle in the scene. Its off-axis projection places the camera at the viewer’s eye so the view passes through the screen edges; nearby and distant objects then shift against one another as the viewer moves. The demo offers mouse movement and scroll as controls, with optional webcam head tracking through MediaPipe. The Sidi Bou Said at dusk scene is built in code. Explore the scene by choosing a screen size and camera position, then move the viewer to see how perspective changes across the display. Mouse movement and scroll let visitors explore the effect without enabling head tracking. A user-supplied GLB can be loaded as a separate scene, while fullscreen keeps the screen-frame effect visible as the viewer moves.</p>
   </div>
 
   <div class="pf-facts">
@@ -60,7 +63,17 @@
     </figure>
   </div>
 
-  <nav class="next" aria-label="Next steps">
+    <section class="prose" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    <h3>How does World Window create the window effect?</h3>
+    <p>Off-axis projection treats the screen as a fixed rectangle in the scene and positions the camera at the viewer’s estimated eye position. The projection passes through the screen edges, keeping the scene aligned to the bezel while depth shifts with movement. This makes the display appear to open onto a three-dimensional scene.</p>
+    <h3>Can I use it without a webcam?</h3>
+    <p>Yes. Move the mouse to shift the viewer position and scroll to lean in or out; webcam head tracking through MediaPipe is optional. The mouse and scroll controls work independently of the camera, letting visitors explore the effect from a computer without enabling webcam tracking.</p>
+    <h3>What scene is included?</h3>
+    <p>The built-in scene is Sidi Bou Said at dusk, created in code with rooftops, domes, a minaret and the far shore. It uses no loaded textures or models. A separate GLB mode lets you load a model of your own and explore it through the same screen-based perspective effect.</p>
+  </section>
+
+<nav class="next" aria-label="Next steps">
     <a class="btn btn--primary" href="../../#inquiry">Start a visual inquiry</a>
     <a class="btn btn--outline" href="../../#portfolio">All work</a>
     <a class="btn btn--outline" href="../../lab/world-window/">Open the live demo</a>

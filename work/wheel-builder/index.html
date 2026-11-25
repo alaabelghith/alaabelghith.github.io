@@ -17,6 +17,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 320'%3E%3Cg fill='none' stroke='%230A0A0A' stroke-width='14'%3E%3Cpath d='M 150,55 L 230,160 L 150,265 L 70,160 Z'/%3E%3Cline x1='100' y1='120' x2='200' y2='120'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="../work.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","@id":"https://alaabelghith.github.io/work/wheel-builder/#work","name":"Wheel Builder","url":"https://alaabelghith.github.io/work/wheel-builder/","description":"A procedural Houdini HDA for building a wheel from two independent outputs, alloy and tire. Its controls cover fitment, tire profile, alloy-face patterns and tire tread families.","image":"https://alaabelghith.github.io/img/og.jpg","codeRepository":"https://github.com/alaabelghith/houdini-hdas","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"Houdini HDA, procedural modeling, wheel, alloy, tire, Python SOP"}</script>
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Wheel Builder?","acceptedAnswer":{"@type":"Answer","text":"Wheel Builder is a Houdini HDA that generates a procedural wheel and tyre model. Its current v1.2 controls cover bead-seat diameter, rim width, offset, PCD, lug count, centre bore, face family, spoke count and tyre dimensions. It offers five-spoke, split, mesh, turbine and aero face patterns, with separate alloy and tyre outputs."}},{"@type":"Question","name":"Which dimensions can you adjust in v1.2?","acceptedAnswer":{"@type":"Answer","text":"The interface exposes bead-seat diameter from 13 to 24 inches, rim width from 5.5 to 14 inches and offset from −30 to +80 millimetres. It also includes PCD diameter, lug-count, centre-bore, spoke-count and face-recess controls. These are the installed v1.2 ranges and controls."}},{"@type":"Question","name":"What outputs does the HDA provide?","acceptedAnswer":{"@type":"Answer","text":"The HDA provides separate alloy and tyre outputs, plus a combined display preview. Tyre controls include section width, aspect ratio, tread pattern, tread depth, pitch count and sipe count. The geometry generator also assigns component names and material classes for downstream shading and review."}}]}</script>
 </head>
 <body>
 
@@ -39,6 +40,8 @@
   <div class="prose">
     <p>A procedural Houdini HDA for building a wheel from two independent outputs: alloy and tire. Its controls cover fitment, tire profile, alloy-face patterns and tire tread families.</p>
     <p>The walkthrough demonstrates the neutral-gray modeling prototype; it is a general-purpose modeling asset, not a vehicle fitment certification.</p>
+
+<p>Wheel Builder is a Houdini HDA for generating a procedural wheel and tyre model. Its v1.2 interface includes bead-seat diameter, rim width, offset, PCD, lug count, centre bore, face pattern, spoke count, spoke width and face recess controls. The current ranges are 13–24 inches for bead-seat diameter, 5.5–14 inches for rim width and −30 to +80 millimetres for offset. Available face patterns include five-spoke, split, mesh, turbine and aero, with separate alloy and tyre outputs. The model uses a fixed three-piece join and 24 perimeter bolts; the centre bore is capped, and PCD positions raised lug cylinders rather than cut-through holes. It generates visual geometry for look development and procedural modelling. Bead-seat diameter is measured where the tyre bead sits; rim width is the nominal distance between the flange seats. The tyre section exposes aspect ratio, tread pattern, tread depth, pitch count and sipe count controls.</p>
   </div>
 
   <div class="pf-facts">
@@ -58,7 +61,17 @@
     </figure>
   </div>
 
-  <nav class="next" aria-label="Next steps">
+    <section class="prose" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    <h3>What is Wheel Builder?</h3>
+    <p>Wheel Builder is a Houdini HDA that generates a procedural wheel and tyre model. Its current v1.2 controls cover bead-seat diameter, rim width, offset, PCD, lug count, centre bore, face family, spoke count and tyre dimensions. It offers five-spoke, split, mesh, turbine and aero face patterns, with separate alloy and tyre outputs.</p>
+    <h3>Which dimensions can you adjust in v1.2?</h3>
+    <p>The interface exposes bead-seat diameter from 13 to 24 inches, rim width from 5.5 to 14 inches and offset from −30 to +80 millimetres. It also includes PCD diameter, lug-count, centre-bore, spoke-count and face-recess controls. These are the installed v1.2 ranges and controls.</p>
+    <h3>What outputs does the HDA provide?</h3>
+    <p>The HDA provides separate alloy and tyre outputs, plus a combined display preview. Tyre controls include section width, aspect ratio, tread pattern, tread depth, pitch count and sipe count. The geometry generator also assigns component names and material classes for downstream shading and review.</p>
+  </section>
+
+<nav class="next" aria-label="Next steps">
     <a class="btn btn--primary" href="../../#inquiry">Start a visual inquiry</a>
     <a class="btn btn--outline" href="../../#portfolio">All work</a>
     <a class="btn btn--outline" href="https://github.com/alaabelghith/houdini-hdas/blob/main/hdas/alaa.wheel_builder.1.2.hda" target="_blank" rel="noopener">Get the HDA on GitHub ↗</a>

@@ -17,6 +17,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 320'%3E%3Cg fill='none' stroke='%230A0A0A' stroke-width='14'%3E%3Cpath d='M 150,55 L 230,160 L 150,265 L 70,160 Z'/%3E%3Cline x1='100' y1='120' x2='200' y2='120'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="../work.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","@id":"https://alaabelghith.github.io/work/human-generator/#work","name":"Human Generator","url":"https://alaabelghith.github.io/work/human-generator/","description":"A Houdini tool that turns research models into one production node. It builds a human body in real units — age in years, height in cm and weight in kg — and solves the body to hit those numbers exactly, from a 6-year-old child to an 80-year-old man. A typed sentence animates the body through NVIDIA's Kimodo model on a local GPU.","image":"https://alaabelghith.github.io/thumbs/4f_W35TixIM.jpg","codeRepository":"https://github.com/alaabelghith/human-generator","license":"https://www.apache.org/licenses/LICENSE-2.0","programmingLanguage":"Python","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"Houdini, procedural body, text-to-motion, Kimodo, open source, HDA"}</script>
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does Human Generator create?","acceptedAnswer":{"@type":"Answer","text":"Human Generator is one Houdini node that creates a body from age, height and weight controls and can generate motion from a text prompt. A connected curve can guide that motion. The node returns body and skeleton data for downstream work, with shape controls and a neutral body option for further adjustment."}},{"@type":"Question","name":"What do the real-unit controls mean?","acceptedAnswer":{"@type":"Answer","text":"The body controls use age in years, height in centimetres and weight in kilograms. Documented example bodies span ages 6 to 80 and weights from 21 to 169 kilograms. Shape controls let artists adjust the generated body, while a neutral body option provides a starting point for further work."}},{"@type":"Question","name":"Can the generated motion follow a path?","acceptedAnswer":{"@type":"Answer","text":"Yes. Connect a curve to guide the generated movement through the scene. A path-share setting allocates the curve across segments in a text prompt, letting artists combine a motion description with a route through space. The animation can then be reviewed and refined for the shot."}}]}</script>
 </head>
 <body>
 
@@ -39,6 +40,8 @@
   <div class="prose">
     <p>A Houdini tool that turns research models into one production node. It builds a human body in real units, age in years, height in cm and weight in kg, and solves the body to hit those numbers exactly, from a 6-year-old child to an 80-year-old man. Gender, muscle, breasts, buttocks and a volume-keeping surface smooth shape it further.</p>
     <p>Type a sentence and NVIDIA’s Kimodo model animates the body, on my own GPU, inside Houdini. Wire a curve into the node and Kimodo generates the motion on that path: in the film he runs along a curve I drew and finishes with a gymnast’s forward roll. Next: textures, then crowds.</p>
+
+<p>Human Generator brings body setup and text-directed motion into one Houdini node. Artists specify a body using age, height and weight controls; documented examples span ages 6 to 80 and weights from 21 to 169 kilograms. Shape controls and a neutral body option provide additional ways to adjust the result. For motion, a sentence becomes an action segment, while a connected curve can guide movement through the scene. The node returns body and skeleton data for downstream work. The project is released under Apache 2.0 and runs through a local server rather than importing PyTorch into Houdini. To scope a test, provide the target Houdini version, body measurements, motion prompt, path and handoff format. Artists can set the body before generating motion from a text prompt or curve path.</p>
   </div>
 
   <div class="pf-facts">
@@ -72,7 +75,17 @@
     </div>
   </div>
 
-  <nav class="next" aria-label="Next steps">
+    <section class="prose" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    <h3>What does Human Generator create?</h3>
+    <p>Human Generator is one Houdini node that creates a body from age, height and weight controls and can generate motion from a text prompt. A connected curve can guide that motion. The node returns body and skeleton data for downstream work, with shape controls and a neutral body option for further adjustment.</p>
+    <h3>What do the real-unit controls mean?</h3>
+    <p>The body controls use age in years, height in centimetres and weight in kilograms. Documented example bodies span ages 6 to 80 and weights from 21 to 169 kilograms. Shape controls let artists adjust the generated body, while a neutral body option provides a starting point for further work.</p>
+    <h3>Can the generated motion follow a path?</h3>
+    <p>Yes. Connect a curve to guide the generated movement through the scene. A path-share setting allocates the curve across segments in a text prompt, letting artists combine a motion description with a route through space. The animation can then be reviewed and refined for the shot.</p>
+  </section>
+
+<nav class="next" aria-label="Next steps">
     <a class="btn btn--primary" href="../../#inquiry">Start a visual inquiry</a>
     <a class="btn btn--outline" href="../../#portfolio">All work</a>
     <a class="btn btn--outline" href="https://github.com/alaabelghith/human-generator" target="_blank" rel="noopener">Free on GitHub ↗</a>

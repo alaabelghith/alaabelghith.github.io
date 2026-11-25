@@ -17,6 +17,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 320'%3E%3Cg fill='none' stroke='%230A0A0A' stroke-width='14'%3E%3Cpath d='M 150,55 L 230,160 L 150,265 L 70,160 Z'/%3E%3Cline x1='100' y1='120' x2='200' y2='120'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="../work.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://alaabelghith.github.io/work/fashion-mirror/#work","name":"Fashion Mirror","url":"https://alaabelghith.github.io/work/fashion-mirror/","description":"An AI fitting-room mirror for clothing shops. A shopper picks a piece on the screen, stands in front of the camera and sees themselves wearing it in under 20 seconds, then scans a QR code to keep the photo on their phone. Arabic, French and English, running on the shop's own PC.","image":"https://alaabelghith.github.io/media/fashion_mirror.jpg","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"virtual try-on, AI fitting room, kiosk, size scan, Fashion Mirror"}</script>
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does a shopper use Fashion Mirror?","acceptedAnswer":{"@type":"Answer","text":"A shopper chooses a clothing piece on the kiosk screen, stands in front of the camera and views the try-on result. A QR link opens the result on the shopper’s phone. The prototype is designed for a shop floor, with a full-screen kiosk and a countdown capture flow."}},{"@type":"Question","name":"Does the try-on use a cloud service?","acceptedAnswer":{"@type":"Answer","text":"No. The prototype runs on the kiosk PC without a cloud service or account. Shopper photos are deleted automatically after 24 hours, and QR photo sharing uses the shop’s Wi-Fi. The system is designed for an in-store flow from choosing a garment to viewing the try-on result on a phone."}},{"@type":"Question","name":"Which languages and product types are shown?","acceptedAnswer":{"@type":"Answer","text":"The interface supports Arabic, French and English, including right-to-left layout. The demo collection includes tops, bottoms and one-pieces, with 30 pieces prepared for demonstration. The demo products are not real brands’ catalogue photos; a shop would replace them with its own approved catalogue."}}]}</script>
 </head>
 <body>
 
@@ -108,7 +109,17 @@
     </div>
   </div>
 
-  <nav class="next" aria-label="Next steps">
+    <section class="prose" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    <h3>How does a shopper use Fashion Mirror?</h3>
+    <p>A shopper chooses a clothing piece on the kiosk screen, stands in front of the camera and views the try-on result. A QR link opens the result on the shopper’s phone. The prototype is designed for a shop floor, with a full-screen kiosk and a countdown capture flow.</p>
+    <h3>Does the try-on use a cloud service?</h3>
+    <p>No. The prototype runs on the kiosk PC without a cloud service or account. Shopper photos are deleted automatically after 24 hours, and QR photo sharing uses the shop’s Wi-Fi. The system is designed for an in-store flow from choosing a garment to viewing the try-on result on a phone.</p>
+    <h3>Which languages and product types are shown?</h3>
+    <p>The interface supports Arabic, French and English, including right-to-left layout. The demo collection includes tops, bottoms and one-pieces, with 30 pieces prepared for demonstration. The demo products are not real brands’ catalogue photos; a shop would replace them with its own approved catalogue.</p>
+  </section>
+
+<nav class="next" aria-label="Next steps">
     <a class="btn btn--primary" href="../../#inquiry">Start a visual inquiry</a>
     <a class="btn btn--outline" href="../../#portfolio">All work</a>
     <a class="btn btn--outline" href="../../lab/size-scan/">Try the size scan</a>

@@ -16,7 +16,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 320'%3E%3Cg fill='none' stroke='%230A0A0A' stroke-width='14'%3E%3Cpath d='M 150,55 L 230,160 L 150,265 L 70,160 Z'/%3E%3Cline x1='100' y1='120' x2='200' y2='120'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="../work.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://alaabelghith.github.io/work/live-ai/#work","name":"Live AI","url":"https://alaabelghith.github.io/work/live-ai/","description":"A live visual engine for stages and events. A camera films the performer and an open image model restyles every frame in real time: 1280×720 at 60 fps on a single RTX 5070 Ti. Seven style presets switch instantly, and a typed prompt is on screen about 3.5 seconds later, without the video ever stopping.","image":"https://alaabelghith.github.io/thumbs/qh6qRlZANz8.jpg","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"real-time AI, live visuals, FLUX.2 klein, RIFE, Spout, OSC, MIDI, stage visuals"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","@id":"https://alaabelghith.github.io/work/live-ai/#work","name":"Live AI","url":"https://alaabelghith.github.io/work/live-ai/","description":"A live visual engine for stages and events. A camera films the performer and an open image model restyles every frame in real time at 1280×720. klein 4B generates about 20 frames per second; RIFE interpolation brings the stream to 60 fps on one RTX 5070 Ti. FLUX 3 is the slower, higher-quality mode (~7 fps). Seven style presets switch instantly, and a typed prompt is on screen about 3.5 seconds later, without the video ever stopping.","image":"https://alaabelghith.github.io/thumbs/qh6qRlZANz8.jpg","author":{"@type":"Person","@id":"https://alaabelghith.github.io/#person","name":"Alaa Belghith","url":"https://alaabelghith.github.io/"},"creator":{"@id":"https://alaabelghith.github.io/#person"},"isPartOf":{"@type":"WebSite","@id":"https://alaabelghith.github.io/#website","url":"https://alaabelghith.github.io/","name":"Alaa Belghith — Anything Visual"},"inLanguage":"en","keywords":"real-time AI, live visuals, FLUX.2 klein, RIFE, Spout, OSC, MIDI, stage visuals"}</script>
+ <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does Live AI do?","acceptedAnswer":{"@type":"Answer","text":"Live AI stylizes a camera feed in real time for event and LED-stage visuals. Alaa operates the image engine as a live visual service. The exact performance depends on the agreed setup, so share the target screen and output route when discussing a test."}},{"@type":"Question","name":"Who provides the screens and operates the visuals?","acceptedAnswer":{"@type":"Answer","text":"The screen partner provides the display, and Alaa operates the live visual system. Before an event, agree on the screen input, output route, stage plan and operator role. Confirming those details gives the venue and technical team a shared plan for the live setup."}},{"@type":"Question","name":"What should a venue confirm before a live test?","acceptedAnswer":{"@type":"Answer","text":"Confirm the display resolution, signal path, event computer, camera position, power and the person responsible for operating the visuals. A live test should use the agreed configuration and measure its output before a rate or latency is promised. These setup details help define a realistic technical check for the venue."}}]}</script>
 </head>
 <body>
 
@@ -38,7 +39,7 @@
 
   <div class="prose">
     <p>A live visual engine for stages and events. A camera films the performer and an open image model restyles every frame in real time: 1280×720 at 60 fps on a single RTX 5070 Ti. Seven style presets switch instantly, and a typed prompt is on screen about 3.5 seconds later, without the video ever stopping.</p>
-    <p>It runs offline on one PC and plugs into a show like any video source: Spout output to OBS, Resolume or TouchDesigner, controlled from the keyboard, OSC or a MIDI controller. Built on FLUX.2 klein 4B, RIFE frame interpolation and a tiny VAE. Looking for stages, festivals and brand activations to test it live.</p>
+    <p>It runs offline on one PC and plugs into a show like any video source: Spout output to OBS, Resolume or TouchDesigner, controlled from the keyboard, OSC or a MIDI controller. klein 4B generates about 20 frames per second; RIFE interpolation brings the stream to 60 fps on one RTX 5070 Ti. FLUX 3 is the slower, higher-quality mode (~7 fps). Looking for stages, festivals and brand activations to test it live.</p>
   </div>
 
   <div class="pf-facts">
@@ -96,7 +97,17 @@
     </div>
   </div>
 
-  <nav class="next" aria-label="Next steps">
+    <section class="prose" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    <h3>What does Live AI do?</h3>
+    <p>Live AI stylizes a camera feed in real time for event and LED-stage visuals. Alaa operates the image engine as a live visual service. The exact performance depends on the agreed setup, so share the target screen and output route when discussing a test.</p>
+    <h3>Who provides the screens and operates the visuals?</h3>
+    <p>The screen partner provides the display, and Alaa operates the live visual system. Before an event, agree on the screen input, output route, stage plan and operator role. Confirming those details gives the venue and technical team a shared plan for the live setup.</p>
+    <h3>What should a venue confirm before a live test?</h3>
+    <p>Confirm the display resolution, signal path, event computer, camera position, power and the person responsible for operating the visuals. A live test should use the agreed configuration and measure its output before a rate or latency is promised. These setup details help define a realistic technical check for the venue.</p>
+  </section>
+
+<nav class="next" aria-label="Next steps">
     <a class="btn btn--primary" href="../../#inquiry">Start a visual inquiry</a>
     <a class="btn btn--outline" href="../../#portfolio">All work</a>
   </nav>

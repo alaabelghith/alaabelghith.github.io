@@ -19,6 +19,7 @@
 - https://alaabelghith.github.io/work/seat-view/ — Pick a seat and see the show from it: 20 cinema halls and the Roman theatre of Carthage.
 - https://alaabelghith.github.io/work/world-window/ — Head-tracked window: Three.js off-axis projection, MediaPipe head tracking.
 - https://alaabelghith.github.io/work/personal-and-spec/ — Spec product films, Houdini FX studies, and the projects from my master's and my licence.
+- https://alaabelghith.github.io/work/fooh-black-friday/ — Kids Store — Black Friday FOOH spec ad for a fictional store.
 
 ## Experiments
 - https://alaabelghith.github.io/lab/benchmark/ — Local AI Model Atlas with author-documented workstation tests.
