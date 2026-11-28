@@ -21,6 +21,7 @@
 - https://alaabelghith.github.io/work/personal-and-spec/ — Spec product films, Houdini FX studies, and the projects from my master's and my licence.
 - https://alaabelghith.github.io/work/fooh-black-friday/ — Kids Store — Black Friday FOOH spec ad for a fictional store.
 - https://alaabelghith.github.io/work/body-swap-dance/ — One 19-second body-swap video: a character montage followed by a 2×2 comparison grid.
+- https://alaabelghith.github.io/work/taguini-y13-sapphire-kaftan/ — Taguini Y13 sapphire kaftan fashion film: brief, approved board stills, tools and final 30-second video.
 
 ## Experiments
 - https://alaabelghith.github.io/lab/benchmark/ — Local AI Model Atlas with author-documented workstation tests.
